@@ -16,7 +16,7 @@ export function Footer({ className, ...props }: ComponentProps<'footer'>) {
 				<ul className="flex h-full items-center gap-2">
 					<li className="h-10 w-10">
 						<a
-							href="https://github.com/sokhuong-uon"
+							href="https://github.com/skuong"
 							className="flex h-full w-full"
 							target="_blank"
 						>
