@@ -1,26 +1,21 @@
-# Portfolio
+# Next.js template
 
-- Next.js
-- Shadcn/ui
-- Tailwind CSS
-- Dark mode
-- Internationalization
-- Drizzle
-- Postgresql, Supabase
-- Hono
+This is a Next.js template with shadcn/ui.
 
-## Getting Started
+## Adding components
 
-### Install dependencies
+To add components to your app, run the following command:
 
 ```bash
-pnpm i
+npx shadcn@latest add button
 ```
 
-### Run the development server
+This will place the ui components in the `components` directory.
 
-```bash
-pnpm dev
+## Using components
+
+To use the components in your app, import them as follows:
+
+```tsx
+import { Button } from "@/components/ui/button";
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
