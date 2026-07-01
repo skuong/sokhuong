@@ -1,3 +1,4 @@
+import { Draw } from "@/features/drawing/components/draw"
 import { WorkTimelineScrollArea } from "@/features/work/components/work-timeline-scroll-area"
 
 export default function HomePage() {
@@ -33,8 +34,8 @@ export default function HomePage() {
         </div>
 
         <div className="py-24">
-          <div className="grid grid-cols-8 gap-8">
-            <div className="col-span-8 h-screen rounded-md bg-muted/50"></div>
+          <div className="mx-auto aspect-video h-[calc(100dvh-10rem)]">
+            <Draw />
           </div>
         </div>
       </div>
