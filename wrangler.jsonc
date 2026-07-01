@@ -1,25 +1,21 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
+  "$schema": "./node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
   "name": "sokhuong",
-  "compatibility_date": "2024-09-23",
-  "compatibility_flags": [
-    "nodejs_compat",
-    "global_fetch_strictly_public",
-  ],
+  "compatibility_date": "2026-07-01",
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS",
+    "binding": "ASSETS"
   },
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
       // The service should match the "name" of the worker
-      "service": "sokhuong",
-    },
+      "service": "sokhuong"
+    }
   ],
   "r2_buckets": [
-    // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
     {
       "binding": "NEXT_INC_CACHE_R2_BUCKET",
       "bucket_name": "sokhuong-next-inc-cache",

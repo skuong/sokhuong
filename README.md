@@ -4,10 +4,6 @@
 - Shadcn/ui
 - Tailwind CSS
 - Dark mode
-- Internationalization
-- Drizzle
-- Postgresql, Supabase
-- Hono
 
 ## Getting Started
 
