@@ -17,7 +17,6 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
-import { CustomAvatarGroup } from "@/features/avatar/components/custom-avatar-group"
 
 export type WorkExperience = {
   id: number
