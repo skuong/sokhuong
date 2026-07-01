@@ -2,8 +2,8 @@ import { WorkTimelineScrollArea } from "@/features/work/components/work-timeline
 
 export default function HomePage() {
   return (
-    <div className="">
+    <main>
       <WorkTimelineScrollArea />
-    </div>
+    </main>
   )
 }
