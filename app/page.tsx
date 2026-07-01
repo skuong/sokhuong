@@ -11,7 +11,7 @@ export default function HomePage() {
           Enhance
         </div>
 
-        <div className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[10rem] xl:text-[12rem]">
+        <div className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[10rem]">
           Easthetics
         </div>
 
@@ -29,7 +29,7 @@ export default function HomePage() {
           Interactive
         </div>
 
-        <div className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[10rem] xl:text-[12rem]">
+        <div className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[9rem]">
           Applications
         </div>
 
