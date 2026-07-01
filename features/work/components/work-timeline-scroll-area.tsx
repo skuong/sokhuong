@@ -1,3 +1,7 @@
+"use client"
+
+import { useEffect, useRef } from "react"
+
 import { Plus } from "lucide-react"
 
 import { ScrollArea } from "@/components/ui/scroll-area"
@@ -50,8 +54,20 @@ const works: WorkExperience[] = [
 ]
 
 export function WorkTimelineScrollArea() {
+  const scrollAreaViewportRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (scrollAreaViewportRef.current) {
+      const element = scrollAreaViewportRef.current
+      element.scrollBy({
+        behavior: "smooth",
+        left: element.scrollWidth - element.clientWidth
+      })
+    }
+  }, [])
+
   return (
-    <ScrollArea className="">
+    <ScrollArea viewportRef={scrollAreaViewportRef}>
       <div className="flex w-fit gap-4 px-16 pt-24 pb-36">
         {works.map((work) => (
           <WorkExperienceCard work={work} key={work.id} />
