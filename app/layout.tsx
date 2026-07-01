@@ -33,7 +33,7 @@ export default function RootLayout({
     >
       <body>
         <ThemeProvider>
-          <header className="container mx-auto py-8">
+          <header className="container mx-auto pt-16 pb-8">
             <PhoneticNameWithHoverCard />
           </header>
 
