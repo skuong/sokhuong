@@ -63,7 +63,7 @@ export function WorkTimelineScrollArea() {
 
       gsap.to(element, {
         scrollTo: { x: element.scrollWidth - element.clientWidth },
-        duration: 3,
+        duration: 2.5,
         delay: 0.8,
         ease: "power3.inOut"
       })
@@ -77,7 +77,7 @@ export function WorkTimelineScrollArea() {
           <WorkExperienceCard work={work} key={work.id} />
         ))}
 
-        <div className="flex h-64 w-44 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
+        <div className="flex h-64 w-44 rounded-md bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
           <div className="m-auto cursor-pointer rounded-full bg-white/80 p-2 text-muted-foreground shadow transition-transform hover:scale-110 dark:bg-black/80">
             <Plus />
           </div>
