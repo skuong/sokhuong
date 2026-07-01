@@ -1,4 +1,4 @@
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   WorkExperience,
   WorkExperienceCard
@@ -55,8 +55,6 @@ export function WorkTimelineScrollArea() {
           <WorkExperienceCard work={work} key={work.id} />
         ))}
       </div>
-
-      <ScrollBar orientation="horizontal" />
     </ScrollArea>
   )
 }
