@@ -9,6 +9,7 @@ import {
   WorkExperience,
   WorkExperienceCard
 } from "@/features/work/components/work-experience-card"
+import { gsap } from "@/lib/gsap"
 
 const works: WorkExperience[] = [
   {
@@ -59,9 +60,12 @@ export function WorkTimelineScrollArea() {
   useEffect(() => {
     if (scrollAreaViewportRef.current) {
       const element = scrollAreaViewportRef.current
-      element.scrollBy({
-        behavior: "smooth",
-        left: element.scrollWidth - element.clientWidth
+
+      gsap.to(element, {
+        scrollTo: { x: element.scrollWidth - element.clientWidth },
+        duration: 3,
+        delay: 0.8,
+        ease: "power3.inOut"
       })
     }
   }, [])
