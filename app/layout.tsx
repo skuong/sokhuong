@@ -2,7 +2,8 @@ import { Geist, Geist_Mono } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { UmamiAnalytics } from "@/features/analytics/components/umami-analytics"
-import { NameInPhoneticSymbols } from "@/features/art/components/name-in-phonetic-symbols"
+import { NameInPhoneticSymbolsSvg } from "@/features/art/components/name-in-phonetic-symbols-svg"
+import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
@@ -33,9 +34,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <header className="container mx-auto py-8">
-            <div className="">
-              <NameInPhoneticSymbols />
-            </div>
+            <PhoneticNameWithHoverCard />
           </header>
 
           {children}

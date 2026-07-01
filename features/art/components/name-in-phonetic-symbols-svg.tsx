@@ -1,4 +1,4 @@
-export function NameInPhoneticSymbols() {
+export function NameInPhoneticSymbolsSvg() {
   return (
     <svg
       width="142"
