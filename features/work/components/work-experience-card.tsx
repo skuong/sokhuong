@@ -45,8 +45,10 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
       }}
     >
       <CardHeader>
-        <CardTitle className="text-4xl">{work.company}</CardTitle>
-        <CardDescription className="text-xl">{work.role}</CardDescription>
+        <CardTitle className="font-mono text-4xl">{work.company}</CardTitle>
+        <CardDescription className="font-mono text-xl">
+          {work.role}
+        </CardDescription>
         <CardAction>
           <Plus className="size-6 text-muted" />
         </CardAction>
@@ -82,7 +84,7 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
 
       <div className="absolute -bottom-24 h-20 w-px bg-muted"></div>
 
-      <div className="absolute -bottom-36 text-3xl text-muted-foreground">
+      <div className="absolute -bottom-36 font-mono text-3xl text-muted-foreground">
         {new Date(work.startDate).getFullYear()}
       </div>
     </Card>
