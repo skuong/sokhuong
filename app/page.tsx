@@ -1,4 +1,4 @@
-import { Draw } from "@/features/drawing/components/draw"
+import { InteractiveApplicationsSection } from "@/features/interactive-application/components/interactive-applications-section"
 import { WorkTimelineScrollArea } from "@/features/work/components/work-timeline-scroll-area"
 
 export default function HomePage() {
@@ -24,21 +24,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="space-y-8 md:space-y-16">
-        <div className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-9xl">
-          Interactive
-        </div>
-
-        <div className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[9rem]">
-          Applications
-        </div>
-
-        <div className="py-24">
-          <div className="mx-auto aspect-video w-[calc(100vw-10rem)]">
-            <Draw />
-          </div>
-        </div>
-      </div>
+      <InteractiveApplicationsSection />
     </main>
   )
 }
