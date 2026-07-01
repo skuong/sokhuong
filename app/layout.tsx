@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { UmamiAnalytics } from "@/features/analytics/components/umami-analytics"
-import { NameInPhoneticSymbolsSvg } from "@/features/art/components/name-in-phonetic-symbols-svg"
 import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
 import { cn } from "@/lib/utils"
 
