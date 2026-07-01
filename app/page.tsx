@@ -34,7 +34,7 @@ export default function HomePage() {
         </div>
 
         <div className="py-24">
-          <div className="mx-auto aspect-video h-[calc(100dvh-10rem)]">
+          <div className="mx-auto aspect-video w-[calc(100vw-10rem)]">
             <Draw />
           </div>
         </div>
