@@ -17,6 +17,7 @@ import {
   CardHeader,
   CardTitle
 } from "@/components/ui/card"
+import { CustomAvatarGroup } from "@/features/avatar/components/custom-avatar-group"
 
 export type WorkExperience = {
   id: number
@@ -38,7 +39,7 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
 
   return (
     <Card
-      className="relative h-64 shrink-0 overflow-visible"
+      className="relative h-96 shrink-0 overflow-visible"
       style={{
         width: `${width * 4}rem`,
         marginLeft: `${startPosition * 3}rem`
@@ -55,7 +56,32 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
       </CardHeader>
 
       <CardContent>
-        <p>Card Content</p>
+        <AvatarGroup className="ml-auto grayscale">
+          <Avatar className="size-32 rounded-md">
+            <AvatarImage
+              className={"rounded-md"}
+              src="https://github.com/shadcn.png"
+              alt="@shadcn"
+            />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          <Avatar className="size-32 rounded-md">
+            <AvatarImage
+              className={"rounded-md"}
+              src="https://github.com/maxleiter.png"
+              alt="@maxleiter"
+            />
+            <AvatarFallback>LR</AvatarFallback>
+          </Avatar>
+          <Avatar className="size-32 rounded-md">
+            <AvatarImage
+              className={"rounded-md"}
+              src="https://github.com/evilrabbit.png"
+              alt="@evilrabbit"
+            />
+            <AvatarFallback>ER</AvatarFallback>
+          </Avatar>
+        </AvatarGroup>
       </CardContent>
 
       <CardFooter className="mt-auto">
