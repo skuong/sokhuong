@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { UmamiAnalytics } from "@/features/analytics/components/umami-analytics"
-import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
@@ -30,14 +29,8 @@ export default function RootLayout({
         geist.variable
       )}
     >
-      <body>
-        <ThemeProvider>
-          <header className="container mx-auto pt-16 pb-8">
-            <PhoneticNameWithHoverCard />
-          </header>
-
-          {children}
-        </ThemeProvider>
+      <body className="overflow-x-clip">
+        <ThemeProvider>{children}</ThemeProvider>
         <UmamiAnalytics />
       </body>
     </html>
