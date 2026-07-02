@@ -14,6 +14,7 @@ import { gsap } from "@/lib/gsap"
 const works: WorkExperience[] = [
   {
     id: 1,
+    slug: "zeal",
     company: "Zeal",
     role: "Research Intern",
     startDate: "2019-06-01",
@@ -22,6 +23,7 @@ const works: WorkExperience[] = [
   },
   {
     id: 2,
+    slug: "quadusk",
     company: "Quadusk",
     role: "Co-founder, Developer Lead",
     startDate: "2020-05-01",
@@ -30,6 +32,7 @@ const works: WorkExperience[] = [
   },
   {
     id: 3,
+    slug: "kirirom-digital-cambodia",
     company: "Kirirom Digital Cambodia",
     role: "Web Developer",
     startDate: "2023-02-01",
@@ -38,6 +41,7 @@ const works: WorkExperience[] = [
   },
   {
     id: 4,
+    slug: "stringboard4education",
     company: "StringBoard4Education",
     role: "Web & System Developer",
     startDate: "2024-02-15",
@@ -46,6 +50,7 @@ const works: WorkExperience[] = [
   },
   {
     id: 5,
+    slug: "tux-global-institute",
     company: "TUX Global Institute",
     role: "Web Developer",
     startDate: "2025-01-04",

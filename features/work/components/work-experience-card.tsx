@@ -22,6 +22,7 @@ import {
 
 export type WorkExperience = {
   id: number
+  slug: string
   company: string
   role: string
   startDate: string
@@ -39,7 +40,7 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
   const width = differenceInMonths(startDate, endDate)
 
   return (
-    <Link href={`/work#${work.company}`}>
+    <Link href={`/work#${work.slug}`}>
       <Card
         className="relative h-96 shrink-0 overflow-visible"
         style={{

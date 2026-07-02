@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Noto_Sans } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { UmamiAnalytics } from "@/features/analytics/components/umami-analytics"
+import { TransitionWrapper } from "@/features/page-transition/components/transition-wrapper"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
@@ -33,7 +34,9 @@ export default function RootLayout({
       )}
     >
       <body className="overflow-x-clip">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <TransitionWrapper>{children}</TransitionWrapper>
+        </ThemeProvider>
         <UmamiAnalytics />
       </body>
     </html>
