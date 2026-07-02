@@ -4,7 +4,9 @@ import { WorkTimelineScrollArea } from "@/features/work/components/work-timeline
 export default function HomePage() {
   return (
     <main>
-      <WorkTimelineScrollArea />
+      <div className="relative h-[calc(100vh-10rem)]">
+        <WorkTimelineScrollArea />
+      </div>
 
       <div className="space-y-8 py-56 md:space-y-16">
         <div className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-9xl">
