@@ -9,6 +9,7 @@ import Lenis from "lenis"
 
 import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
 import { InteractiveApplicationsSection } from "@/features/interactive-application/components/interactive-applications-section"
+import { SocialSection } from "@/features/social/components/social-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
 import { WorkTimelineScrollArea } from "@/features/work/components/work-timeline-scroll-area"
 import { gsap } from "@/lib/gsap"
@@ -48,8 +49,11 @@ export default function HomePage() {
         </div>
 
         <InteractiveApplicationsSection />
-
         <TechStackSection />
+
+        <div className="mt-36">
+          <SocialSection />
+        </div>
       </main>
     </div>
   )
