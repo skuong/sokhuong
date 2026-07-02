@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 import { differenceInMonths } from "date-fns/fp"
 import { Plus } from "lucide-react"
 
@@ -37,81 +39,83 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
   const width = differenceInMonths(startDate, endDate)
 
   return (
-    <Card
-      className="relative h-96 shrink-0 overflow-visible"
-      style={{
-        width: `${width * 4}rem`,
-        marginLeft: `${startPosition * 3}rem`
-      }}
-    >
-      <CardHeader>
-        <CardTitle className="font-mono text-4xl">{work.company}</CardTitle>
-        <CardDescription className="font-mono text-xl">
-          {work.role}
-        </CardDescription>
-        <CardAction>
-          <Plus className="size-6 text-muted" />
-        </CardAction>
-      </CardHeader>
+    <Link href={`/work#${work.company}`}>
+      <Card
+        className="relative h-96 shrink-0 overflow-visible"
+        style={{
+          width: `${width * 4}rem`,
+          marginLeft: `${startPosition * 3}rem`
+        }}
+      >
+        <CardHeader>
+          <CardTitle className="font-mono text-4xl">{work.company}</CardTitle>
+          <CardDescription className="font-mono text-xl">
+            {work.role}
+          </CardDescription>
+          <CardAction>
+            <Plus className="size-6 text-muted" />
+          </CardAction>
+        </CardHeader>
 
-      <CardContent>
-        <AvatarGroup className="ml-auto grayscale">
-          <Avatar className="size-32 rounded-md">
-            <AvatarImage
-              className={"rounded-md"}
-              src="https://github.com/shadcn.png"
-              alt="@shadcn"
-            />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar className="size-32 rounded-md">
-            <AvatarImage
-              className={"rounded-md"}
-              src="https://github.com/maxleiter.png"
-              alt="@maxleiter"
-            />
-            <AvatarFallback>LR</AvatarFallback>
-          </Avatar>
-          <Avatar className="size-32 rounded-md">
-            <AvatarImage
-              className={"rounded-md"}
-              src="https://github.com/evilrabbit.png"
-              alt="@evilrabbit"
-            />
-            <AvatarFallback>ER</AvatarFallback>
-          </Avatar>
-        </AvatarGroup>
-      </CardContent>
+        <CardContent>
+          <AvatarGroup className="ml-auto grayscale">
+            <Avatar className="size-32 rounded-md">
+              <AvatarImage
+                className={"rounded-md"}
+                src="https://github.com/shadcn.png"
+                alt="@shadcn"
+              />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar className="size-32 rounded-md">
+              <AvatarImage
+                className={"rounded-md"}
+                src="https://github.com/maxleiter.png"
+                alt="@maxleiter"
+              />
+              <AvatarFallback>LR</AvatarFallback>
+            </Avatar>
+            <Avatar className="size-32 rounded-md">
+              <AvatarImage
+                className={"rounded-md"}
+                src="https://github.com/evilrabbit.png"
+                alt="@evilrabbit"
+              />
+              <AvatarFallback>ER</AvatarFallback>
+            </Avatar>
+          </AvatarGroup>
+        </CardContent>
 
-      <CardFooter className="mt-auto">
-        <AvatarGroup className="ml-auto grayscale">
-          <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/maxleiter.png"
-              alt="@maxleiter"
-            />
-            <AvatarFallback>LR</AvatarFallback>
-          </Avatar>
-          <Avatar>
-            <AvatarImage
-              src="https://github.com/evilrabbit.png"
-              alt="@evilrabbit"
-            />
-            <AvatarFallback>ER</AvatarFallback>
-          </Avatar>
-          <AvatarGroupCount>+3</AvatarGroupCount>
-        </AvatarGroup>
-      </CardFooter>
+        <CardFooter className="mt-auto">
+          <AvatarGroup className="ml-auto grayscale">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage
+                src="https://github.com/maxleiter.png"
+                alt="@maxleiter"
+              />
+              <AvatarFallback>LR</AvatarFallback>
+            </Avatar>
+            <Avatar>
+              <AvatarImage
+                src="https://github.com/evilrabbit.png"
+                alt="@evilrabbit"
+              />
+              <AvatarFallback>ER</AvatarFallback>
+            </Avatar>
+            <AvatarGroupCount>+3</AvatarGroupCount>
+          </AvatarGroup>
+        </CardFooter>
 
-      <div className="absolute -bottom-24 h-20 w-px bg-muted"></div>
+        <div className="absolute -bottom-24 h-20 w-px bg-muted"></div>
 
-      <div className="absolute -bottom-36 font-mono text-3xl text-muted-foreground">
-        {new Date(work.startDate).getFullYear()}
-      </div>
-    </Card>
+        <div className="absolute -bottom-36 font-mono text-3xl text-muted-foreground">
+          {new Date(work.startDate).getFullYear()}
+        </div>
+      </Card>
+    </Link>
   )
 }
