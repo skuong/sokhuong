@@ -60,6 +60,7 @@ export function WorkTimelineScrollArea() {
   useEffect(() => {
     if (scrollAreaViewportRef.current) {
       const element = scrollAreaViewportRef.current
+      element.style.overflowY = "clip"
 
       gsap.to(element, {
         scrollTo: { x: element.scrollWidth - element.clientWidth },
