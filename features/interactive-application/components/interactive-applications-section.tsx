@@ -1,7 +1,8 @@
 "use client"
 
-import { useEffect } from "react"
+import { useRef } from "react"
 
+import { useGSAP } from "@gsap/react"
 import { View } from "@react-three/drei"
 import { useTheme } from "@teispace/next-themes"
 
@@ -10,11 +11,13 @@ import { gsap } from "@/lib/gsap"
 
 const InteractiveApplicationsSection = () => {
   const { resolvedTheme } = useTheme()
+  const titleLine1Ref = useRef(null)
+  const titleLine2Ref = useRef(null)
 
-  useEffect(() => {
-    gsap.from("#interactive-app-title-line-1", {
+  useGSAP(() => {
+    gsap.from(titleLine1Ref.current, {
       scrollTrigger: {
-        trigger: "#interactive-app-title-line-1",
+        trigger: titleLine1Ref.current,
         start: "top bottom",
         end: "bottom 40%",
         scrub: true
@@ -22,9 +25,9 @@ const InteractiveApplicationsSection = () => {
       x: 300
     })
 
-    gsap.from("#interactive-app-title-line-2", {
+    gsap.from(titleLine2Ref.current, {
       scrollTrigger: {
-        trigger: "#interactive-app-title-line-2",
+        trigger: titleLine2Ref.current,
         start: "top bottom",
         end: "bottom 40%",
         scrub: true
@@ -34,17 +37,17 @@ const InteractiveApplicationsSection = () => {
   }, [])
 
   return (
-    <section className="" id="interactive-app">
+    <section>
       <div
-        id="interactive-app-title-line-1"
+        ref={titleLine1Ref}
         className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[9rem] xl:text-[10rem]"
       >
         Interactive
       </div>
 
       <div
+        ref={titleLine2Ref}
         className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[9rem] xl:text-[10rem]"
-        id="interactive-app-title-line-2"
       >
         Applications
       </div>

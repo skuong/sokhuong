@@ -37,7 +37,7 @@ export default function HomePage() {
         )}
       </div>
 
-      <header className="container mx-auto pt-16 pb-8">
+      <header className="container mx-auto pt-16">
         <PhoneticNameWithHoverCard />
       </header>
 

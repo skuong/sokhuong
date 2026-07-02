@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { Geist, Geist_Mono, Noto_Sans } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
 import { UmamiAnalytics } from "@/features/analytics/components/umami-analytics"
@@ -13,6 +13,8 @@ const fontMono = Geist_Mono({
   variable: "--font-mono"
 })
 
+const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-noto-sans" })
+
 export default function RootLayout({
   children
 }: Readonly<{
@@ -26,7 +28,8 @@ export default function RootLayout({
         "antialiased",
         fontMono.variable,
         "font-sans",
-        geist.variable
+        geist.variable,
+        notoSans.variable
       )}
     >
       <body className="overflow-x-clip">
