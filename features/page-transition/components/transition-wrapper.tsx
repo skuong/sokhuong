@@ -33,7 +33,7 @@ export function TransitionWrapper({ children }: PropsWithChildren) {
           {
             drawSVG: "100%",
             strokeWidth: 300,
-            duration: 1.5,
+            duration: 1,
             ease: "power2.inOut"
           },
           0
@@ -48,7 +48,7 @@ export function TransitionWrapper({ children }: PropsWithChildren) {
         tl.to(svgPathRef.current, {
           drawSVG: "100% 100%",
           strokeWidth: 2,
-          duration: 1.5,
+          duration: 1,
           ease: "power2.inOut"
         })
           .to(
