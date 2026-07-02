@@ -1,6 +1,6 @@
 "use client"
 
-import { Canvas } from "@react-three/fiber"
+import { View } from "@react-three/drei"
 import { useTheme } from "@teispace/next-themes"
 
 import { TabletScene } from "@/features/interactive-application/components/tablet-scene"
@@ -19,9 +19,9 @@ const InteractiveApplicationsSection = () => {
       </div>
 
       <div className="py-24">
-        <Canvas className="aspect-video w-screen border">
+        <View className="relative aspect-video w-screen border">
           <TabletScene theme={resolvedTheme}></TabletScene>
-        </Canvas>
+        </View>
       </div>
     </div>
   )
