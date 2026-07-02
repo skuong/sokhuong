@@ -1,10 +1,7 @@
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { View } from "@react-three/drei"
-import { useTheme } from "@teispace/next-themes"
 
-import { TabletScene } from "@/features/interactive-application/components/tablet-scene"
 import { gsap } from "@/lib/gsap"
 
 export function TechStackSection() {
@@ -32,6 +29,7 @@ export function TechStackSection() {
       x: -300
     })
   }, [])
+
   return (
     <section>
       <h2 className="flex flex-col">
