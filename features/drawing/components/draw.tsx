@@ -9,6 +9,19 @@ const Excalidraw = dynamic(
   { ssr: false }
 )
 
+const MainMenu = dynamic(() =>
+  import("@excalidraw/excalidraw").then((m) => m.MainMenu)
+)
+
+const DefaultSidebar = dynamic(() =>
+  import("@excalidraw/excalidraw").then((m) => m.DefaultSidebar)
+)
+
 export function Draw({ theme }: { theme: string }) {
-  return <Excalidraw theme={theme === "dark" ? "dark" : "light"} />
+  return (
+    <Excalidraw theme={theme === "dark" ? "dark" : "light"} aiEnabled={false}>
+      <MainMenu></MainMenu>
+      <DefaultSidebar></DefaultSidebar>
+    </Excalidraw>
+  )
 }

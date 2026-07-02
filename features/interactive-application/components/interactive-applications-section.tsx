@@ -37,7 +37,7 @@ const InteractiveApplicationsSection = () => {
   }, [])
 
   return (
-    <section>
+    <section className="mt-36">
       <div
         ref={titleLine1Ref}
         className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[9rem] xl:text-[10rem]"
