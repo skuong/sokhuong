@@ -128,3 +128,19 @@
     @apply font-sans;
   }
 }
+
+.excalidraw .default-sidebar-trigger {
+  display: none !important;
+}
+
+.excalidraw [data-testid="dropdown-menu-button"] {
+  display: none !important;
+}
+
+.excalidraw .help-icon {
+  display: none !important;
+}
+
+.excalidraw [data-testid="main-menu-trigger"] {
+  display: none !important;
+}
