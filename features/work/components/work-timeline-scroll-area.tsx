@@ -2,8 +2,9 @@
 
 import { useEffect, useRef } from "react"
 
-import { Plus } from "lucide-react"
+import { Plus, Pointer } from "lucide-react"
 
+import { Cursor } from "@/components/ui/custom-cursor"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   WorkExperience,
@@ -84,9 +85,14 @@ export function WorkTimelineScrollArea() {
         ))}
 
         <div className="flex h-96 w-64 rounded-md bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
-          <div className="m-auto cursor-pointer rounded-full bg-white/80 p-2 text-muted-foreground shadow transition-transform hover:scale-110 dark:bg-black/80">
-            <Plus />
-          </div>
+          <Cursor
+            name="Send me an Email"
+            customSVG={<Pointer className="rotate-69" />}
+            svgClassName="text-black dark:text-white"
+            className="group m-auto flex aspect-square w-6/12 cursor-pointer items-center justify-center rounded-full bg-white/80 p-2 text-muted-foreground shadow transition-transform dark:bg-black/90"
+          >
+            <Plus className="size-8 transition-transform group-hover:scale-110" />
+          </Cursor>
         </div>
       </div>
     </ScrollArea>
