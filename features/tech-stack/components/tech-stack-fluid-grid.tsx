@@ -15,7 +15,6 @@ export function TechStackFluidGrid({
 }: {
   htmlElementRef: RefObject<HTMLDivElement | null>
 }) {
-  const gl = useThree((state) => state.gl)
   const size = useThree((state) => state.size)
   const plane = useRef<THREE.Mesh | null>(null)
 
