@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 
+import { useGSAP } from "@gsap/react"
 import { Plus, Pointer } from "lucide-react"
 
 import { Cursor } from "@/components/ui/custom-cursor"
@@ -63,19 +64,19 @@ const works: WorkExperience[] = [
 export function WorkTimelineScrollArea() {
   const scrollAreaViewportRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (scrollAreaViewportRef.current) {
-      const element = scrollAreaViewportRef.current
-      element.style.overflowY = "clip"
+  // useGSAP(() => {
+  //   if (!scrollAreaViewportRef.current) return
 
-      gsap.to(element, {
-        scrollTo: { x: element.scrollWidth - element.clientWidth },
-        duration: 2.5,
-        delay: 0.8,
-        ease: "power3.inOut"
-      })
-    }
-  }, [])
+  //   const element = scrollAreaViewportRef.current
+  //   element.style.overflowY = "clip"
+
+  //   gsap.to(element, {
+  //     scrollTo: { x: element.scrollWidth - element.clientWidth },
+  //     duration: 2.5,
+  //     delay: 0.8,
+  //     ease: "power3.inOut"
+  //   })
+  // }, [])
 
   return (
     <ScrollArea viewportRef={scrollAreaViewportRef}>
