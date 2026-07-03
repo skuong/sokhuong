@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 
 import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
+import { HeroSection } from "@/features/hero/components/hero-section"
 import { InteractiveApplicationsSection } from "@/features/interactive-application/components/interactive-applications-section"
 import { SocialSection } from "@/features/social/components/social-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
@@ -44,6 +45,8 @@ export default function HomePage() {
       </header>
 
       <main>
+        <HeroSection />
+
         <div className="relative z-20 h-[calc(100vh-10rem)]">
           <WorkTimelineScrollArea />
         </div>

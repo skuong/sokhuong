@@ -13,7 +13,12 @@ export function PhoneticNameWithHoverCard() {
         delay={200}
         className="cursor-pointer font-noto-sans text-9xl font-bold"
       >
-        <span id="name-phonetic-symbols">kʊəŋ</span>
+        <span
+          id="name-phonetic-symbols"
+          className="text-transparent subpixel-antialiased [-webkit-text-stroke:1px_white]"
+        >
+          kʊəŋ
+        </span>
       </HoverCardTrigger>
       <HoverCardContent className="w-fit">
         <div className="flex flex-col">
