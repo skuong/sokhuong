@@ -44,7 +44,7 @@ export default function HomePage() {
       </header>
 
       <main>
-        <div className="relative h-[calc(100vh-10rem)]">
+        <div className="relative z-20 h-[calc(100vh-10rem)]">
           <WorkTimelineScrollArea />
         </div>
 
