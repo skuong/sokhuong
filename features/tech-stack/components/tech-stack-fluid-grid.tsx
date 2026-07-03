@@ -2,9 +2,13 @@
 
 import { RefObject, useEffect, useMemo, useRef, useState } from "react"
 
-import { useFrame, useThree } from "@react-three/fiber"
+import { extend, useFrame, useThree } from "@react-three/fiber"
 import { toCanvas } from "html-to-image"
 import * as THREE from "three"
+
+import { ColorShiftMaterial } from "@/features/tech-stack/material/cursor-trail-material"
+
+extend({ ColorShiftMaterial })
 
 export function TechStackFluidGrid({
   htmlElementRef
@@ -14,6 +18,8 @@ export function TechStackFluidGrid({
   const gl = useThree((state) => state.gl)
   const size = useThree((state) => state.size)
   const plane = useRef<THREE.Mesh | null>(null)
+
+  const materialRef = useRef<typeof ColorShiftMaterial>(null)
 
   const [canvas, setCanvas] = useState<HTMLCanvasElement | null>(null)
   const pixelRatio = Math.min(window.devicePixelRatio * 2, 4)
@@ -32,12 +38,21 @@ export function TechStackFluidGrid({
     return domToCanvas
   }, [htmlElementRef, pixelRatio])
 
+  const texture = useMemo(() => {
+    return new THREE.CanvasTexture(canvas)
+  }, [canvas])
+
   const previousWidth = useRef(size.width)
   const previousHeight = useRef(size.height)
 
   const resizeTimerId = useRef<NodeJS.Timeout>(undefined)
 
   useFrame(() => {
+    if (materialRef.current) {
+      // @ts-expect-error TODO: TS doesn't understand this
+      materialRef.current.uTime += 0.05
+    }
+
     const dw = Math.abs(size.width - previousWidth.current)
     const dh = Math.abs(size.height - previousHeight.current)
 
@@ -56,16 +71,7 @@ export function TechStackFluidGrid({
   if (!canvas) return null
   return (
     <mesh ref={plane}>
-      <meshBasicMaterial transparent>
-        <canvasTexture
-          args={[canvas]}
-          attach="map"
-          colorSpace={gl.outputColorSpace}
-          minFilter={THREE.LinearMipMapLinearFilter}
-          magFilter={THREE.LinearFilter}
-          generateMipmaps
-        />
-      </meshBasicMaterial>
+      <colorShiftMaterial ref={materialRef} uTexture={texture} />
       <planeGeometry
         args={[canvas.width / pixelRatio, canvas.height / pixelRatio, 10]}
       />
