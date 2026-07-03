@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
@@ -13,6 +14,7 @@ export function TechStackSection() {
   const header2 = useRef(null)
 
   const techStackGridForCanvas = useRef<HTMLDivElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useGSAP(() => {
     gsap.from(header1.current, {
@@ -60,7 +62,10 @@ export function TechStackSection() {
           <div className="h-full w-full">
             <View className="z-50 h-full w-full [&>div]:h-full [&>div]:w-full">
               <OrthographicCamera makeDefault position={[0, 0, 1]} />
-              <TechStackFluidGrid htmlElementRef={techStackGridForCanvas} />
+              <TechStackFluidGrid
+                htmlElementRef={techStackGridForCanvas}
+                canvas2DRef={canvasRef}
+              />
             </View>
           </div>
         </div>
@@ -71,6 +76,10 @@ export function TechStackSection() {
             aria-hidden
             className="w-full bg-transparent px-24 text-rose-800"
           />
+        </div>
+
+        <div className="absolute top-0 z-50">
+          <canvas ref={canvasRef} className="border" />
         </div>
       </section>
     </section>
