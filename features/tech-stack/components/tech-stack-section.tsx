@@ -1,18 +1,17 @@
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
+import {
+  Box,
+  Html,
+  OrbitControls,
+  OrthographicCamera,
+  Plane,
+  View
+} from "@react-three/drei"
 
+import { TechStackLogoGrid } from "@/features/tech-stack/components/tech-stack-logo-grid"
 import { gsap } from "@/lib/gsap"
-
-import { GolangLogo } from "./golang-logo"
-import { GsapLogo } from "./gsap-logo"
-import { MotionLogo } from "./motion-logo"
-import { ReactJsLogo } from "./react-js-logo"
-import { RustLogo } from "./rust-logo"
-import { TailwindCssLogo } from "./tailwindcss-logo"
-import { ThreeJsLogo } from "./three-js-logo"
-import { TypeScriptLogo } from "./type-script-logo"
-import { VueJsLogo } from "./vue-js-logo"
 
 export function TechStackSection() {
   const header1 = useRef(null)
@@ -41,7 +40,7 @@ export function TechStackSection() {
   }, [])
 
   return (
-    <section>
+    <section className="relative">
       <h2 className="flex flex-col">
         <span
           ref={header1}
@@ -57,45 +56,28 @@ export function TechStackSection() {
         </span>
       </h2>
 
-      <div className="mt-36 grid grid-cols-6 px-24">
-        <div className="col-span-2 flex aspect-square items-center justify-center p-8">
-          <ReactJsLogo />
-        </div>
-        <div className="col-span-2 aspect-square border text-black/30">
-          <TypeScriptLogo />
-        </div>
-        <div className="col-span-2 aspect-square">
-          <ThreeJsLogo />
-        </div>
+      <section className="relative">
+        <TechStackLogoGrid className="border px-24" />
 
-        <div className="col-span-1 flex aspect-square items-center justify-center p-4">
-          <TailwindCssLogo />
+        <div className="absolute inset-0 z-20 w-full">
+          <div className="h-full w-full">
+            <View className="h-full w-full [&>div]:h-full [&>div]:w-full">
+              <OrthographicCamera makeDefault position={[0, 0, 5]} />
+              <Html
+                center
+                transform
+                scale={40}
+                position={[0, 0, 0]}
+                occlude="blending"
+                className="border px-24"
+                geometry={<planeGeometry args={[100, 100, 10]} />}
+              >
+                <TechStackLogoGrid />
+              </Html>
+            </View>
+          </div>
         </div>
-        <div className="col-span-1 flex aspect-square items-center justify-center p-4">
-          <VueJsLogo />
-        </div>
-        <div className="col-span-1 flex aspect-square items-center justify-center p-4">
-          <RustLogo />
-        </div>
-
-        <div className="col-span-1 flex aspect-square items-center justify-center p-4">
-          <GolangLogo />
-        </div>
-
-        <div className="col-span-1 flex aspect-square items-center justify-center p-4">
-          <GsapLogo />
-        </div>
-        <div className="col-span-1 flex aspect-square items-center justify-center p-4">
-          <MotionLogo />
-        </div>
-
-        <div className="col-span-1 aspect-square border bg-muted">A</div>
-        <div className="col-span-1 aspect-square border bg-muted">A</div>
-        <div className="col-span-1 aspect-square border bg-muted">A</div>
-        <div className="col-span-1 aspect-square border bg-muted">A</div>
-        <div className="col-span-1 aspect-square border bg-muted">A</div>
-        <div className="col-span-1 aspect-square border bg-muted">A</div>
-      </div>
+      </section>
     </section>
   )
 }
