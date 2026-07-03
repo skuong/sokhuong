@@ -2,15 +2,15 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-import { GolangLogo } from "./golang-logo"
-import { GsapLogo } from "./gsap-logo"
-import { MotionLogo } from "./motion-logo"
-import { ReactJsLogo } from "./react-js-logo"
-import { RustLogo } from "./rust-logo"
-import { TailwindCssLogo } from "./tailwindcss-logo"
-import { ThreeJsLogo } from "./three-js-logo"
-import { TypeScriptLogo } from "./type-script-logo"
-import { VueJsLogo } from "./vue-js-logo"
+import { GolangLogo } from "./colored-logo/golang-logo"
+import { GsapLogo } from "./colored-logo/gsap-logo"
+import { MotionLogo } from "./colored-logo/motion-logo"
+import { ReactJsLogo } from "./colored-logo/react-js-logo"
+import { RustLogo } from "./colored-logo/rust-logo"
+import { TailwindCssLogo } from "./colored-logo/tailwindcss-logo"
+import { ThreeJsLogo } from "./colored-logo/three-js-logo"
+import { TypeScriptLogo } from "./colored-logo/type-script-logo"
+import { VueJsLogo } from "./colored-logo/vue-js-logo"
 
 export function ColoredTechStackLogoGrid({
   className,
@@ -18,7 +18,7 @@ export function ColoredTechStackLogoGrid({
 }: ComponentProps<"div">) {
   return (
     <div className={cn("grid grid-cols-6", className)} {...props}>
-      <div className="col-span-2 flex aspect-square items-center justify-center p-8 text-blue-800">
+      <div className="col-span-2 flex aspect-square items-center justify-center p-8">
         <ReactJsLogo />
       </div>
       <div className="col-span-2 aspect-square text-black/30">

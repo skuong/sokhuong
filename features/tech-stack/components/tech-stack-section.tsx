@@ -75,7 +75,7 @@ export function TechStackSection() {
           <TechStackLogoGrid
             ref={techStackGridForCanvas}
             aria-hidden
-            className="w-full bg-transparent px-24 text-rose-800"
+            className="w-full bg-transparent px-24"
           />
         </div>
 

@@ -2,15 +2,15 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
-import { GolangLogo } from "./golang-logo"
-import { GsapLogo } from "./gsap-logo"
-import { MotionLogo } from "./motion-logo"
-import { ReactJsLogo } from "./react-js-logo"
-import { RustLogo } from "./rust-logo"
-import { TailwindCssLogo } from "./tailwindcss-logo"
-import { ThreeJsLogo } from "./three-js-logo"
-import { TypeScriptLogo } from "./type-script-logo"
-import { VueJsLogo } from "./vue-js-logo"
+import { GolangLogo } from "./no-color-logo/golang-logo"
+import { GsapLogo } from "./no-color-logo/gsap-logo"
+import { MotionLogo } from "./no-color-logo/motion-logo"
+import { NoColorReactJsLogo } from "./no-color-logo/react-js-logo"
+import { RustLogo } from "./no-color-logo/rust-logo"
+import { TailwindCssLogo } from "./no-color-logo/tailwindcss-logo"
+import { ThreeJsLogo } from "./no-color-logo/three-js-logo"
+import { TypeScriptLogo } from "./no-color-logo/type-script-logo"
+import { VueJsLogo } from "./no-color-logo/vue-js-logo"
 
 export function TechStackLogoGrid({
   className,
@@ -19,7 +19,7 @@ export function TechStackLogoGrid({
   return (
     <div className={cn("grid grid-cols-6", className)} {...props}>
       <div className="col-span-2 flex aspect-square items-center justify-center p-8">
-        <ReactJsLogo />
+        <NoColorReactJsLogo />
       </div>
       <div className="col-span-2 aspect-square">
         <TypeScriptLogo />
@@ -43,7 +43,7 @@ export function TechStackLogoGrid({
             <g transform="translate(178.06 235.01)">
               <path
                 d="m0 0-22.669-39.264-22.669 39.264h-36.227l58.896-102.01 58.896 102.01z"
-                fill="currentColor"
+                fill="#888"
               />
             </g>
           </g>
