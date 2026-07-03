@@ -56,8 +56,8 @@ export function TechStackSection() {
         </span>
       </h2>
 
-      <section className="relative">
-        <ColoredTechStackLogoGrid className="-z-10 border px-24" />
+      <section className="relative mt-56">
+        <ColoredTechStackLogoGrid className="-z-10 px-24" />
 
         <div className="absolute inset-0 z-50 w-full">
           <div className="h-full w-full">
