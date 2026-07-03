@@ -8,5 +8,6 @@ varying vec2 vUv;
 void main() {
     vec4 texColor = texture2D(uTexture, vUv);
     vec4 displacementColor = texture2D(uDisplacementTexture, vUv);
-    gl_FragColor.rgba = vec4(texColor.rgb, 1.0 - displacementColor.r * 2.0 + 0.2);
+    float displacement = 1.0 - displacementColor.r * 2.0 + 0.2;
+    gl_FragColor.rgba = vec4(texColor.rgb, texColor.a * displacement);
 }
