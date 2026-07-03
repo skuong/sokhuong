@@ -4,8 +4,9 @@ import * as THREE from "three"
 const ColorShiftMaterial = shaderMaterial(
   {
     uTime: 0,
+    uColor: new THREE.Color(0.2, 0.0, 0.1),
     uTexture: new THREE.Texture(),
-    uColor: new THREE.Color(0.2, 0.0, 0.1)
+    uPointer: new THREE.Vector2(9999, 9999)
   },
   /*glsl*/ `
     varying vec2 vUv;
@@ -17,6 +18,7 @@ const ColorShiftMaterial = shaderMaterial(
   /*glsl*/ `
   uniform float uTime;
   uniform vec3 uColor;
+  uniform vec2 uPointer;
   uniform sampler2D uTexture;
   varying vec2 vUv;
   void main() {
@@ -33,6 +35,7 @@ declare module "@react-three/fiber" {
       uTime?: number
       uColor?: THREE.ColorRepresentation
       uTexture?: THREE.Texture
+      uPointer?: THREE.Vector2
     }
   }
 }

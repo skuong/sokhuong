@@ -3,6 +3,7 @@
 import { RefObject, useEffect, useMemo, useRef, useState } from "react"
 
 import { extend, useFrame, useThree } from "@react-three/fiber"
+import { ThreeEvent } from "@react-three/fiber"
 import { toCanvas } from "html-to-image"
 import * as THREE from "three"
 
@@ -11,9 +12,11 @@ import { ColorShiftMaterial } from "@/features/tech-stack/material/cursor-trail-
 extend({ ColorShiftMaterial })
 
 export function TechStackFluidGrid({
-  htmlElementRef
+  htmlElementRef,
+  canvas2DRef
 }: {
   htmlElementRef: RefObject<HTMLDivElement | null>
+  canvas2DRef: RefObject<HTMLCanvasElement | null>
 }) {
   const size = useThree((state) => state.size)
   const plane = useRef<THREE.Mesh | null>(null)
@@ -41,6 +44,15 @@ export function TechStackFluidGrid({
     return new THREE.CanvasTexture(canvas)
   }, [canvas])
 
+  const glowImage = useMemo(() => {
+    const glowImage = new Image()
+
+    glowImage.src = "/displacement/glow.png"
+    return glowImage
+  }, [])
+
+  const canvas2DContext = useRef<CanvasRenderingContext2D | null>(null)
+
   const previousWidth = useRef(size.width)
   const previousHeight = useRef(size.height)
 
@@ -61,15 +73,68 @@ export function TechStackFluidGrid({
       clearTimeout(resizeTimerId.current)
       resizeTimerId.current = setTimeout(() => domToCanvas(), 300)
     }
+
+    if (canvas2DContext.current) {
+      canvas2DContext.current.globalCompositeOperation = "source-over"
+      canvas2DContext.current.globalAlpha = 0.02
+      canvas2DContext.current.fillRect(
+        0,
+        0,
+        canvas2DRef.current?.width ?? 0,
+        canvas2DRef.current?.height ?? 0
+      )
+    }
   })
 
   useEffect(() => {
     domToCanvas()
-  }, [domToCanvas])
+    if (canvas2DRef.current && !!canvas?.height && !!canvas.width) {
+      canvas2DRef.current.width = canvas.width / 10
+      canvas2DRef.current.height = canvas.height / 10
+
+      const context = canvas2DRef.current.getContext("2d")
+      if (context) {
+        if (!canvas2DContext.current) {
+          canvas2DContext.current = context
+        }
+
+        context.globalCompositeOperation = "lighten"
+        context.fillRect(0, 0, canvas.width / 10, canvas.height / 10)
+      }
+    }
+  }, [
+    domToCanvas,
+    glowImage,
+    canvas2DRef,
+    canvas2DContext,
+    canvas?.width,
+    canvas?.height
+  ])
+
+  const onPointerMove = (event: ThreeEvent<PointerEvent>) => {
+    if (event.uv && canvas2DRef.current) {
+      const pointerX = event.uv.x * canvas2DRef.current.width
+      const pointerY = (1 - event.uv.y) * canvas2DRef.current.height
+
+      if (canvas2DContext.current) {
+        const glowSize = canvas2DRef.current.width * 0.25
+
+        canvas2DContext.current.globalCompositeOperation = "lighten"
+        canvas2DContext.current.globalAlpha = 1
+        canvas2DContext.current.drawImage(
+          glowImage,
+          pointerX - glowSize / 2,
+          pointerY - glowSize / 2,
+          glowSize,
+          glowSize
+        )
+      }
+    }
+  }
 
   if (!canvas) return null
   return (
-    <mesh ref={plane}>
+    <mesh ref={plane} onPointerMove={onPointerMove}>
       <colorShiftMaterial ref={materialRef} uTexture={texture} />
       <planeGeometry
         args={[canvas.width / pixelRatio, canvas.height / pixelRatio, 10]}
