@@ -19,7 +19,9 @@ export function HeroSection() {
       autoAlpha: 1
     })
 
-    const tl = gsap.timeline()
+    const tl = gsap.timeline({
+      delay: 0.5
+    })
     const animateText = (ref: React.RefObject<HTMLDivElement | null>) => {
       if (!ref.current) return
 
@@ -52,7 +54,7 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="overflow-clip uppercase">
+        <div className="overflow-clip font-bold uppercase">
           <div ref={engineerTitleRef} className="opacity-0">
             Engineer
           </div>
