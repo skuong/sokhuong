@@ -30,7 +30,7 @@ export default function HomePage() {
 
   return (
     <div ref={canvasContainer}>
-      <div className="fixed inset-0 -z-10">
+      <div className="fixed inset-0 z-10">
         {canvasContainer && (
           // @ts-expect-error the canvasContainer will be available
           <Canvas eventSource={canvasContainer}>

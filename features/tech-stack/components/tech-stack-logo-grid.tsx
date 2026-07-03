@@ -21,7 +21,7 @@ export function TechStackLogoGrid({
       <div className="col-span-2 flex aspect-square items-center justify-center p-8">
         <ReactJsLogo />
       </div>
-      <div className="col-span-2 aspect-square border text-black/30">
+      <div className="col-span-2 aspect-square text-black/30">
         <TypeScriptLogo />
       </div>
       <div className="col-span-2 aspect-square">
