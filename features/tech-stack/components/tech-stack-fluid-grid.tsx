@@ -103,7 +103,11 @@ export function TechStackFluidGrid({
       displacementTextureRef.current = new THREE.CanvasTexture(
         canvas2DRef.current
       )
-      materialRef.current.uDisplacementTexture = displacementTextureRef.current
+      if (materialRef.current) {
+        // @ts-expect-error TODO: TS doesn't know
+        materialRef.current.uDisplacementTexture =
+          displacementTextureRef.current
+      }
 
       const context = canvas2DRef.current.getContext("2d")
       if (context) {
