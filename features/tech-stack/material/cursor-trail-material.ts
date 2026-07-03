@@ -6,6 +6,7 @@ const ColorShiftMaterial = shaderMaterial(
     uTime: 0,
     uColor: new THREE.Color(0.2, 0.0, 0.1),
     uTexture: new THREE.Texture(),
+    uDisplacementTexture: new THREE.Texture(),
     uPointer: new THREE.Vector2(9999, 9999)
   },
   /*glsl*/ `
@@ -20,11 +21,12 @@ const ColorShiftMaterial = shaderMaterial(
   uniform vec3 uColor;
   uniform vec2 uPointer;
   uniform sampler2D uTexture;
+  uniform sampler2D uDisplacementTexture;
   varying vec2 vUv;
   void main() {
     vec4 texColor = texture2D(uTexture, vUv);
-    vec3 shift = 0.5 + 0.3 * sin(vUv.yxx + uTime) + uColor;
-    gl_FragColor.rgba = vec4(texColor.rgb + shift * 0.1, texColor.a);
+    vec4 displacementColor = texture2D(uDisplacementTexture, vUv);
+    gl_FragColor.rgba = vec4(texColor.rgb, 1.0 - displacementColor.r * 2.0 + 0.2);
   }
   `
 )
@@ -35,6 +37,7 @@ declare module "@react-three/fiber" {
       uTime?: number
       uColor?: THREE.ColorRepresentation
       uTexture?: THREE.Texture
+      uDisplacementTexture?: THREE.Texture | null
       uPointer?: THREE.Vector2
     }
   }

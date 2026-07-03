@@ -44,12 +44,18 @@ export function TechStackFluidGrid({
     return new THREE.CanvasTexture(canvas)
   }, [canvas])
 
+  const displacementTextureRef = useRef<THREE.Texture | null>(null)
+
   const glowImage = useMemo(() => {
     const glowImage = new Image()
 
     glowImage.src = "/displacement/glow.png"
     return glowImage
   }, [])
+
+  useEffect(() => {
+    domToCanvas()
+  }, [domToCanvas])
 
   const canvas2DContext = useRef<CanvasRenderingContext2D | null>(null)
 
@@ -84,13 +90,20 @@ export function TechStackFluidGrid({
         canvas2DRef.current?.height ?? 0
       )
     }
+
+    if (displacementTextureRef.current) {
+      displacementTextureRef.current.needsUpdate = true
+    }
   })
 
   useEffect(() => {
-    domToCanvas()
     if (canvas2DRef.current && !!canvas?.height && !!canvas.width) {
       canvas2DRef.current.width = canvas.width / 10
       canvas2DRef.current.height = canvas.height / 10
+      displacementTextureRef.current = new THREE.CanvasTexture(
+        canvas2DRef.current
+      )
+      materialRef.current.uDisplacementTexture = displacementTextureRef.current
 
       const context = canvas2DRef.current.getContext("2d")
       if (context) {
@@ -102,14 +115,7 @@ export function TechStackFluidGrid({
         context.fillRect(0, 0, canvas.width / 10, canvas.height / 10)
       }
     }
-  }, [
-    domToCanvas,
-    glowImage,
-    canvas2DRef,
-    canvas2DContext,
-    canvas?.width,
-    canvas?.height
-  ])
+  }, [domToCanvas, canvas2DRef, canvas?.width, canvas?.height])
 
   const onPointerMove = (event: ThreeEvent<PointerEvent>) => {
     if (event.uv && canvas2DRef.current) {
@@ -117,7 +123,7 @@ export function TechStackFluidGrid({
       const pointerY = (1 - event.uv.y) * canvas2DRef.current.height
 
       if (canvas2DContext.current) {
-        const glowSize = canvas2DRef.current.width * 0.25
+        const glowSize = canvas2DRef.current.width * 0.1
 
         canvas2DContext.current.globalCompositeOperation = "lighten"
         canvas2DContext.current.globalAlpha = 1

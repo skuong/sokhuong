@@ -7,6 +7,7 @@ import { OrthographicCamera, View } from "@react-three/drei"
 import { TechStackLogoGrid } from "@/features/tech-stack/components/tech-stack-logo-grid"
 import { gsap } from "@/lib/gsap"
 
+import { ColoredTechStackLogoGrid } from "./colored-tech-stack-logo-grid"
 import { TechStackFluidGrid } from "./tech-stack-fluid-grid"
 
 export function TechStackSection() {
@@ -56,7 +57,7 @@ export function TechStackSection() {
       </h2>
 
       <section className="relative">
-        <TechStackLogoGrid className="-z-10 border px-24" />
+        <ColoredTechStackLogoGrid className="-z-10 border px-24" />
 
         <div className="absolute inset-0 z-50 w-full">
           <div className="h-full w-full">
@@ -78,7 +79,7 @@ export function TechStackSection() {
           />
         </div>
 
-        <div className="absolute top-0 z-50">
+        <div className="invisible absolute top-0 z-50">
           <canvas ref={canvasRef} className="border" />
         </div>
       </section>
