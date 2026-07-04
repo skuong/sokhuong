@@ -64,19 +64,19 @@ const works: WorkExperience[] = [
 export function WorkTimelineScrollArea() {
   const scrollAreaViewportRef = useRef<HTMLDivElement>(null)
 
-  useGSAP(() => {
-    if (!scrollAreaViewportRef.current) return
+  // useGSAP(() => {
+  //   if (!scrollAreaViewportRef.current) return
 
-    const element = scrollAreaViewportRef.current
-    element.style.overflowY = "clip"
+  //   const element = scrollAreaViewportRef.current
+  //   element.style.overflowY = "clip"
 
-    gsap.to(element, {
-      scrollTo: { x: element.scrollWidth - element.clientWidth },
-      duration: 2.5,
-      delay: 0.8,
-      ease: "power3.inOut"
-    })
-  }, [])
+  //   gsap.to(element, {
+  //     scrollTo: { x: element.scrollWidth - element.clientWidth },
+  //     duration: 2.5,
+  //     delay: 0.8,
+  //     ease: "power3.inOut"
+  //   })
+  // }, [])
 
   return (
     <ScrollArea viewportRef={scrollAreaViewportRef}>
