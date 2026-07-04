@@ -16,27 +16,32 @@ const InteractiveApplicationsSection = () => {
   const sectionRef = useRef(null)
 
   useGSAP(() => {
+    const width = window.innerWidth
+    const height = window.innerHeight
+    const aspect = width / height
+
+    const offsetY = aspect > 1 ? height * aspect : height * (aspect / 0.7)
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "center center",
-        end: "+=5000",
+        end: `+=${5000 - height / aspect}`,
         scrub: true,
         pin: true,
         pinSpacing: true
-        // markers: true
       }
     })
 
-    tl.from(titleLine1Ref.current, { scale: 20, y: 1300, x: -50 }).from(
-      titleLine2Ref.current,
-      { scale: 20, y: 4000 },
-      0
-    )
+    tl.from(titleLine1Ref.current, {
+      scale: 20,
+      y: offsetY,
+      x: -30 * aspect
+    }).from(titleLine2Ref.current, { scale: 20, y: offsetY * 4.5 }, 0)
   }, [])
 
   return (
-    <section className="mt-36">
+    <section className="md:mt-36">
       <div ref={sectionRef}>
         <div
           ref={titleLine1Ref}
