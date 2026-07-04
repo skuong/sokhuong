@@ -7,6 +7,7 @@ import { NoColorFigmaLogo } from "./no-color-logo/figma-logo"
 import { GolangLogo } from "./no-color-logo/golang-logo"
 import { GsapLogo } from "./no-color-logo/gsap-logo"
 import { MotionLogo } from "./no-color-logo/motion-logo"
+import { NoColorPythonLogo } from "./no-color-logo/python-logo"
 import { NoColorReactJsLogo } from "./no-color-logo/react-js-logo"
 import { RustLogo } from "./no-color-logo/rust-logo"
 import { TailwindCssLogo } from "./no-color-logo/tailwindcss-logo"
@@ -54,7 +55,9 @@ export function TechStackLogoGrid({
 
       <div className="col-span-1 aspect-square border bg-muted">A</div>
       <div className="col-span-1 aspect-square border bg-muted">A</div>
-      <div className="col-span-1 aspect-square border bg-muted">A</div>
+      <div className="col-span-1 flex aspect-square items-center justify-center p-4">
+        <NoColorPythonLogo />
+      </div>
       <div className="col-span-1 flex aspect-square items-center justify-center p-4">
         <NoColorTauriLogo />
       </div>
