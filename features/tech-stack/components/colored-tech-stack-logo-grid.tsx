@@ -10,6 +10,7 @@ import { MotionLogo } from "./colored-logo/motion-logo"
 import { ReactJsLogo } from "./colored-logo/react-js-logo"
 import { RustLogo } from "./colored-logo/rust-logo"
 import { TailwindCssLogo } from "./colored-logo/tailwindcss-logo"
+import { TauriLogo } from "./colored-logo/tauri-logo"
 import { ThreeJsLogo } from "./colored-logo/three-js-logo"
 import { TypeScriptLogo } from "./colored-logo/type-script-logo"
 import { VueJsLogo } from "./colored-logo/vue-js-logo"
@@ -54,7 +55,9 @@ export function ColoredTechStackLogoGrid({
       <div className="col-span-1 aspect-square border bg-muted">A</div>
       <div className="col-span-1 aspect-square border bg-muted">A</div>
       <div className="col-span-1 aspect-square border bg-muted">A</div>
-      <div className="col-span-1 aspect-square border bg-muted">A</div>
+      <div className="col-span-1 flex aspect-square items-center justify-center p-4">
+        <TauriLogo />
+      </div>
       <div className="col-span-1 flex aspect-square items-center justify-center p-4">
         <BlenderLogo />
       </div>
