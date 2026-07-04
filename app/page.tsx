@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 
 import { View } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
+import { GSDevTools } from "gsap/GSDevTools"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 
