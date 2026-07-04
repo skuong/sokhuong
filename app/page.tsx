@@ -33,7 +33,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div ref={canvasContainer} className="relative overflow-hidden border">
+    <div ref={canvasContainer} className="relative overflow-x-hidden">
       <div className="fixed inset-0 z-10">
         {canvasContainer && (
           // @ts-expect-error the canvasContainer will be available
@@ -68,7 +68,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
 
-        <div className="relative z-20 h-[calc(100vh-10rem)]">
+        <div className="relative z-10">
           <WorkTimelineScrollArea />
         </div>
 
