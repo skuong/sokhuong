@@ -29,9 +29,9 @@ export function HeroSection() {
 
   useEffect(() => {
     //
-    GSDevTools.create({
-      css: "z-index: 9999;"
-    })
+    // GSDevTools.create({
+    //   css: "z-index: 9999;"
+    // })
   })
 
   useGSAP(() => {

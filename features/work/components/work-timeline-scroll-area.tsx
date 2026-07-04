@@ -79,10 +79,12 @@ export function WorkTimelineScrollArea() {
   // }, [])
 
   return (
-    <div className="flex w-fit gap-4 px-16 pt-24 pb-36">
-      {works.map((work) => (
-        <WorkExperienceCard work={work} key={work.id} />
-      ))}
-    </div>
+    <ScrollArea className={"mt-32"}>
+      <div className="flex w-fit gap-4 px-16 pt-24 pb-36">
+        {works.map((work) => (
+          <WorkExperienceCard work={work} key={work.id} />
+        ))}
+      </div>
+    </ScrollArea>
   )
 }
