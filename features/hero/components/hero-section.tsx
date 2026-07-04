@@ -97,7 +97,7 @@ export function HeroSection() {
     <div className="relative z-20 container mx-auto mt-24 h-[calc(100vh-36rem)] items-center">
       <div className="relative flex justify-between space-y-2 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem]">
         <div className="overflow-clip">
-          <div className="-translate-x-2">
+          <div className="-translate-x-1">
             <div
               ref={softwareTitleRef}
               className="font-extralight text-rose-200 uppercase opacity-0"
@@ -106,7 +106,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="-translate-x-3 overflow-clip">
+          <div className="-translate-x-2 overflow-clip">
             <div
               ref={engineerTitleRef}
               className="font-semibold text-rose-300 uppercase opacity-0"
@@ -155,24 +155,6 @@ export function HeroSection() {
               </Avatar>
             </AvatarGroup>
           </div>
-        </div>
-
-        <div className="group relative flex w-3/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
-          <Cursor
-            name="Work together"
-            className="m-auto flex"
-            cursorColor="white"
-            svgClassName="size-14"
-          >
-            <div className="group z-10 flex size-48 bg-rose-800">
-              <Plus
-                strokeLinecap="round"
-                className="m-auto size-24 rounded-full stroke-[0.5px] text-rose-300"
-              />
-            </div>
-          </Cursor>
-
-          <div className="absolute top-1/2 left-1/2 size-48 -translate-x-1/2 -translate-y-1/2 border border-r border-b border-rose-800 bg-black transition-transform duration-200 group-hover:-translate-x-5/12 group-hover:-translate-y-5/12"></div>
         </div>
       </div>
     </div>
