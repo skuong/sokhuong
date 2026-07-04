@@ -36,8 +36,13 @@ const InteractiveApplicationsSection = () => {
     tl.from(titleLine1Ref.current, {
       scale: 20,
       y: offsetY,
-      x: -30 * aspect
-    }).from(titleLine2Ref.current, { scale: 20, y: offsetY * 4.5 }, 0)
+      x: -30 * aspect,
+      ease: "power4.out"
+    }).from(
+      titleLine2Ref.current,
+      { scale: 20, y: offsetY * 4.5, ease: "power4.out" },
+      0
+    )
   }, [])
 
   return (
