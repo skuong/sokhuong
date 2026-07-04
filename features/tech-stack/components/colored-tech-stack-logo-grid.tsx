@@ -11,10 +11,12 @@ import { PythonLogo } from "./colored-logo/python-logo"
 import { ReactJsLogo } from "./colored-logo/react-js-logo"
 import { RustLogo } from "./colored-logo/rust-logo"
 import { TailwindCssLogo } from "./colored-logo/tailwindcss-logo"
+import { TanstackLogo } from "./colored-logo/tanstack-logo"
 import { TauriLogo } from "./colored-logo/tauri-logo"
 import { ThreeJsLogo } from "./colored-logo/three-js-logo"
 import { TypeScriptLogo } from "./colored-logo/type-script-logo"
 import { VueJsLogo } from "./colored-logo/vue-js-logo"
+import { ZodLogo } from "./colored-logo/zod-logo"
 
 export function ColoredTechStackLogoGrid({
   className,
@@ -53,8 +55,12 @@ export function ColoredTechStackLogoGrid({
         <MotionLogo />
       </div>
 
-      <div className="col-span-1 aspect-square border bg-muted">A</div>
-      <div className="col-span-1 aspect-square border bg-muted">A</div>
+      <div className="col-span-1 flex aspect-square items-center justify-center p-4">
+        <TanstackLogo />
+      </div>
+      <div className="col-span-1 flex aspect-square items-center justify-center p-4">
+        <ZodLogo />
+      </div>
       <div className="col-span-1 flex aspect-square items-center justify-center p-4">
         <PythonLogo />
       </div>
