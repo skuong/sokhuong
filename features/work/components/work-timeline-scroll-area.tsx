@@ -79,23 +79,10 @@ export function WorkTimelineScrollArea() {
   // }, [])
 
   return (
-    <ScrollArea viewportRef={scrollAreaViewportRef}>
-      <div className="flex w-fit gap-4 px-16 pt-24 pb-36">
-        {works.map((work) => (
-          <WorkExperienceCard work={work} key={work.id} />
-        ))}
-
-        <div className="flex h-96 w-64 rounded-md bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
-          <Cursor
-            name="Send me an Email"
-            customSVG={<Pointer className="rotate-69" />}
-            svgClassName="text-black dark:text-white"
-            className="group m-auto flex aspect-square w-6/12 cursor-pointer items-center justify-center rounded-full bg-white/80 p-2 text-muted-foreground shadow transition-transform dark:bg-black/90"
-          >
-            <Plus className="size-8 transition-transform group-hover:scale-110" />
-          </Cursor>
-        </div>
-      </div>
-    </ScrollArea>
+    <div className="flex w-fit gap-4 px-16 pt-24 pb-36">
+      {works.map((work) => (
+        <WorkExperienceCard work={work} key={work.id} />
+      ))}
+    </div>
   )
 }

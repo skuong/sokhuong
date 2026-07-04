@@ -6,8 +6,15 @@ import { useGSAP } from "@gsap/react"
 import { GSDevTools } from "gsap/GSDevTools"
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin"
 import { SplitText } from "gsap/SplitText"
-import { Plus } from "lucide-react"
+import { Ellipse, Ellipsis, Plus } from "lucide-react"
 
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarGroup,
+  AvatarGroupCount,
+  AvatarImage
+} from "@/components/ui/avatar"
 import { Cursor } from "@/components/ui/custom-cursor"
 import { gsap } from "@/lib/gsap"
 
@@ -84,13 +91,42 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="mt-20 overflow-clip">
-            <div
-              ref={workedAtRef}
-              className="text-2xl text-muted-foreground uppercase opacity-0"
-            >
-              Worked at
+          <div className="space-y-4">
+            <div className="mt-20 overflow-clip">
+              <div
+                ref={workedAtRef}
+                className="text-2xl text-muted-foreground uppercase opacity-0"
+              >
+                Worked at
+              </div>
             </div>
+
+            <AvatarGroup className="ml-auto grayscale">
+              <AvatarGroupCount>
+                <Plus />
+              </AvatarGroupCount>
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/maxleiter.png"
+                  alt="@maxleiter"
+                />
+                <AvatarFallback>LR</AvatarFallback>
+              </Avatar>
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/evilrabbit.png"
+                  alt="@evilrabbit"
+                />
+                <AvatarFallback>ER</AvatarFallback>
+              </Avatar>
+            </AvatarGroup>
           </div>
         </div>
 
