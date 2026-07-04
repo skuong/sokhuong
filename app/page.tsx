@@ -33,7 +33,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div ref={canvasContainer} className="relative border">
+    <div ref={canvasContainer} className="relative overflow-hidden border">
       <div className="fixed inset-0 z-10">
         {canvasContainer && (
           // @ts-expect-error the canvasContainer will be available
@@ -43,7 +43,7 @@ export default function HomePage() {
         )}
       </div>
 
-      <div className="group absolute right-0 z-50 flex h-[calc(100vh-18rem)] w-4/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
+      <div className="group absolute right-0 z-50 hidden h-[calc(100vh-18rem)] w-4/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] md:flex dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
         <Cursor
           name="Work together"
           className="m-auto flex"
@@ -61,7 +61,7 @@ export default function HomePage() {
         <div className="absolute top-1/2 left-1/2 size-56 -translate-x-1/2 -translate-y-1/2 border border-r border-b border-rose-800 bg-black transition-transform duration-200 group-hover:-translate-x-5/12 group-hover:-translate-y-5/12"></div>
       </div>
 
-      <header className="container mx-auto pt-16">
+      <header className="container mx-auto px-4 pt-16 sm:px-6 md:px-0">
         <PhoneticNameWithHoverCard />
       </header>
 

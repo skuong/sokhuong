@@ -95,10 +95,10 @@ export function HeroSection() {
   }, [])
 
   return (
-    <div className="relative z-20 container mx-auto mt-24 h-[calc(100vh-36rem)] items-center">
-      <div className="relative flex justify-between space-y-2 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem]">
+    <div className="relative z-20 container mx-auto mt-24 h-[calc(100vh-36rem)] items-center px-4 sm:px-6 md:px-0">
+      <div className="relative flex justify-between space-y-2 text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem]">
         <div className="overflow-clip">
-          <div className="-translate-x-1">
+          <div className="md:-translate-x-1">
             <div
               ref={softwareTitleRef}
               className="font-extralight text-rose-200 uppercase opacity-0"
@@ -107,7 +107,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="-translate-x-2 overflow-clip">
+          <div className="overflow-clip md:-translate-x-2">
             <div
               ref={engineerTitleRef}
               className="font-semibold text-rose-300 uppercase opacity-0"
