@@ -50,14 +50,14 @@ const InteractiveApplicationsSection = () => {
       <div ref={sectionRef}>
         <div
           ref={titleLine1Ref}
-          className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[9rem] xl:text-[10rem]"
+          className="text-center text-6xl font-bold text-rose-300 uppercase md:text-8xl lg:text-[9rem] xl:text-[10rem]"
         >
           Interactive
         </div>
 
         <div
           ref={titleLine2Ref}
-          className="text-center text-6xl font-bold uppercase md:text-8xl lg:text-[9rem] xl:text-[10rem]"
+          className="text-center text-6xl font-bold text-rose-300 uppercase md:text-8xl lg:text-[9rem] xl:text-[10rem]"
         >
           Applications
         </div>
