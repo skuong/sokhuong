@@ -101,7 +101,7 @@ export function HeroSection() {
           <div className="md:-translate-x-1">
             <div
               ref={softwareTitleRef}
-              className="font-extralight text-rose-200 uppercase opacity-0"
+              className="font-extralight text-rose-300 uppercase opacity-0"
             >
               Creative
             </div>
