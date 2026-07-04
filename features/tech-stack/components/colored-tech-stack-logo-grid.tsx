@@ -2,6 +2,8 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
+import { BlenderLogo } from "./colored-logo/blender-logo"
+import { FigmaLogo } from "./colored-logo/figma-logo"
 import { GolangLogo } from "./colored-logo/golang-logo"
 import { GsapLogo } from "./colored-logo/gsap-logo"
 import { MotionLogo } from "./colored-logo/motion-logo"
@@ -53,8 +55,12 @@ export function ColoredTechStackLogoGrid({
       <div className="col-span-1 aspect-square border bg-muted">A</div>
       <div className="col-span-1 aspect-square border bg-muted">A</div>
       <div className="col-span-1 aspect-square border bg-muted">A</div>
-      <div className="col-span-1 aspect-square border bg-muted">A</div>
-      <div className="col-span-1 aspect-square border bg-muted">A</div>
+      <div className="col-span-1 flex aspect-square items-center justify-center p-4">
+        <BlenderLogo />
+      </div>
+      <div className="col-span-1 flex aspect-square items-center justify-center p-4">
+        <FigmaLogo />
+      </div>
     </div>
   )
 }
