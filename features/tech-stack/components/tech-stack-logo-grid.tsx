@@ -10,7 +10,7 @@ import { MotionLogo } from "./no-color-logo/motion-logo"
 import { NoColorPythonLogo } from "./no-color-logo/python-logo"
 import { NoColorReactJsLogo } from "./no-color-logo/react-js-logo"
 import { RustLogo } from "./no-color-logo/rust-logo"
-import { TailwindCssLogo } from "./no-color-logo/tailwindcss-logo"
+import { NoColorTailwindCssLogo } from "./no-color-logo/tailwindcss-logo"
 import { NoColorTanstackLogo } from "./no-color-logo/tanstack-logo"
 import { NoColorTauriLogo } from "./no-color-logo/tauri-logo"
 import { ThreeJsLogo } from "./no-color-logo/three-js-logo"
@@ -35,7 +35,7 @@ export function TechStackLogoGrid({
       </div>
 
       <div className="col-span-1 flex aspect-square items-center justify-center p-4">
-        <TailwindCssLogo />
+        <NoColorTailwindCssLogo />
       </div>
       <div className="col-span-1 flex aspect-square items-center justify-center p-4">
         <NoColorVueJsLogo />
