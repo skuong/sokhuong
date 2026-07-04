@@ -25,6 +25,7 @@ export function HeroSection() {
   const softwareTitleRef = useRef<HTMLDivElement>(null)
   const engineerTitleRef = useRef<HTMLDivElement>(null)
   const workedAtRef = useRef<HTMLDivElement>(null)
+  const companiesRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     //
@@ -35,7 +36,12 @@ export function HeroSection() {
 
   useGSAP(() => {
     gsap.set(
-      [softwareTitleRef.current, engineerTitleRef.current, workedAtRef.current],
+      [
+        softwareTitleRef.current,
+        engineerTitleRef.current,
+        workedAtRef.current,
+        companiesRef.current
+      ],
       {
         autoAlpha: 1
       }
@@ -61,12 +67,30 @@ export function HeroSection() {
         }
       )
     }
-
     document.fonts.ready.then(() => {
       animateText(softwareTitleRef)
       animateText(engineerTitleRef)
       animateText(workedAtRef, 0.25)
     })
+
+    if (companiesRef.current) {
+      const avatars = companiesRef.current.children
+
+      gsap.fromTo(
+        avatars,
+        {
+          y: 50,
+          autoAlpha: 0
+        },
+        {
+          y: 0,
+          autoAlpha: 1,
+          delay: 0.8,
+          stagger: 0.1,
+          ease: "power3.out"
+        }
+      )
+    }
   }, [])
 
   return (
@@ -101,7 +125,10 @@ export function HeroSection() {
               </div>
             </div>
 
-            <AvatarGroup className="ml-auto grayscale">
+            <AvatarGroup
+              className="ml-auto opacity-0 grayscale"
+              ref={companiesRef}
+            >
               <AvatarGroupCount>
                 <Plus />
               </AvatarGroupCount>
