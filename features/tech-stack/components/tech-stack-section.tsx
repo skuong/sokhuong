@@ -57,7 +57,7 @@ export function TechStackSection() {
       </h2>
 
       <section className="relative mt-56">
-        <ColoredTechStackLogoGrid className="-z-10 px-24" />
+        <ColoredTechStackLogoGrid className="-z-10 md:px-24" />
 
         <div className="absolute inset-0 z-50 w-full">
           <div className="h-full w-full">
@@ -75,7 +75,7 @@ export function TechStackSection() {
           <TechStackLogoGrid
             ref={techStackGridForCanvas}
             aria-hidden
-            className="w-full bg-transparent px-24"
+            className="w-full bg-transparent md:px-24"
           />
         </div>
 
