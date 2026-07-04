@@ -7,6 +7,7 @@ import { FigmaLogo } from "./colored-logo/figma-logo"
 import { GolangLogo } from "./colored-logo/golang-logo"
 import { GsapLogo } from "./colored-logo/gsap-logo"
 import { MotionLogo } from "./colored-logo/motion-logo"
+import { PythonLogo } from "./colored-logo/python-logo"
 import { ReactJsLogo } from "./colored-logo/react-js-logo"
 import { RustLogo } from "./colored-logo/rust-logo"
 import { TailwindCssLogo } from "./colored-logo/tailwindcss-logo"
@@ -54,7 +55,9 @@ export function ColoredTechStackLogoGrid({
 
       <div className="col-span-1 aspect-square border bg-muted">A</div>
       <div className="col-span-1 aspect-square border bg-muted">A</div>
-      <div className="col-span-1 aspect-square border bg-muted">A</div>
+      <div className="col-span-1 flex aspect-square items-center justify-center p-4">
+        <PythonLogo />
+      </div>
       <div className="col-span-1 flex aspect-square items-center justify-center p-4">
         <TauriLogo />
       </div>
