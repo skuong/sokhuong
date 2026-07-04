@@ -6,7 +6,9 @@ import { useGSAP } from "@gsap/react"
 import { GSDevTools } from "gsap/GSDevTools"
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin"
 import { SplitText } from "gsap/SplitText"
+import { Plus } from "lucide-react"
 
+import { Cursor } from "@/components/ui/custom-cursor"
 import { gsap } from "@/lib/gsap"
 
 gsap.registerPlugin(ScrambleTextPlugin)
@@ -61,27 +63,51 @@ export function HeroSection() {
   }, [])
 
   return (
-    <div className="relative z-20 container mx-auto mt-32 h-[calc(100vh-36rem)] items-center">
-      <div className="space-y-2 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem]">
-        <div className="-translate-x-2 overflow-clip">
-          <div
-            ref={softwareTitleRef}
-            className="font-extralight uppercase opacity-0"
+    <div className="relative z-20 container mx-auto mt-24 h-[calc(100vh-36rem)] items-center">
+      <div className="relative flex justify-between space-y-2 text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 2xl:text-[10rem]">
+        <div className="overflow-clip">
+          <div className="-translate-x-2">
+            <div
+              ref={softwareTitleRef}
+              className="font-extralight text-rose-200 uppercase opacity-0"
+            >
+              Creative
+            </div>
+          </div>
+
+          <div className="-translate-x-3 overflow-clip">
+            <div
+              ref={engineerTitleRef}
+              className="text-rose-300 uppercase opacity-0"
+            >
+              Developer
+            </div>
+          </div>
+
+          <div className="mt-20 overflow-clip">
+            <div
+              ref={workedAtRef}
+              className="text-2xl text-muted-foreground uppercase opacity-0"
+            >
+              Worked at
+            </div>
+          </div>
+        </div>
+
+        <div className="flex w-3/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
+          <Cursor
+            name="Work together"
+            className="m-auto flex"
+            cursorColor="white"
+            svgClassName="size-14"
           >
-            Creative
-          </div>
-        </div>
-
-        <div className="-translate-x-3 overflow-clip">
-          <div ref={engineerTitleRef} className="uppercase opacity-0">
-            Developer
-          </div>
-        </div>
-
-        <div className="mt-20 overflow-clip">
-          <div ref={workedAtRef} className="text-2xl uppercase opacity-0">
-            Worked at
-          </div>
+            <div className="group flex size-48 bg-rose-800">
+              <Plus
+                strokeLinecap="round"
+                className="m-auto size-24 rounded-full stroke-[0.5px] text-rose-300"
+              />
+            </div>
+          </Cursor>
         </div>
       </div>
     </div>

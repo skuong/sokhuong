@@ -11,7 +11,7 @@ export function PhoneticNameWithHoverCard() {
     <HoverCard>
       <HoverCardTrigger
         delay={200}
-        className="cursor-pointer font-noto-sans text-9xl font-bold"
+        className="cursor-pointer font-noto-sans text-8xl font-bold"
       >
         <span
           id="name-phonetic-symbols"
