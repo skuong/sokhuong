@@ -15,7 +15,7 @@ import { NoColorTanstackLogo } from "./no-color-logo/tanstack-logo"
 import { NoColorTauriLogo } from "./no-color-logo/tauri-logo"
 import { ThreeJsLogo } from "./no-color-logo/three-js-logo"
 import { TypeScriptLogo } from "./no-color-logo/type-script-logo"
-import { NoColorVueJsLogo, VueJsLogo } from "./no-color-logo/vue-js-logo"
+import { NoColorVueJsLogo } from "./no-color-logo/vue-js-logo"
 import { NoColorZodLogo } from "./no-color-logo/zod-logo"
 
 export function TechStackLogoGrid({
