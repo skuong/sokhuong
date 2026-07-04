@@ -15,6 +15,7 @@ import {
   AvatarGroupCount,
   AvatarImage
 } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 import { Cursor } from "@/components/ui/custom-cursor"
 import { gsap } from "@/lib/gsap"
 
@@ -115,7 +116,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="flex w-fit flex-col justify-start space-y-4">
             <div className="mt-20 overflow-clip">
               <div
                 ref={workedAtRef}
@@ -125,10 +126,7 @@ export function HeroSection() {
               </div>
             </div>
 
-            <AvatarGroup
-              className="ml-auto opacity-0 grayscale"
-              ref={companiesRef}
-            >
+            <AvatarGroup className="opacity-0 grayscale" ref={companiesRef}>
               <AvatarGroupCount>
                 <Plus />
               </AvatarGroupCount>
@@ -153,7 +151,23 @@ export function HeroSection() {
                 />
                 <AvatarFallback>ER</AvatarFallback>
               </Avatar>
+              <Avatar>
+                <AvatarImage
+                  src="https://github.com/shadcn.png"
+                  alt="@shadcn"
+                />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
             </AvatarGroup>
+
+            <button
+              type="button"
+              className={
+                "mt-8 flex h-16 w-16 items-center justify-center rounded-none border"
+              }
+            >
+              <Plus strokeWidth={1} className="size-8 shrink-0 text-pink-600" />
+            </button>
           </div>
         </div>
       </div>
