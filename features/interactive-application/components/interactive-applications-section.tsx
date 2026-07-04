@@ -46,7 +46,7 @@ const InteractiveApplicationsSection = () => {
   }, [])
 
   return (
-    <section className="md:mt-36">
+    <section className="overflow-hidden md:mt-36">
       <div ref={sectionRef}>
         <div
           ref={titleLine1Ref}
