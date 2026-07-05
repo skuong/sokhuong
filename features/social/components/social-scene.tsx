@@ -4,11 +4,7 @@ import { useMemo, useRef } from "react"
 
 import { Environment } from "@react-three/drei"
 import { useFrame } from "@react-three/fiber"
-import {
-  CuboidCollider,
-  InstancedRigidBodies,
-  Physics
-} from "@react-three/rapier"
+import { InstancedRigidBodies, Physics } from "@react-three/rapier"
 import * as THREE from "three"
 
 export function SocialScene() {
@@ -38,7 +34,7 @@ export function SocialScene() {
 
     for (let i = 0; i < count; i++) {
       initialInstances.push({
-        position: [rfs(20), rfs(20), rfs(20)],
+        position: [rfs(1), rfs(1), rfs(1)],
         rotation: [0, 0, 0],
         key: i
       })
@@ -57,7 +53,7 @@ export function SocialScene() {
 
       const force = new THREE.Vector3(currentPos.x, currentPos.y, currentPos.z)
         .normalize()
-        .multiplyScalar(-40 * delta)
+        .multiplyScalar(-70 * delta)
 
       rigiidBody.applyImpulse(force, true)
     }
@@ -72,19 +68,12 @@ export function SocialScene() {
         angle={0.2}
         penumbra={1}
         position={[30, 30, 30]}
-        castShadow
         shadow-mapSize={[512, 512]}
       />
-      <Physics debug>
+      <Physics gravity={[0, 0, 0]}>
         <InstancedRigidBodies ref={api} instances={instances} colliders="ball">
-          <instancedMesh
-            args={[sphereGeometry, baubleMaterial, count]}
-            receiveShadow
-            castShadow
-          />
+          <instancedMesh args={[sphereGeometry, baubleMaterial, count]} />
         </InstancedRigidBodies>
-
-        <CuboidCollider position={[0, -2, 0]} args={[20, 0.5, 20]} />
       </Physics>
 
       <Environment preset="dawn" />
