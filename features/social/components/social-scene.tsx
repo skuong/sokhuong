@@ -51,14 +51,15 @@ export function SocialScene() {
 
     for (let i = 0; i < count; i++) {
       // @ts-expect-error Proper type is not exported
-      const rb = api.current.at(i)
-      const currentPos = rb.translation()
+      const rigiidBody = api.current.at(i)
+      if (!rigiidBody) return
+      const currentPos = rigiidBody.translation()
 
       const force = new THREE.Vector3(currentPos.x, currentPos.y, currentPos.z)
         .normalize()
         .multiplyScalar(-40 * delta)
 
-      rb.applyImpulse(force, true)
+      rigiidBody.applyImpulse(force, true)
     }
   })
 
@@ -86,7 +87,6 @@ export function SocialScene() {
         <CuboidCollider position={[0, -2, 0]} args={[20, 0.5, 20]} />
       </Physics>
 
-      {/*<Environment files={"/adamsbridge.hdr"} />*/}
       <Environment preset="dawn" />
     </>
   )
