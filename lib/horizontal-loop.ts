@@ -15,6 +15,7 @@ type HorizontalLoopTimeline = gsap.core.Timeline & {
   current: () => number
   toIndex: (index: number, vars?: gsap.TweenVars) => gsap.core.Tween
   times: number[]
+  totalWidth: number
 }
 
 export function horizontalLoop(
@@ -147,6 +148,8 @@ export function horizontalLoop(
     tl.vars.onReverseComplete?.()
     tl.reverse()
   }
+
+  tl.totalWidth = totalWidth
 
   return tl
 }

@@ -5,7 +5,6 @@ import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   WorkExperience,
   WorkExperienceCard
@@ -64,6 +63,8 @@ const works: WorkExperience[] = [
 export function WorkTimelineScrollArea() {
   const railTrackRef = useRef<HTMLDivElement>(null)
   const railwayRef = useRef<HTMLDivElement>(null)
+  const marqueeStartProgress = useRef(0)
+  const ready = useRef(false)
 
   useGSAP(() => {
     const trains = gsap.utils.toArray(
@@ -73,29 +74,47 @@ export function WorkTimelineScrollArea() {
     const tl = horizontalLoop(trains, {
       repeat: -1
     })
-
+    const cycleDistance = tl.totalWidth
     let speedTween: GSAPTimeline
 
     ScrollTrigger.create({
       trigger: railwayRef.current,
-      start: "top bottom",
-      end: "bottom top",
+      start: "center center",
+      end: `+=${cycleDistance}`,
+      pin: true,
+      pinSpacing: true,
+      onToggle: (self) => {
+        if (self.isActive) {
+          marqueeStartProgress.current = tl.progress()
+          ready.current = true
+          tl.pause()
+        } else {
+          tl.resume()
+        }
+      },
       onUpdate: (self) => {
-        speedTween && speedTween.kill()
-        speedTween = gsap
-          .timeline()
-          .to(tl, {
-            timeScale: 3 * self.direction,
-            duration: 0.25
-          })
-          .to(
-            tl,
-            {
-              timeScale: 1 * self.direction,
-              duration: 1.5
-            },
-            "+=0.5"
-          )
+        if (!ready.current) return
+        const progress = self.progress
+
+        tl.progress((progress + marqueeStartProgress.current) % 1)
+
+        if (tl.isActive()) {
+          speedTween && speedTween.kill()
+          speedTween = gsap
+            .timeline()
+            .to(tl, {
+              timeScale: self.direction,
+              duration: 0.25
+            })
+            .to(
+              tl,
+              {
+                timeScale: 1 * self.direction,
+                duration: 1.5
+              },
+              "+=0.5"
+            )
+        }
       }
     })
   }, [])
