@@ -1,17 +1,17 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { Plus, Pointer } from "lucide-react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-import { Cursor } from "@/components/ui/custom-cursor"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import {
   WorkExperience,
   WorkExperienceCard
 } from "@/features/work/components/work-experience-card"
 import { gsap } from "@/lib/gsap"
+import { horizontalLoop } from "@/lib/horizontal-loop"
 
 const works: WorkExperience[] = [
   {
@@ -62,29 +62,51 @@ const works: WorkExperience[] = [
 ]
 
 export function WorkTimelineScrollArea() {
-  const scrollAreaViewportRef = useRef<HTMLDivElement>(null)
+  const railTrackRef = useRef<HTMLDivElement>(null)
+  const railwayRef = useRef<HTMLDivElement>(null)
 
-  // useGSAP(() => {
-  //   if (!scrollAreaViewportRef.current) return
+  useGSAP(() => {
+    const trains = gsap.utils.toArray(
+      railTrackRef.current?.children ?? null
+    ) as Element[]
 
-  //   const element = scrollAreaViewportRef.current
-  //   element.style.overflowY = "clip"
+    const tl = horizontalLoop(trains, {
+      repeat: -1
+    })
 
-  //   gsap.to(element, {
-  //     scrollTo: { x: element.scrollWidth - element.clientWidth },
-  //     duration: 2.5,
-  //     delay: 0.8,
-  //     ease: "power3.inOut"
-  //   })
-  // }, [])
+    let speedTween: GSAPTimeline
+
+    ScrollTrigger.create({
+      trigger: railwayRef.current,
+      start: "top bottom",
+      end: "bottom top",
+      onUpdate: (self) => {
+        speedTween && speedTween.kill()
+        speedTween = gsap
+          .timeline()
+          .to(tl, {
+            timeScale: 3 * self.direction,
+            duration: 0.25
+          })
+          .to(
+            tl,
+            {
+              timeScale: 1 * self.direction,
+              duration: 1.5
+            },
+            "+=0.5"
+          )
+      }
+    })
+  }, [])
 
   return (
-    <ScrollArea className={"mt-32"}>
-      <div className="flex w-fit gap-4 px-16 pt-24 pb-36">
+    <div ref={railwayRef} className={"mt-32"}>
+      <div ref={railTrackRef} className="flex w-fit gap-4 px-16 pt-24 pb-36">
         {works.map((work) => (
           <WorkExperienceCard work={work} key={work.id} />
         ))}
       </div>
-    </ScrollArea>
+    </div>
   )
 }

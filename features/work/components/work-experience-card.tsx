@@ -1,6 +1,5 @@
 import Link from "next/link"
 
-import { differenceInMonths } from "date-fns/fp"
 import { Plus } from "lucide-react"
 
 import {
@@ -31,23 +30,9 @@ export type WorkExperience = {
 }
 
 export function WorkExperienceCard({ work }: { work: WorkExperience }) {
-  const previewWorkEndDate = new Date(work.previewWorkEndDate)
-
-  const startDate = new Date(work.startDate)
-  const endDate = new Date(work.endDate)
-  const startPosition = differenceInMonths(previewWorkEndDate, startDate)
-
-  const width = differenceInMonths(startDate, endDate)
-
   return (
     <Link href={`/work#${work.slug}`}>
-      <Card
-        className="relative h-96 shrink-0 overflow-visible"
-        style={{
-          width: `${width * 4}rem`,
-          marginLeft: `${startPosition * 3}rem`
-        }}
-      >
+      <Card className="relative h-150 w-250 max-w-300 shrink-0 overflow-visible">
         <CardHeader>
           <CardTitle className="font-mono text-4xl">{work.company}</CardTitle>
           <CardDescription className="font-mono text-xl">
