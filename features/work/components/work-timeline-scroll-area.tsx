@@ -3,14 +3,12 @@
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import {
   WorkExperience,
   WorkExperienceCard
 } from "@/features/work/components/work-experience-card"
 import { gsap } from "@/lib/gsap"
-import { horizontalLoop } from "@/lib/horizontal-loop"
 
 const works: WorkExperience[] = [
   {
@@ -58,65 +56,33 @@ const works: WorkExperience[] = [
     endDate: "2026-05-29",
     previewWorkEndDate: "2025-01-01"
   }
-]
+].reverse()
 
 export function WorkTimelineScrollArea() {
   const railTrackRef = useRef<HTMLDivElement>(null)
   const railwayRef = useRef<HTMLDivElement>(null)
-  const marqueeStartProgress = useRef(0)
-  const ready = useRef(false)
-
   useGSAP(() => {
-    const trains = gsap.utils.toArray(
-      railTrackRef.current?.children ?? null
-    ) as Element[]
+    const railTrack = railTrackRef.current
+    if (!railTrack) return
 
-    const tl = horizontalLoop(trains, {
-      repeat: -1
-    })
-    const cycleDistance = tl.totalWidth
-    let speedTween: GSAPTimeline
+    const totalWidth = railTrack.scrollWidth - window.innerWidth
 
-    ScrollTrigger.create({
-      trigger: railwayRef.current,
-      start: "center center",
-      end: `+=${cycleDistance}`,
-      pin: true,
-      pinSpacing: true,
-      onToggle: (self) => {
-        if (self.isActive) {
-          marqueeStartProgress.current = tl.progress()
-          ready.current = true
-          tl.pause()
-        } else {
-          tl.resume()
-        }
-      },
-      onUpdate: (self) => {
-        if (!ready.current) return
-        const progress = self.progress
-
-        tl.progress((progress + marqueeStartProgress.current) % 1)
-
-        if (tl.isActive()) {
-          speedTween && speedTween.kill()
-          speedTween = gsap
-            .timeline()
-            .to(tl, {
-              timeScale: self.direction,
-              duration: 0.25
-            })
-            .to(
-              tl,
-              {
-                timeScale: 1 * self.direction,
-                duration: 1.5
-              },
-              "+=0.5"
-            )
+    gsap.fromTo(
+      railTrack,
+      { x: 0 },
+      {
+        x: -totalWidth,
+        ease: "none",
+        scrollTrigger: {
+          trigger: railwayRef.current,
+          start: "center center",
+          end: `+=${totalWidth}`,
+          pin: true,
+          pinSpacing: true,
+          scrub: true
         }
       }
-    })
+    )
   }, [])
 
   return (

@@ -32,7 +32,7 @@ export type WorkExperience = {
 export function WorkExperienceCard({ work }: { work: WorkExperience }) {
   return (
     <Link href={`/work#${work.slug}`} data-id={work.id}>
-      <Card className="relative h-150 w-250 max-w-300 shrink-0 overflow-visible">
+      <Card className="relative w-250 max-w-300 shrink-0 overflow-visible md:h-150">
         <CardHeader>
           <CardTitle className="font-mono text-4xl">{work.company}</CardTitle>
           <CardDescription className="font-mono text-xl">
@@ -96,11 +96,11 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
           </AvatarGroup>
         </CardFooter>
 
-        <div className="absolute -bottom-24 h-20 w-px bg-muted"></div>
+        {/*<div className="absolute -bottom-24 h-20 w-px bg-muted"></div>
 
         <div className="absolute -bottom-36 font-mono text-3xl text-muted-foreground">
           {new Date(work.startDate).getFullYear()}
-        </div>
+        </div>*/}
       </Card>
     </Link>
   )
