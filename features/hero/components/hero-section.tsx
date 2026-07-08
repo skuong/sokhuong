@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { useEffect, useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
@@ -17,6 +18,10 @@ import {
 } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Cursor } from "@/components/ui/custom-cursor"
+import { ReactJsLogo } from "@/features/tech-stack/components/colored-logo/react-js-logo"
+import { TailwindCssLogo } from "@/features/tech-stack/components/colored-logo/tailwindcss-logo"
+import { ThreeJsLogo } from "@/features/tech-stack/components/colored-logo/three-js-logo"
+import { VueJsLogo } from "@/features/tech-stack/components/colored-logo/vue-js-logo"
 import { gsap } from "@/lib/gsap"
 
 gsap.registerPlugin(ScrambleTextPlugin)
@@ -122,41 +127,25 @@ export function HeroSection() {
                 ref={workedAtRef}
                 className="text-2xl text-muted-foreground uppercase opacity-0"
               >
-                Worked at
+                Experience
               </div>
             </div>
 
             <AvatarGroup className="opacity-0 grayscale" ref={companiesRef}>
               <AvatarGroupCount>
-                <Plus />
+                <Ellipsis />
               </AvatarGroupCount>
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
+              <Avatar size="lg" className={"bg-background"}>
+                <ThreeJsLogo />
               </Avatar>
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/maxleiter.png"
-                  alt="@maxleiter"
-                />
-                <AvatarFallback>LR</AvatarFallback>
+              <Avatar size="lg" className={"bg-background"}>
+                <VueJsLogo />
               </Avatar>
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/evilrabbit.png"
-                  alt="@evilrabbit"
-                />
-                <AvatarFallback>ER</AvatarFallback>
+              <Avatar size="lg" className={"bg-background"}>
+                <TailwindCssLogo />
               </Avatar>
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
+              <Avatar size="lg" className={"bg-background"}>
+                <ReactJsLogo />
               </Avatar>
             </AvatarGroup>
 
