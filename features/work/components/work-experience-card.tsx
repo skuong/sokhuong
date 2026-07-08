@@ -33,6 +33,7 @@ export function WorkExperienceCard({ work }: { work: WorkExperience }) {
   return (
     <Link href={`/work#${work.slug}`} data-id={work.id}>
       <Card className="relative w-250 max-w-300 shrink-0 overflow-visible md:h-150">
+
         <CardHeader>
           <CardTitle className="font-mono text-4xl">{work.company}</CardTitle>
           <CardDescription className="font-mono text-xl">
