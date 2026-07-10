@@ -1,3 +1,5 @@
+![CI status](https://github.com/skuong/sokhuong/actions/workflows/check-formatting.yml/badge.svg)
+
 # Portfolio
 
 - Next.js
