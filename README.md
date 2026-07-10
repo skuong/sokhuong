@@ -1,4 +1,4 @@
-![CI status](https://github.com/skuong/sokhuong/actions/workflows/check-formatting.yaml/badge.svg)
+![ci](https://github.com/skuong/sokhuong/actions/workflows/check-formatting.yaml/badge.svg)
 
 # Portfolio
 
