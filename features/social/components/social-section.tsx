@@ -35,8 +35,8 @@ export function SocialSection() {
         </span>
       </h2>
 
-      <div className="relative my-36 flex h-screen w-full justify-center border border-red-800">
-        <View className="h-full w-full">
+      <div className="relative z-50 my-36 flex aspect-video w-full justify-center">
+        <View className="w-full">
           <SocialScene />
         </View>
       </div>
