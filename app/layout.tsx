@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Noto_Sans } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
+import { Toaster } from "@/components/ui/sonner"
 import { UmamiAnalytics } from "@/features/analytics/components/umami-analytics"
 import { TransitionWrapper } from "@/features/page-transition/components/transition-wrapper"
 import { cn } from "@/lib/utils"
@@ -38,6 +39,7 @@ export default function RootLayout({
           <TransitionWrapper>{children}</TransitionWrapper>
         </ThemeProvider>
         <UmamiAnalytics />
+        <Toaster />
       </body>
     </html>
   )
