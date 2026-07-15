@@ -21,11 +21,16 @@ export function SmallContactButton() {
       onClick={onClick}
       type="button"
       className={cn(
+        "group",
         "mt-8 flex size-16 cursor-pointer items-center justify-center",
-        "rounded-none border ring-1 ring-offset-2 ring-offset-accent focus-visible:ring-yellow-600 dark:focus-visible:ring-yellow-200"
+        "bg-transparent hover:bg-rose-900",
+        "rounded-none ring-1 ring-offset-2 ring-offset-background focus-visible:ring-1 focus-visible:ring-yellow-600 dark:ring-neutral-600 dark:focus-visible:ring-yellow-200"
       )}
     >
-      <Plus strokeWidth={1} className="size-8 shrink-0 text-pink-600" />
+      <Plus
+        strokeWidth={1}
+        className="size-8 shrink-0 text-pink-600 group-hover:text-white"
+      />
     </Button>
   )
 }
