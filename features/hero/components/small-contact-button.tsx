@@ -10,7 +10,8 @@ export function SmallContactButton() {
         label: "Ok",
         onClick: () => console.log("Agree")
       },
-      id: "Contact form not implemented!"
+      id: "Contact form not implemented!",
+      position: "bottom-left"
     })
   }
 
