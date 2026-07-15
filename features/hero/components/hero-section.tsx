@@ -9,20 +9,14 @@ import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin"
 import { SplitText } from "gsap/SplitText"
 import { Ellipse, Ellipsis, Plus } from "lucide-react"
 
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarGroup,
-  AvatarGroupCount,
-  AvatarImage
-} from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Cursor } from "@/components/ui/custom-cursor"
+import { Avatar, AvatarGroup, AvatarGroupCount } from "@/components/ui/avatar"
 import { ReactJsLogo } from "@/features/tech-stack/components/colored-logo/react-js-logo"
 import { TailwindCssLogo } from "@/features/tech-stack/components/colored-logo/tailwindcss-logo"
 import { ThreeJsLogo } from "@/features/tech-stack/components/colored-logo/three-js-logo"
 import { VueJsLogo } from "@/features/tech-stack/components/colored-logo/vue-js-logo"
 import { gsap } from "@/lib/gsap"
+
+import { SmallContactButton } from "./small-contact-button"
 
 gsap.registerPlugin(ScrambleTextPlugin)
 gsap.registerPlugin(SplitText)
@@ -149,14 +143,7 @@ export function HeroSection() {
               </Avatar>
             </AvatarGroup>
 
-            <button
-              type="button"
-              className={
-                "mt-8 flex h-16 w-16 items-center justify-center rounded-none border"
-              }
-            >
-              <Plus strokeWidth={1} className="size-8 shrink-0 text-pink-600" />
-            </button>
+            <SmallContactButton />
           </div>
         </div>
       </div>
