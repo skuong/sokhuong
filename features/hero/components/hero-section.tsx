@@ -143,7 +143,7 @@ export function HeroSection() {
               </Avatar>
             </AvatarGroup>
 
-            <SmallContactButton />
+            {/*<SmallContactButton />*/}
           </div>
         </div>
       </div>

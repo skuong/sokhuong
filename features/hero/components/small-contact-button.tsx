@@ -24,7 +24,7 @@ export function SmallContactButton() {
         "group",
         "mt-8 flex size-16 cursor-pointer items-center justify-center",
         "bg-transparent hover:bg-rose-900",
-        "rounded-none ring-1 ring-offset-2 ring-offset-background focus-visible:ring-1 focus-visible:ring-yellow-600 dark:ring-neutral-600 dark:focus-visible:ring-yellow-200"
+        "rounded-none ring-1 ring-neutral-400 ring-offset-2 ring-offset-background focus-visible:ring-1 focus-visible:ring-yellow-600 dark:ring-neutral-600 dark:focus-visible:ring-yellow-200"
       )}
     >
       <Plus
