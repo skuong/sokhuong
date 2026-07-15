@@ -3,6 +3,7 @@ import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import { Cursor } from "@/components/ui/custom-cursor"
+import { cn } from "@/lib/utils"
 
 export function LargeContactButtonSection() {
   function onClick() {
@@ -17,7 +18,13 @@ export function LargeContactButtonSection() {
   }
 
   return (
-    <div className="group absolute right-0 z-50 hidden h-[calc(100vh-18rem)] w-4/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-200)_0,var(--color-neutral-200)_1px,transparent_1px,transparent_10px)] md:flex dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
+    <div
+      className={cn(
+        "group absolute right-0 z-50 hidden h-[calc(100vh-18rem)] w-4/12 md:flex",
+        "bg-[repeating-linear-gradient(-45deg,var(--color-neutral-200)_0,var(--color-neutral-200)_1px,transparent_1px,transparent_10px)]",
+        "dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]"
+      )}
+    >
       <Cursor
         name="Work together"
         className="m-auto flex"
@@ -25,8 +32,10 @@ export function LargeContactButtonSection() {
         svgClassName="size-14"
       >
         <Button
-          className="group z-10 flex size-56 rounded-none bg-rose-800 ring-offset-2 ring-offset-accent hover:bg-rose-800 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:outline-none dark:ring-yellow-200"
-
+          className={cn(
+            "group z-10 flex size-56 rounded-none bg-rose-800 ring-offset-accent hover:bg-rose-800",
+            "ring-offset-2 focus-visible:ring-2 focus-visible:ring-yellow-500 focus-visible:outline-none dark:ring-yellow-200"
+          )}
           onClick={onClick}
         >
           <Plus
