@@ -42,7 +42,7 @@ export default function HomePage() {
         )}
       </div>
 
-      <div className="group absolute right-0 z-50 hidden h-[calc(100vh-18rem)] w-4/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-300)_0,var(--color-neutral-300)_1px,transparent_1px,transparent_10px)] md:flex dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
+      <div className="group absolute right-0 z-50 hidden h-[calc(100vh-18rem)] w-4/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-200)_0,var(--color-neutral-200)_1px,transparent_1px,transparent_10px)] md:flex dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
         <Cursor
           name="Work together"
           className="m-auto flex"
