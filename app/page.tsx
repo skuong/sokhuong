@@ -8,9 +8,11 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 import { Plus } from "lucide-react"
 
+import { Button } from "@/components/ui/button"
 import { Cursor } from "@/components/ui/custom-cursor"
 import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
 import { HeroSection } from "@/features/hero/components/hero-section"
+import { LargeContactButtonSection } from "@/features/hero/components/large-contact-button-section"
 import { InteractiveApplicationsSection } from "@/features/interactive-application/components/interactive-applications-section"
 import { SocialSection } from "@/features/social/components/social-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
@@ -42,23 +44,7 @@ export default function HomePage() {
         )}
       </div>
 
-      <div className="group absolute right-0 z-50 hidden h-[calc(100vh-18rem)] w-4/12 bg-[repeating-linear-gradient(-45deg,var(--color-neutral-200)_0,var(--color-neutral-200)_1px,transparent_1px,transparent_10px)] md:flex dark:bg-[repeating-linear-gradient(-45deg,var(--color-neutral-800)_0,var(--color-neutral-800)_1px,transparent_1px,transparent_10px)]">
-        <Cursor
-          name="Work together"
-          className="m-auto flex"
-          cursorColor="white"
-          svgClassName="size-14"
-        >
-          <div className="group z-10 flex size-56 bg-rose-800">
-            <Plus
-              strokeLinecap="round"
-              className="m-auto size-24 rounded-full stroke-[0.5px] text-rose-300"
-            />
-          </div>
-        </Cursor>
-
-        <div className="absolute top-1/2 left-1/2 size-56 -translate-x-1/2 -translate-y-1/2 border border-r border-b border-rose-800 bg-black transition-transform duration-200 group-hover:-translate-x-5/12 group-hover:-translate-y-5/12"></div>
-      </div>
+      <LargeContactButtonSection />
 
       <header className="container mx-auto px-4 pt-16 sm:px-6 md:px-0">
         <PhoneticNameWithHoverCard />
