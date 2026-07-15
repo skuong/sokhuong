@@ -20,7 +20,7 @@ export function SmallContactButton() {
       onClick={onClick}
       type="button"
       className={
-        "mt-8 flex h-16 w-16 cursor-pointer items-center justify-center rounded-none border"
+        "mt-8 flex size-16 cursor-pointer items-center justify-center rounded-none border ring-1 ring-offset-2 ring-offset-accent focus-visible:ring-yellow-600 dark:focus-visible:ring-yellow-200"
       }
     >
       <Plus strokeWidth={1} className="size-8 shrink-0 text-pink-600" />
