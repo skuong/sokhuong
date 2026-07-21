@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Geist, Geist_Mono, Noto_Sans } from "next/font/google"
 
 import { ThemeProvider } from "@/components/theme-provider"
@@ -16,6 +17,33 @@ const fontMono = Geist_Mono({
 })
 
 const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-noto-sans" })
+
+export const metadata: Metadata = {
+  title: {
+    default: "Sokhuong | Creative developer",
+    template: "%s | Sokhuong"
+  },
+
+  description:
+    "Creative developer building responsive, interactive, accessible, and performant websites with intentional animations.",
+
+  openGraph: {
+    title: "Sokhuong | Creative developer",
+    description:
+      "Creative developer building responsive, interactive, accessible, and performant websites with intentional animations.",
+    url: "https://sokhuong.com",
+    siteName: "My Website",
+    locale: "en_US",
+    type: "website"
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Sokhuong | Creative developer",
+    description:
+      "Creative developer building responsive, interactive, accessible, and performant websites with intentional animations."
+  }
+}
 
 export default function RootLayout({
   children
