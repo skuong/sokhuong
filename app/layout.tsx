@@ -28,11 +28,11 @@ export const metadata: Metadata = {
     "Creative developer building responsive, interactive, accessible, and performant websites with intentional animations.",
 
   openGraph: {
-    title: "Sokhuong | Creative developer",
+    title: "Creative developer",
     description:
       "Creative developer building responsive, interactive, accessible, and performant websites with intentional animations.",
     url: "https://sokhuong.com",
-    siteName: "My Website",
+    siteName: "Sokhuong",
     locale: "en_US",
     type: "website"
   },
