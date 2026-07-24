@@ -12,6 +12,7 @@ import { Footer } from "@/features/footer/components/footer"
 import { HeroSection } from "@/features/hero/components/hero-section"
 import { LargeContactButtonSection } from "@/features/hero/components/large-contact-button-section"
 import { InteractiveApplicationsSection } from "@/features/interactive-application/components/interactive-applications-section"
+import { MenuSection } from "@/features/menu/components/menu-section"
 import { SocialSection } from "@/features/social/components/social-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
 import { WorkTimelineScrollArea } from "@/features/work/components/work-timeline-scroll-area"
@@ -61,6 +62,8 @@ export default function HomePage() {
         <div className="mt-36">
           <SocialSection />
         </div>
+
+        <MenuSection />
       </main>
 
       <Footer />
