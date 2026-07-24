@@ -15,6 +15,7 @@ import { InteractiveApplicationsSection } from "@/features/interactive-applicati
 import { MenuSection } from "@/features/menu/components/menu-section"
 import { SocialSection } from "@/features/social/components/social-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
+import { WorkSection } from "@/features/work/components/work-section"
 import { WorkTimelineScrollArea } from "@/features/work/components/work-timeline-scroll-area"
 import { gsap } from "@/lib/gsap"
 
@@ -52,9 +53,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
 
-        <div className="relative z-10">
-          <WorkTimelineScrollArea />
-        </div>
+        <WorkSection />
 
         <InteractiveApplicationsSection />
         <TechStackSection />
