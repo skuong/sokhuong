@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 
 import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
+import { Footer } from "@/features/footer/components/footer"
 import { HeroSection } from "@/features/hero/components/hero-section"
 import { LargeContactButtonSection } from "@/features/hero/components/large-contact-button-section"
 import { InteractiveApplicationsSection } from "@/features/interactive-application/components/interactive-applications-section"
@@ -32,7 +33,7 @@ export default function HomePage() {
 
   return (
     <div ref={canvasContainer} className="relative overflow-x-hidden">
-      <div className="fixed inset-0 z-10">
+      <div className="fixed inset-0 -z-10">
         {canvasContainer && (
           // @ts-expect-error the canvasContainer will be available
           <Canvas eventSource={canvasContainer}>
@@ -61,6 +62,8 @@ export default function HomePage() {
           <SocialSection />
         </div>
       </main>
+
+      <Footer />
     </div>
   )
 }
