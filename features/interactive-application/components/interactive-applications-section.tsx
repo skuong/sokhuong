@@ -23,6 +23,7 @@ const InteractiveApplicationsSection = () => {
     const offsetY = aspect > 1 ? height * aspect : height * (aspect / 0.7)
 
     const tl = gsap.timeline({
+      id: "interactive-app",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "center center",
@@ -37,10 +38,10 @@ const InteractiveApplicationsSection = () => {
       scale: 20,
       y: offsetY,
       x: -30 * aspect,
-      ease: "power4.out"
+      ease: "power2.out"
     }).from(
       titleLine2Ref.current,
-      { scale: 20, y: offsetY * 4.5, ease: "power4.out" },
+      { scale: 20, y: offsetY * 4.5, ease: "power2.out" },
       0
     )
   }, [])

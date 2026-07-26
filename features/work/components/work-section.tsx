@@ -1,100 +1,118 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Mesh } from "three"
 
 import { gsap } from "@/lib/gsap"
 
-import { WorkTimelineScrollArea } from "./work-timeline-scroll-area"
+import { WorkHighlightScene } from "./work-highlight-scene"
 
 export function WorkSection() {
   const workSection = useRef<HTMLDivElement | null>(null)
-  useGSAP(() => {
-    ScrollTrigger.create({
-      trigger: workSection.current,
-      scrub: true,
-      animation: gsap.fromTo(
+  const [box, setBox] = useState<Mesh | null>(null)
+
+  useGSAP(
+    () => {
+      if (!workSection.current || !box) return
+
+      gsap.set(".curtain", {
+        autoAlpha: 1
+      })
+
+      gsap.fromTo(
         ".curtain",
         { scaleY: 0 },
         {
           scaleY: gsap.utils.wrap([5.2, 8, 6, 10, 5.5]),
-          transformOrigin: "center bottom"
+          transformOrigin: "center bottom",
+          scrollTrigger: {
+            trigger: workSection.current,
+            start: "top bottom",
+            scrub: true
+          }
         }
       )
-    })
 
-    gsap
-      .timeline()
-      .to("#work-content", {
-        scale: 10,
+      gsap.to(box.rotation, {
+        x: 20,
         scrollTrigger: {
           trigger: workSection.current,
-          start: "top center",
-          end: "+=6000",
-          // pin: true,
+          start: "top bottom",
+          end: "+=3500 -20%",
           scrub: true
         }
       })
-      .fromTo(
-        ".bottom-curtain",
 
+      const tl = gsap.timeline({
+        id: "work-section",
+        scrollTrigger: {
+          trigger: workSection.current,
+          start: "top top",
+          end: "+=2000",
+          scrub: true,
+          pin: true,
+          invalidateOnRefresh: true,
+          refreshPriority: 10
+        }
+      })
+
+      tl.fromTo(
+        ".bottom-curtain",
         { scaleY: 0 },
         {
           scaleY: gsap.utils.wrap([3.2, 6, 4, 8, 3]),
           transformOrigin: "center bottom",
-          scrollTrigger: {
-            trigger: workSection.current,
-            scrub: true,
-            start: "bottom bottom",
-            markers: true
-          }
-        }
+          ease: "none"
+        },
+        2
       )
-  })
+    },
+    {
+      dependencies: [box],
+      revertOnUpdate: true
+    }
+  )
 
   return (
-    <section
-      ref={workSection}
-      className="relative h-screen bg-white text-black"
-    >
+    <section ref={workSection} className="relative text-black">
       <div className="absolute top-0 flex h-px w-full bg-pink-600">
-        <div className="relative h-px w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white" />
+        <div className="relative h-px w-1/3 lg:w-1/5">
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
         </div>
-        <div className="relative h-px w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white" />
+        <div className="relative h-px w-1/3 lg:w-1/5">
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
         </div>
-        <div className="relative h-px w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white" />
+        <div className="relative h-px w-1/3 lg:w-1/5">
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
         </div>
-        <div className="relative h-px w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white" />
+        <div className="relative hidden h-px w-1/5 lg:block">
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
         </div>
-        <div className="relative h-px w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white" />
+        <div className="relative hidden h-px w-1/5 lg:block">
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
         </div>
       </div>
 
       <div>
-        <div className="text-black">
-          <div id="work-content">Content</div>
+        <div className="h-screen">
+          <WorkHighlightScene onBoxReady={setBox} />
         </div>
       </div>
 
       <div className="absolute bottom-0 flex h-px w-full bg-pink-600">
-        <div className="relative h-px w-1/5">
+        <div className="relative h-px w-1/3 lg:w-1/5">
           <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
         </div>
-        <div className="relative h-px w-1/5">
+        <div className="relative h-px w-1/3 lg:w-1/5">
           <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
         </div>
-        <div className="relative h-px w-1/5">
+        <div className="relative h-px w-1/3 lg:w-1/5">
           <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
         </div>
-        <div className="relative h-px w-1/5">
+        <div className="relative hidden h-px w-1/5 lg:block">
           <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
         </div>
-        <div className="relative h-px w-1/5">
+        <div className="relative hidden h-px w-1/5 lg:block">
           <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
         </div>
       </div>
