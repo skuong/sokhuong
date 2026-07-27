@@ -43,6 +43,69 @@ export function WorkSection() {
         }
       })
 
+      gsap.fromTo(
+        "#go-float",
+        {
+          y: 600,
+          x: () => window.innerWidth * 0.4,
+          scale: 3
+        },
+        {
+          x: () => window.innerWidth * 0.45,
+          y: -200,
+          scale: 0.25,
+          transformOrigin: "50% 50%",
+          scrollTrigger: {
+            trigger: workSection.current,
+            scrub: 0.5,
+            markers: true
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
+      gsap.fromTo(
+        "#go-float-2",
+        {
+          y: 800,
+          x: () => window.innerWidth * 0.65,
+          scale: 3
+        },
+        {
+          x: () => window.innerWidth * 0.55,
+          y: -400,
+          scale: 0.25,
+          transformOrigin: "50% 50%",
+          scrollTrigger: {
+            trigger: workSection.current,
+            scrub: 0.5,
+            markers: true
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
+      gsap.fromTo(
+        "#go-float-3",
+        {
+          y: 1000,
+          x: () => window.innerWidth * 0.32,
+          scale: 3
+        },
+        {
+          x: () => window.innerWidth * 0.38,
+          y: -200,
+          scale: 0.25,
+          transformOrigin: "50% 50%",
+          scrollTrigger: {
+            trigger: workSection.current,
+            scrub: 0.5,
+            markers: true
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
       const tl = gsap.timeline({
         id: "work-section",
         scrollTrigger: {
@@ -74,7 +137,10 @@ export function WorkSection() {
   )
 
   return (
-    <section ref={workSection} className="relative text-black">
+    <section
+      ref={workSection}
+      className="relative border border-pink-600 text-black"
+    >
       <div className="absolute top-0 flex h-px w-full bg-pink-600">
         <div className="relative h-px w-1/3 lg:w-1/5">
           <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
@@ -91,6 +157,25 @@ export function WorkSection() {
         <div className="relative hidden h-px w-1/5 lg:block">
           <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
         </div>
+      </div>
+
+      <div
+        id="go-float"
+        className="highlight absolute h-24 w-32 -translate-x-1/2 -translate-y-1/2 bg-green-800"
+      >
+        /
+      </div>
+      <div
+        id="go-float-2"
+        className="highlight absolute h-32 w-44 -translate-x-1/2 -translate-y-1/2 bg-blue-300"
+      >
+        /
+      </div>
+      <div
+        id="go-float-3"
+        className="highlight absolute h-32 w-44 -translate-x-1/2 -translate-y-1/2 bg-rose-300"
+      >
+        /
       </div>
 
       <div>
