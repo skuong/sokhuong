@@ -5,30 +5,94 @@ import Link from "next/link"
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin"
 import { SplitText } from "gsap/SplitText"
 
 import { gsap } from "@/lib/gsap"
 
-gsap.registerPlugin(ScrambleTextPlugin)
 gsap.registerPlugin(SplitText)
 
 export function HeroSection() {
-  const softwareTitleRef = useRef<HTMLDivElement>(null)
-  const engineerTitleRef = useRef<HTMLDivElement>(null)
+  const creativeRef = useRef<HTMLDivElement>(null)
+  const developerRef = useRef<HTMLDivElement>(null)
+  const videoSlotRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useGSAP(() => {
-    gsap.set([softwareTitleRef.current, engineerTitleRef.current], {
+    gsap.set([creativeRef.current, developerRef.current], {
       autoAlpha: 1
     })
 
-    const tl = gsap.timeline()
-    tl.add(() => {
-      const split = new SplitText(softwareTitleRef.current, { type: "chars" })
+    const mm = gsap.matchMedia()
+
+    mm.add("(max-width: 767px)", () => {
+      const video = videoRef.current
+      const videoSlot = videoSlotRef.current
+
+      if (!video || !videoSlot) return
+
+      videoSlot.appendChild(video)
+
+      gsap.set(videoSlot, {
+        height: 0,
+        marginBlock: 0,
+        overflow: "hidden"
+      })
+      gsap.set(video, {
+        position: "relative",
+        inset: "auto",
+        xPercent: 0,
+        yPercent: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        autoAlpha: 0
+      })
+
+      const tl = gsap
+        .timeline({ delay: 0.5 })
+        .to(videoSlot, {
+          height: () => Math.min(window.innerWidth * 0.56, 260),
+          marginBlock: 8,
+          duration: 1,
+          ease: "power3.inOut"
+        })
+        .to(
+          video,
+          {
+            autoAlpha: 1,
+            duration: 0.3
+          },
+          "<0.15"
+        )
+        .call(() => video.play())
+
+      return () => {
+        tl.kill()
+        videoSlot.appendChild(video)
+        gsap.set(videoSlot, { clearProps: "height,marginBlock,overflow" })
+        gsap.set(video, {
+          clearProps:
+            "position,inset,xPercent,yPercent,width,height,objectFit,autoAlpha"
+        })
+      }
+    })
+
+    mm.add("(min-width: 768px)", () => {
+      const softwareTitle = creativeRef.current
+      const video = videoRef.current
+      const videoSlot = videoSlotRef.current
+
+      if (!softwareTitle || !video) return
+
+      videoSlot?.appendChild(video)
+
+      const split = new SplitText(softwareTitle, { type: "chars" })
       const iChar = split.chars[5]
 
-      if (!iChar || !videoRef.current) return
+      if (!iChar) {
+        split.revert()
+        return
+      }
 
       gsap.set(iChar, {
         position: "relative",
@@ -37,8 +101,8 @@ export function HeroSection() {
         overflow: "hidden"
       })
 
-      iChar.appendChild(videoRef.current)
-      gsap.set(videoRef.current, {
+      iChar.appendChild(video)
+      gsap.set(video, {
         position: "absolute",
         top: 0,
         left: "50%",
@@ -49,7 +113,7 @@ export function HeroSection() {
         autoAlpha: 0
       })
 
-      gsap
+      const tl = gsap
         .timeline()
         .to(iChar, {
           width: () => (window.innerWidth >= 1024 ? 170 : 150),
@@ -58,7 +122,7 @@ export function HeroSection() {
           delay: 0.5
         })
         .to(
-          videoRef.current,
+          video,
           {
             autoAlpha: 1,
             width: () => (window.innerWidth >= 1024 ? 160 : 150),
@@ -67,8 +131,20 @@ export function HeroSection() {
           },
           "<"
         )
-        .call(() => videoRef.current?.play())
+        .call(() => video.play())
+
+      return () => {
+        tl.kill()
+        videoSlot?.appendChild(video)
+        split.revert()
+        gsap.set(video, {
+          clearProps:
+            "position,top,left,xPercent,yPercent,width,height,objectFit,autoAlpha,transformOrigin"
+        })
+      }
     })
+
+    return () => mm.revert()
   }, [])
 
   return (
@@ -77,23 +153,27 @@ export function HeroSection() {
         <div className="font-mono font-light text-muted-foreground">KHUONG</div>
         <div className="font-mono font-light text-muted-foreground">MENU</div>
       </div>
-      <div className="mx-auto flex flex-col items-start justify-start text-6xl font-bold md:text-9xl lg:text-[9rem]">
-        <div ref={softwareTitleRef} className="opacity-0">
+      <div className="mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-start justify-start text-6xl leading-none font-bold md:w-auto md:max-w-none md:text-9xl lg:text-[9rem]">
+        <div ref={creativeRef} className="opacity-0">
           CREATIVE
         </div>
-        <div ref={engineerTitleRef} className="opacity-0">
+        <div
+          ref={videoSlotRef}
+          className="h-0 w-full overflow-hidden md:hidden"
+        >
+          <video
+            ref={videoRef}
+            src="https://placeholdervideo.dev/1280x720"
+            muted
+            loop
+            playsInline
+            className="h-full w-full bg-white object-cover opacity-0"
+          />
+        </div>
+        <div ref={developerRef} className="opacity-0">
           DEVELOPER
         </div>
       </div>
-
-      <video
-        ref={videoRef}
-        src="https://placeholdervideo.dev/1280x720"
-        muted
-        loop
-        playsInline
-        className="absolute h-0 bg-white object-cover opacity-0"
-      />
 
       <div className="flex items-end justify-between">
         <div>
