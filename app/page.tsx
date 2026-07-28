@@ -43,12 +43,6 @@ export default function HomePage() {
         )}
       </div>
 
-      {/*<LargeContactButtonSection />*/}
-
-      {/*<header className="container mx-auto px-4 pt-16 sm:px-6 md:px-0">
-        <PhoneticNameWithHoverCard />
-      </header>*/}
-
       <main>
         <HeroSection />
 
