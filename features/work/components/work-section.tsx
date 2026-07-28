@@ -137,10 +137,7 @@ export function WorkSection() {
   )
 
   return (
-    <section
-      ref={workSection}
-      className="relative border border-pink-600 text-black"
-    >
+    <section ref={workSection} className="relative text-black">
       <div className="absolute top-0 flex h-px w-full bg-pink-600">
         <div className="relative h-px w-1/3 lg:w-1/5">
           <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
@@ -184,21 +181,21 @@ export function WorkSection() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 flex h-px w-full bg-pink-600">
+      <div className="absolute bottom-0 flex h-px w-full">
         <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
+          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
         </div>
         <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
+          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
         </div>
         <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
+          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
         </div>
         <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
+          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
         </div>
         <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black" />
+          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
         </div>
       </div>
     </section>
