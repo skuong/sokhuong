@@ -46,12 +46,8 @@ export default function HomePage() {
 
         <WorkSection />
 
-        <InteractiveApplicationsSection />
-        <TechStackSection />
-
-        <div className="mt-36">
-          <SocialSection />
-        </div>
+        {/*<InteractiveApplicationsSection />*/}
+        {/*<TechStackSection />*/}
 
         <ServiceSection />
       </main>

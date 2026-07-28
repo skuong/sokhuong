@@ -9,7 +9,7 @@ export function WorkHighlightScene({
   onBoxReady: (box: Mesh | null) => void
 }) {
   return (
-    <View className="h-full w-full" index={-2}>
+    <View className="h-full w-full">
       <color attach="background" args={["#ffffff"]} />
       <AnimatedBox onReady={onBoxReady} />
     </View>
