@@ -57,8 +57,8 @@ export function WorkSection() {
           transformOrigin: "50% 50%",
           scrollTrigger: {
             trigger: workSection.current,
-            scrub: 0.5,
-            markers: true
+            scrub: 0.5
+            // markers: true
           },
           ease: "slow(0.5,0.7,false)"
         }
@@ -78,8 +78,8 @@ export function WorkSection() {
           transformOrigin: "50% 50%",
           scrollTrigger: {
             trigger: workSection.current,
-            scrub: 0.5,
-            markers: true
+            scrub: 0.5
+            // markers: true
           },
           ease: "slow(0.5,0.7,false)"
         }
@@ -99,8 +99,8 @@ export function WorkSection() {
           transformOrigin: "50% 50%",
           scrollTrigger: {
             trigger: workSection.current,
-            scrub: 0.5,
-            markers: true
+            scrub: 0.5
+            // markers: true
           },
           ease: "slow(0.5,0.7,false)"
         }
