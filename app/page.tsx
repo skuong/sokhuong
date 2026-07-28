@@ -7,12 +7,10 @@ import { Canvas } from "@react-three/fiber"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 
-import { PhoneticNameWithHoverCard } from "@/features/art/components/phonetic-name-with-hover-card"
 import { Footer } from "@/features/footer/components/footer"
 import { HeroSection } from "@/features/hero/components/hero-section"
-import { LargeContactButtonSection } from "@/features/hero/components/large-contact-button-section"
 import { InteractiveApplicationsSection } from "@/features/interactive-application/components/interactive-applications-section"
-import { MenuSection } from "@/features/menu/components/menu-section"
+import { ServiceSection } from "@/features/menu/components/service-section"
 import { SocialSection } from "@/features/social/components/social-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
 import { WorkSection } from "@/features/work/components/work-section"
@@ -55,7 +53,7 @@ export default function HomePage() {
           <SocialSection />
         </div>
 
-        <MenuSection />
+        <ServiceSection />
       </main>
 
       <Footer />
