@@ -148,7 +148,7 @@ export function HeroSection() {
   }, [])
 
   return (
-    <div className="flex h-dvh flex-col justify-between border p-4">
+    <div className="mb-24 flex h-dvh flex-col justify-between p-4">
       <div className="flex justify-between">
         <div className="font-mono font-light text-muted-foreground">KHUONG</div>
         <div className="font-mono font-light text-muted-foreground">MENU</div>
