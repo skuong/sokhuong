@@ -5,7 +5,7 @@ import { UskSection } from "./usk-section"
 
 export function Footer() {
   return (
-    <footer className="flex h-screen flex-col overflow-hidden p-4 lg:p-6">
+    <footer className="flex h-dvh flex-col overflow-hidden p-4 lg:p-6">
       <section className="grid grid-cols-3 gap-8 font-light sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-9 xl:grid-cols-12">
         <div className="text-muted-foreground">
           <div className="text-end md:text-start">UON</div>
