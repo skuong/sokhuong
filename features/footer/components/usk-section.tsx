@@ -28,7 +28,7 @@ export function UskSection() {
     <section ref={uskSection} className="mt-auto">
       <div
         ref={usk}
-        className="w-max text-[13rem] leading-none sm:text-[20rem] md:text-[28rem] lg:text-[36rem] xl:text-[40rem] 2xl:-mb-25 2xl:-ml-15 2xl:text-[48rem]"
+        className="w-max text-[13rem] leading-none sm:text-[20rem] md:text-[28rem] lg:text-[36rem] xl:text-[38rem] 2xl:-mb-25 2xl:-ml-15 2xl:text-[46rem]"
       >
         USK
       </div>
