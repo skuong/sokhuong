@@ -163,7 +163,7 @@ export function HeroSection() {
         >
           <video
             ref={videoRef}
-            src="https://placeholdervideo.dev/1280x720"
+            src="/videos/work-showcase-for-portfolio.mp4"
             muted
             loop
             playsInline
