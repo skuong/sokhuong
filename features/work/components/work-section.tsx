@@ -151,20 +151,123 @@ export function WorkSection() {
       gsap.fromTo(
         "#go-float-6",
         {
-          y: 2900,
+          y: 900,
           x: () => window.innerWidth * 0.39,
-          scale: 8
+          scale: 4
         },
         {
           x: () => window.innerWidth * 0.39,
-          y: -150,
-          scale: 3,
+          y: -100,
+          scale: 1,
           transformOrigin: "100% 50%",
           scrollTrigger: {
-            trigger: workSection.current,
+            trigger: "#go-float-6",
+            end: "+=1000",
             scrub: 0.5
           },
           ease: "slow(0.5,0.7,false)"
+        }
+      )
+      gsap.fromTo(
+        "#go-float-7",
+        {
+          y: 900,
+          x: () => window.innerWidth * 0.6,
+          scale: 4
+        },
+        {
+          x: () => window.innerWidth * 0.55,
+          y: -100,
+          scale: 1,
+          transformOrigin: "0% 50%",
+          scrollTrigger: {
+            trigger: "#go-float-7",
+            end: "+=1000",
+            scrub: 0.5
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
+      gsap.fromTo(
+        "#go-float-8",
+        {
+          y: 800,
+          x: () => window.innerWidth * 0.5,
+          scale: 3
+        },
+        {
+          x: () => window.innerWidth * 0.45,
+          y: -150,
+          scale: 1,
+          transformOrigin: "0% 50%",
+          scrollTrigger: {
+            trigger: "#go-float-8",
+            end: "+=1100",
+            scrub: 0.5
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+      gsap.fromTo(
+        "#go-float-9",
+        {
+          y: 1000,
+          x: () => window.innerWidth * 0.6,
+          scale: 4
+        },
+        {
+          x: () => window.innerWidth * 0.5,
+          y: -200,
+          scale: 1.5,
+          transformOrigin: "0% 50%",
+          scrollTrigger: {
+            trigger: "#go-float-9",
+            end: "+=1100",
+            scrub: 0.5
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
+      gsap.fromTo(
+        "#go-float-10",
+        {
+          y: 1250,
+          x: () => window.innerWidth * 0.36,
+          scale: 4
+        },
+        {
+          x: () => window.innerWidth * 0.37,
+          y: -200,
+          scale: 1.5,
+          transformOrigin: "100% 50%",
+          scrollTrigger: {
+            trigger: "#go-float-10",
+            end: "+=1100",
+            scrub: 0.5
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
+      gsap.fromTo(
+        "#go-float-11",
+        {
+          y: 1300,
+          x: () => window.innerWidth * 0.5,
+          scale: 3
+        },
+        {
+          x: () => window.innerWidth * 0.5,
+          y: -100,
+          scale: 1,
+          transformOrigin: "50% 50%",
+          scrollTrigger: {
+            trigger: "#go-float-11",
+            end: "+=1300",
+            scrub: 0.5
+          }
         }
       )
 
@@ -292,6 +395,71 @@ export function WorkSection() {
         <Image
           src={"/equirectangular-to-cubemap-open-source-app.png"}
           alt="equirectangular-to-cubemap open source app"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
+      </div>
+
+      <div
+        id="go-float-7"
+        className="highlight absolute aspect-106/83 w-24 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/TUX-Global-Institute-desktop-screen.png"}
+          alt="TUX Global Institute website on desktop screen"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
+      </div>
+
+      <div
+        id="go-float-8"
+        className="highlight absolute aspect-91/162 w-10 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/rhac-org-home-page-mobile-screen.png"}
+          alt="rhac org home page mobile screen"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
+      </div>
+
+      <div
+        id="go-float-9"
+        className="highlight absolute aspect-404/297 w-20 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/Tiptap-image-picker-for-rhac-org-dashboard.png"}
+          alt="Tiptap image picker for RHAC org dashboard"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
+      </div>
+
+      <div
+        id="go-float-10"
+        className="highlight absolute aspect-205/363 w-14 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/TUX-Global-Institute-website-on-mobile-screen.png"}
+          alt="TUX Global Institute website on mobile screen size"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
+      </div>
+
+      <div
+        id="go-float-11"
+        className="highlight absolute aspect-video w-32 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/contour-map.png"}
+          alt="Contour map"
           fill
           loading="lazy"
           className="object-cover"
