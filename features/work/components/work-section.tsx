@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { useRef, useState } from "react"
 
 import { useGSAP } from "@gsap/react"
@@ -48,16 +49,17 @@ export function WorkSection() {
         {
           y: 600,
           x: () => window.innerWidth * 0.4,
-          scale: 3
+          scale: 4
         },
         {
-          x: () => window.innerWidth * 0.45,
+          x: () => window.innerWidth * 0.4,
           y: -200,
-          scale: 0.25,
-          transformOrigin: "50% 50%",
+          scale: 1,
+          transformOrigin: "100% 50%",
           scrollTrigger: {
             trigger: workSection.current,
-            scrub: 0.5
+            scrub: 0.5,
+            start: "top 150%"
             // markers: true
           },
           ease: "slow(0.5,0.7,false)"
@@ -100,7 +102,67 @@ export function WorkSection() {
           scrollTrigger: {
             trigger: workSection.current,
             scrub: 0.5
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
+      gsap.fromTo(
+        "#go-float-4",
+        {
+          y: 900,
+          x: () => window.innerWidth * 0.6,
+          scale: 5
+        },
+        {
+          x: () => window.innerWidth * 0.5,
+          y: -100,
+          scale: 2,
+          transformOrigin: "0% 50%",
+          scrollTrigger: {
+            trigger: workSection.current,
+            scrub: 0.5
             // markers: true
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+
+      gsap.fromTo(
+        "#go-float-5",
+        {
+          y: 1700,
+          x: () => window.innerWidth * 0.35,
+          scale: 6
+        },
+        {
+          x: () => window.innerWidth * 0.37,
+          y: -50,
+          scale: 1,
+          transformOrigin: "100% 50%",
+          scrollTrigger: {
+            trigger: workSection.current,
+            scrub: 0.5
+            // markers: true
+          },
+          ease: "slow(0.5,0.7,false)"
+        }
+      )
+      gsap.fromTo(
+        "#go-float-6",
+        {
+          y: 2900,
+          x: () => window.innerWidth * 0.39,
+          scale: 8
+        },
+        {
+          x: () => window.innerWidth * 0.39,
+          y: -150,
+          scale: 3,
+          transformOrigin: "100% 50%",
+          scrollTrigger: {
+            trigger: workSection.current,
+            scrub: 0.5
           },
           ease: "slow(0.5,0.7,false)"
         }
@@ -111,7 +173,7 @@ export function WorkSection() {
         scrollTrigger: {
           trigger: workSection.current,
           start: "top top",
-          end: "+=2000",
+          end: "+=900",
           scrub: true,
           pin: true,
           invalidateOnRefresh: true,
@@ -158,21 +220,82 @@ export function WorkSection() {
 
       <div
         id="go-float"
-        className="highlight absolute h-24 w-32 -translate-x-1/2 -translate-y-1/2 bg-green-800"
+        className="highlight absolute h-24 w-36 -translate-x-1/2 -translate-y-1/2 bg-green-800 object-cover"
       >
-        /
+        <Image
+          src={"/small-house-3d-modeling.png"}
+          alt="small house"
+          fill
+          className="object-cover"
+          loading="lazy"
+        />
       </div>
+
       <div
         id="go-float-2"
         className="highlight absolute h-32 w-44 -translate-x-1/2 -translate-y-1/2 bg-blue-300"
       >
-        /
+        <Image
+          src={"/modern-cabin-house-by-Quadusk.png"}
+          alt="Modern cabin"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
       </div>
+
       <div
         id="go-float-3"
         className="highlight absolute h-32 w-44 -translate-x-1/2 -translate-y-1/2 bg-rose-300"
       >
-        /
+        <Image
+          src={"/small-house-and-its-environment-outside-3d-modeling.png"}
+          alt="small house and its environment (3D modeling)"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
+      </div>
+
+      <div
+        id="go-float-4"
+        className="highlight absolute aspect-379/219 w-32 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/rhac-org-home-page-on-desktop.png"}
+          alt="rhac website"
+          fill
+          loading="lazy"
+          quality={90}
+          className="object-cover"
+        />
+      </div>
+
+      <div
+        id="go-float-5"
+        className="highlight absolute aspect-379/219 w-32 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/villa.png"}
+          alt="Villa in 360 tour"
+          fill
+          className="object-cover"
+
+          loading="lazy"
+        />
+      </div>
+
+      <div
+        id="go-float-6"
+        className="highlight absolute aspect-379/219 w-28 -translate-x-1/2 -translate-y-1/2 object-cover"
+      >
+        <Image
+          src={"/equirectangular-to-cubemap-open-source-app.png"}
+          alt="equirectangular-to-cubemap open source app"
+          fill
+          loading="lazy"
+          className="object-cover"
+        />
       </div>
 
       <div>
