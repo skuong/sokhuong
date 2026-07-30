@@ -10,7 +10,7 @@ export function WorkHighlightScene({
 }) {
   return (
     <View className="h-full w-full">
-      <color attach="background" args={["#ffffff"]} />
+      <color attach="background" args={["black"]} />
       <AnimatedBox onReady={onBoxReady} />
     </View>
   )

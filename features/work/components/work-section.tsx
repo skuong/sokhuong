@@ -305,19 +305,19 @@ export function WorkSection() {
     <section ref={workSection} className="relative text-black">
       <div className="absolute top-0 flex h-px w-full bg-pink-600">
         <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0" />
         </div>
         <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0" />
         </div>
         <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0" />
         </div>
         <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0" />
         </div>
         <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-white opacity-0" />
+          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0" />
         </div>
       </div>
 
