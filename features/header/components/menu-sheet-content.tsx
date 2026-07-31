@@ -10,6 +10,9 @@ export function MenuSheetContent() {
     const links = gsap.utils.toArray<HTMLElement>(".nav-link")
     const tl = gsap.timeline()
     links.forEach((link) => {
+      gsap.set(link, {
+        autoAlpha: 1
+      })
       const split = SplitText.create(link, {
         type: "chars",
         mask: "chars"
@@ -19,8 +22,10 @@ export function MenuSheetContent() {
         split.chars,
         {
           y: 100,
+          x: 10,
           stagger: 0.05,
-          duration: 0.3
+          duration: 0.2,
+          delay: 0.25
         },
         0
       )
@@ -33,12 +38,12 @@ export function MenuSheetContent() {
         <div className="text-muted-foreground">khuong</div>
       </div>
       <div className="flex flex-1 items-center">
-        <nav className="grid grid-cols-12 gap-8 text-3xl font-bold sm:text-4xl md:text-5xl lg:text-7xl">
-          <Link className="nav-link col-start-2 flex" href={"/"}>
+        <nav className="grid grid-cols-12 gap-8 text-3xl font-bold tracking-wider sm:text-4xl md:text-5xl lg:text-8xl">
+          <Link className="nav-link col-start-2 flex opacity-0" href={"/"}>
             Home
           </Link>
           <Link
-            className="nav-link col-start-2 row-start-2 flex"
+            className="nav-link col-start-2 row-start-2 flex opacity-0"
             href={"/work"}
           >
             Work
@@ -53,13 +58,13 @@ export function MenuSheetContent() {
             Contact
           </Link>
           <Link
-            className="nav-link col-start-2 row-start-3 flex whitespace-nowrap"
+            className="nav-link col-start-2 row-start-3 inline whitespace-nowrap"
             href={"/case-studies"}
           >
             Case studies
           </Link>
           <Link
-            className="nav-link col-start-2 row-start-4 flex whitespace-nowrap"
+            className="nav-link col-start-2 row-start-4 inline whitespace-nowrap"
             href={"/open-source"}
           >
             Open source
