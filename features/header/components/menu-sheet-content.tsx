@@ -7,19 +7,24 @@ import { gsap } from "@/lib/gsap"
 
 export function MenuSheetContent() {
   useGSAP(() => {
-    const split = SplitText.create(".nav-link", {
-      type: "chars",
-      mask: "chars"
+    const links = gsap.utils.toArray<HTMLElement>(".nav-link")
+    const tl = gsap.timeline()
+    links.forEach((link) => {
+      const split = SplitText.create(link, {
+        type: "chars",
+        mask: "chars"
+      })
+
+      tl.from(
+        split.chars,
+        {
+          y: 100,
+          stagger: 0.05,
+          duration: 0.3
+        },
+        0
+      )
     })
-    gsap.timeline().from(
-      split.chars,
-      {
-        y: 100,
-        stagger: 0.05,
-        duration: 0.3
-      },
-      0
-    )
   }, [])
 
   return (
