@@ -148,11 +148,8 @@ export function HeroSection() {
   }, [])
 
   return (
-    <div className="mb-24 flex h-dvh flex-col justify-between p-4">
-      <div className="flex justify-between">
-        <div className="font-mono font-light text-muted-foreground">KHUONG</div>
-        <div className="font-mono font-light text-muted-foreground">MENU</div>
-      </div>
+    <div className="mb-24 flex h-[93dvh] flex-col justify-between p-4">
+      <div></div>
       <div className="mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-start justify-start text-6xl leading-none font-bold md:w-auto md:max-w-none md:text-9xl lg:text-[9rem]">
         <div ref={creativeRef} className="opacity-0">
           CREATIVE
