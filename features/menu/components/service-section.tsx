@@ -68,13 +68,13 @@ export function ServiceSection() {
       ref={sectionRef}
       className="relative mt-36 py-44 text-black md:grid md:grid-cols-[minmax(11rem,20vw)_1fr]"
     >
-      <aside className="relative z-10 flex h-20 items-center px-6 text-white md:block md:h-auto md:px-0 md:py-0">
+      <aside className="relative z-10 flex h-20 items-center px-6 text-black md:block md:h-auto md:px-0 md:py-0 dark:text-white">
         <div
           ref={titlePanelRef}
           className="flex h-20 w-full items-center px-6 md:h-screen md:items-start md:px-7 md:py-16"
         >
-          <div className="text-xl font-light tracking-tight uppercase md:text-4xl">
-            Service
+          <div className="text-xl font-light tracking-tight md:text-4xl">
+            What I can help with
           </div>
         </div>
       </aside>
@@ -86,7 +86,7 @@ export function ServiceSection() {
         {services.map((service) => (
           <li
             key={service}
-            className="service-row group flex min-h-36 w-full items-center justify-between gap-6 bg-white px-4 py-8 text-5xl leading-none text-black sm:text-7xl md:min-h-[10.8rem] md:bg-transparent md:px-8 md:text-8xl md:text-white lg:text-9xl xl:min-h-43 xl:text-[7.5rem] 2xl:text-[9rem]"
+            className="service-row group flex min-h-36 w-full items-center justify-between gap-6 bg-white px-4 py-8 text-5xl leading-none text-black sm:text-7xl md:min-h-[10.8rem] md:bg-transparent md:px-8 md:text-8xl lg:text-9xl xl:min-h-43 xl:text-[7.5rem] 2xl:text-[9rem] dark:md:text-white"
           >
             <span>{service}</span>
           </li>
