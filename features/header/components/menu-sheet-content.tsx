@@ -33,7 +33,7 @@ export function MenuSheetContent() {
         <div className="text-muted-foreground">khuong</div>
       </div>
       <div className="flex flex-1 items-center">
-        <nav className="grid grid-cols-12 gap-8 text-8xl font-bold">
+        <nav className="grid grid-cols-12 gap-8 text-3xl font-bold sm:text-4xl md:text-5xl lg:text-7xl">
           <Link className="nav-link col-start-2 flex" href={"/"}>
             Home
           </Link>
@@ -72,10 +72,12 @@ export function MenuSheetContent() {
           </Link>
         </nav>
       </div>
-      <div className="grid grid-cols-3 font-mono text-muted-foreground lg:grid-cols-12">
+      <div className="grid grid-cols-3 font-mono text-muted-foreground md:grid-cols-12">
         <div className="">sokhuong.usk@gmail.com</div>
-        <div className="col-span-2 col-start-4">+855 61 812 917</div>
-        <div className="-col-start-1">Lets talk</div>
+        <div className="col-span-2 -col-start-1 whitespace-nowrap md:col-start-6">
+          +855 61 812 917
+        </div>
+        <div className="-col-start-1 hidden md:flex">Lets talk</div>
       </div>
     </div>
   )
