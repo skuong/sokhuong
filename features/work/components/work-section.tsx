@@ -288,7 +288,7 @@ export function WorkSection() {
         ".bottom-curtain",
         { scaleY: 0 },
         {
-          scaleY: gsap.utils.wrap([3.2, 6, 4, 8, 3]),
+          scaleY: gsap.utils.wrap([3.2, 5, 4, 8, 3]),
           transformOrigin: "center bottom",
           ease: "none"
         },
