@@ -40,7 +40,7 @@ export function Header() {
               />
             </svg>
           </SheetTrigger>
-          <SheetContent className={"min-w-full bg-black/90 p-4"}>
+          <SheetContent className={"min-w-full p-4"}>
             <MenuSheetContent />
           </SheetContent>
         </Sheet>
