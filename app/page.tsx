@@ -11,8 +11,8 @@ import Lenis from "lenis"
 import { Footer } from "@/features/footer/components/footer"
 import { Header } from "@/features/header/components/header"
 import { HeroSection } from "@/features/hero/components/hero-section"
+import { IntroSection } from "@/features/intro/components/intro-section"
 import { ServiceSection } from "@/features/menu/components/service-section"
-import { WorkSection } from "@/features/work/components/work-section"
 import { gsap } from "@/lib/gsap"
 
 export default function HomePage() {
@@ -52,7 +52,7 @@ export default function HomePage() {
       <main id="main">
         <HeroSection />
 
-        <WorkSection />
+        <IntroSection />
 
         <ServiceSection />
       </main>
