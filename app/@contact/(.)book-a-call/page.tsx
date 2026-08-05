@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation"
 
-import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
@@ -11,18 +10,13 @@ import {
 } from "@/components/ui/dialog"
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
+  DrawerTitle
 } from "@/components/ui/drawer"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { BookACall } from "@/features/contact/components/book-a-call"
 import { useMediaQuery } from "@/hooks/use-media-query"
-import { cn } from "@/lib/utils"
 
 export default function BookACallPage() {
   const router = useRouter()

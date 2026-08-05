@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { useEffect, useRef } from "react"
 
 import { View } from "@react-three/drei"
@@ -11,7 +10,6 @@ import Lenis from "lenis"
 import { Footer } from "@/features/footer/components/footer"
 import { Header } from "@/features/header/components/header"
 import { HeroSection } from "@/features/hero/components/hero-section"
-import { IntroSection } from "@/features/intro/components/intro-section"
 import { ServiceSection } from "@/features/menu/components/service-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
 import { gsap } from "@/lib/gsap"
