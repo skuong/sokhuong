@@ -53,8 +53,6 @@ export default function HomePage() {
       <main id="main">
         <HeroSection />
 
-        <IntroSection />
-
         <ServiceSection />
         <TechStackSection />
       </main>
