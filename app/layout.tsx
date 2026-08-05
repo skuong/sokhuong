@@ -4,7 +4,6 @@ import { Geist, Geist_Mono, Noto_Sans } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/sonner"
 import { UmamiAnalytics } from "@/features/analytics/components/umami-analytics"
-import { TransitionWrapper } from "@/features/page-transition/components/transition-wrapper"
 import { cn } from "@/lib/utils"
 
 import "./globals.css"
@@ -46,8 +45,10 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
+  contact,
   children
 }: Readonly<{
+  contact: React.ReactNode
   children: React.ReactNode
 }>) {
   return (
@@ -64,7 +65,8 @@ export default function RootLayout({
     >
       <body className="overflow-x-clip">
         <ThemeProvider>
-          <TransitionWrapper>{children}</TransitionWrapper>
+          {contact}
+          {children}
         </ThemeProvider>
         <UmamiAnalytics />
         <Toaster />
