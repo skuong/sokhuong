@@ -41,13 +41,6 @@ export default function HomePage() {
         )}
       </div>
 
-      <Link
-        href={"#main"}
-        className="pointer-events-none absolute top-4 left-4 bg-background p-2 opacity-0 ring-0 outline-none focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-pink-600"
-      >
-        Skip to main content
-      </Link>
-
       <Header />
 
       <main id="main">
