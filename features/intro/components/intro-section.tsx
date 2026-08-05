@@ -39,7 +39,7 @@ export function IntroSection() {
         trigger: introductionSection.current,
         start: "top 50%",
         end: () => `+=${getScrollAmount()}`,
-        scrub: true,
+        scrub: 1,
         pin: true,
         markers: true,
         animation: tween,
