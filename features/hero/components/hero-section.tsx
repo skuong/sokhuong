@@ -188,6 +188,7 @@ export function HeroSection() {
 
         <Link
           href={"/book-a-call"}
+          data-transition-ignore
           className="text-muted-foreground outline-none focus:ring-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
         >
           <div className="bg-foreground p-2 font-mono font-light text-background">
