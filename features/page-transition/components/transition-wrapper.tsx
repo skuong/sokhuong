@@ -1,6 +1,6 @@
 "use client"
 
-import { PropsWithChildren, useEffect, useRef } from "react"
+import { PropsWithChildren, useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
 import { TransitionRouter } from "next-transition-router"
