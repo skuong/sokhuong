@@ -28,7 +28,10 @@ export default function AlternateItemExpansionCarouselPage() {
   useGSAP(
     () => {
       if (!wrapperRef.current) return
-      const expanders = wrapperRef.current.querySelectorAll(":scope > div")
+      const expanders = wrapperRef.current.querySelectorAll(
+        ":scope > div"
+      ) as NodeListOf<HTMLDivElement>
+
       let activeExpander: HTMLDivElement
       expanders.forEach((expander) => {
         const closeButton = expander.querySelector("button")
@@ -39,13 +42,16 @@ export default function AlternateItemExpansionCarouselPage() {
           duration: 0.4
         })
 
+        // @ts-expect-error
         expander.animation = animation
         expander.addEventListener("click", () => {
           if (activeExpander) {
+            // @ts-expect-error
             const animation = activeExpander.animation as gsap.core.Timeline
             animation.reverse()
           }
 
+          // @ts-expect-error
           const animation = expander.animation as gsap.core.Timeline
           animation.play()
           activeExpander = expander
@@ -53,6 +59,7 @@ export default function AlternateItemExpansionCarouselPage() {
 
         closeButton?.addEventListener("click", (event) => {
           event.stopPropagation()
+          // @ts-expect-error
           const animation = expander.animation as gsap.core.Timeline
           animation.reverse()
         })
