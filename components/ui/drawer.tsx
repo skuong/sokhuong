@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+
 import { Drawer as DrawerPrimitive } from "@base-ui/react/drawer"
 
 import { cn } from "@/lib/utils"
@@ -221,5 +222,5 @@ export {
   DrawerHeader,
   DrawerFooter,
   DrawerTitle,
-  DrawerDescription,
+  DrawerDescription
 }
