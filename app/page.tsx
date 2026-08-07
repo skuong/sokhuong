@@ -12,6 +12,7 @@ import { Header } from "@/features/header/components/header"
 import { HeroSection } from "@/features/hero/components/hero-section"
 import { ServiceSection } from "@/features/menu/components/service-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
+import { WorkSection } from "@/features/work/components/work-section"
 import { gsap } from "@/lib/gsap"
 
 export default function HomePage() {
@@ -43,6 +44,7 @@ export default function HomePage() {
 
       <main id="main">
         <HeroSection />
+        <WorkSection />
 
         <ServiceSection />
         <TechStackSection />
