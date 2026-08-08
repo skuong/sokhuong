@@ -31,6 +31,33 @@ export function WorkSection() {
         { type: "lines" }
       )
 
+      const introTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: workSection.current,
+          start: "top 90%",
+          end: "top top",
+          scrub: true
+        }
+      })
+
+      introTl
+        .from(["#work-intro-section-title"], {
+          scale: 5,
+          stagger: 0.15,
+          duration: 1,
+          ease: "power3.out"
+        })
+        .from(
+          ["#work-intro-section-of-my"],
+          {
+            scale: 5,
+            stagger: 0.15,
+            duration: 1,
+            ease: "power3.out"
+          },
+          "<0.2"
+        )
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: workSection.current,
@@ -41,7 +68,7 @@ export function WorkSection() {
       })
 
       tl.from("#work-intro-section-work-word", {
-        yPercent: 100
+        yPercent: 50
       })
       tl.to("#work-intro-section-work-word", {
         scale: 1.25,
@@ -95,8 +122,18 @@ export function WorkSection() {
         ref={workIntroSectionRef}
         className="flex h-screen w-full flex-col items-center justify-center gap-4 text-muted-foreground uppercase"
       >
-        {/*<div className="text-2xl font-light">Highlight</div>
-        <div className="lowercase">of my</div>*/}
+        <div
+          id="work-intro-section-title"
+          className="absolute top-36 text-2xl font-light"
+        >
+          Highlight
+        </div>
+        <div
+          id="work-intro-section-of-my"
+          className="absolute top-86 lowercase"
+        >
+          of my
+        </div>
         <div
           id="work-intro-section-work-word"
           className="text-[24rem] font-bold"
