@@ -1,9 +1,8 @@
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Mesh } from "three"
+import { SplitText } from "gsap/SplitText"
 
 import { gsap } from "@/lib/gsap"
 
@@ -15,6 +14,23 @@ export function WorkSection() {
 
   useGSAP(
     () => {
+      gsap.set("#project-description h3", {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%)"
+      })
+
+      const projectDescriptionParagraphOuterSplit = new SplitText(
+        "#project-description-paragraph",
+        { type: "lines" }
+      )
+
+      gsap.set(projectDescriptionParagraphOuterSplit.lines, {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%)"
+      })
+      const projectDescriptionParagraphInnerSplit = new SplitText(
+        projectDescriptionParagraphOuterSplit.lines,
+        { type: "lines" }
+      )
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: workSection.current,
@@ -39,12 +55,33 @@ export function WorkSection() {
         },
         "<0.3"
       )
-      tl.from(
-        "#project-description",
+      tl.to(
+        "#project-description h3",
         {
-          opacity: 0
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
         },
         "<0.8"
+      )
+      tl.from(
+        "#project-description h3 span",
+        {
+          yPercent: 100
+        },
+        "<"
+      )
+      tl.from(
+        projectDescriptionParagraphInnerSplit.lines,
+        {
+          yPercent: 100
+        },
+        "<"
+      )
+      tl.to(
+        projectDescriptionParagraphOuterSplit.lines,
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+        },
+        "<"
       )
     },
     {
@@ -69,7 +106,6 @@ export function WorkSection() {
       </div>
 
       <div className="absolute inset-0 h-full w-full">
-        {/* For image and text*/}
         <div
           id="work-lighlight-container"
           className="flex h-full w-full flex-col items-center justify-center gap-4"
@@ -80,7 +116,6 @@ export function WorkSection() {
             </div>
             <div className="ml-auto text-sm text-muted-foreground">/3</div>
           </div>
-          {/* Just for image as a wrapper*/}
           <div className="relative aspect-video w-4/6">
             <Image
               src={
@@ -91,9 +126,18 @@ export function WorkSection() {
               className="overflow-clip rounded-lg"
             />
           </div>
+
           <div id="project-description" className="flex w-4/6 uppercase">
-            <h3 className="text-3xl font-light">360 virtual tour</h3>
-            <p className="ml-auto max-w-xs text-sm normal-case">
+            <h3
+              id="project-description-title"
+              className="h-fit text-3xl font-light"
+            >
+              <span className="inline-block">360 virtual tour</span>
+            </h3>
+            <p
+              id="project-description-paragraph"
+              className="ml-auto max-w-xs text-sm normal-case"
+            >
               Enabling visiting future home online with 360 degree technology
               right at the comfort of your web browser
             </p>
