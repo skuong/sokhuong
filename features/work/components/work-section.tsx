@@ -1,492 +1,254 @@
 import Image from "next/image"
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { Mesh } from "three"
+import { SplitText } from "gsap/SplitText"
 
 import { gsap } from "@/lib/gsap"
 
-import { WorkHighlightScene } from "./work-highlight-scene"
+gsap.registerPlugin(useGSAP)
 
 export function WorkSection() {
   const workSection = useRef<HTMLDivElement | null>(null)
-  const [box, setBox] = useState<Mesh | null>(null)
+  const workIntroSectionRef = useRef<HTMLDivElement | null>(null)
 
   useGSAP(
     () => {
-      if (!workSection.current || !box) return
-
-      gsap.set(".curtain", {
-        autoAlpha: 1
+      gsap.set("#project-description h3", {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%)"
+      })
+      gsap.set("#work-lighlight-figure-2", {
+        clipPath: "polygon(0% 110%, 100% 100%, 100% 100%, 0% 110%)"
       })
 
-      gsap.fromTo(
-        ".curtain",
-        { scaleY: 0 },
-        {
-          scaleY: gsap.utils.wrap([5.2, 8, 6, 10, 5.5]),
-          transformOrigin: "center bottom",
-          scrollTrigger: {
-            trigger: workSection.current,
-            start: "top bottom",
-            scrub: true
-          }
-        }
+      const projectDescriptionParagraphOuterSplit = new SplitText(
+        "#project-description-paragraph",
+        { type: "lines" }
       )
 
-      gsap.to(box.rotation, {
-        x: 20,
+      gsap.set(projectDescriptionParagraphOuterSplit.lines, {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%)"
+      })
+      const projectDescriptionParagraphInnerSplit = new SplitText(
+        projectDescriptionParagraphOuterSplit.lines,
+        { type: "lines" }
+      )
+
+      const introTl = gsap.timeline({
         scrollTrigger: {
           trigger: workSection.current,
-          start: "top bottom",
-          end: "+=3500 -20%",
-          scrub: true
+          start: "top 80%",
+          end: "bottom top",
+          scrub: true,
+          markers: true
         }
       })
 
-      gsap.fromTo(
-        "#go-float",
-        {
-          y: 600,
-          x: () => window.innerWidth * 0.4,
-          scale: 4
-        },
-        {
-          x: () => window.innerWidth * 0.4,
-          y: -200,
-          scale: 1,
-          transformOrigin: "100% 50%",
-          scrollTrigger: {
-            trigger: workSection.current,
-            scrub: 0.5,
-            start: "top 150%"
-            // markers: true
+      introTl
+        .from(["#work-intro-section-title"], {
+          scale: 5,
+          stagger: 0.15,
+          duration: 1,
+          ease: "power3.out"
+        })
+        .from(
+          ["#work-intro-section-of-my"],
+          {
+            scale: 5,
+            stagger: 0.15,
+            duration: 1,
+            ease: "power3.out"
           },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-
-      gsap.fromTo(
-        "#go-float-2",
-        {
-          y: 800,
-          x: () => window.innerWidth * 0.65,
-          scale: 3
-        },
-        {
-          x: () => window.innerWidth * 0.55,
-          y: -400,
-          scale: 0.25,
-          transformOrigin: "50% 50%",
-          scrollTrigger: {
-            trigger: workSection.current,
-            scrub: 0.5
-            // markers: true
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-
-      gsap.fromTo(
-        "#go-float-3",
-        {
-          y: 1000,
-          x: () => window.innerWidth * 0.32,
-          scale: 3
-        },
-        {
-          x: () => window.innerWidth * 0.38,
-          y: -200,
-          scale: 0.25,
-          transformOrigin: "50% 50%",
-          scrollTrigger: {
-            trigger: workSection.current,
-            scrub: 0.5
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-
-      gsap.fromTo(
-        "#go-float-4",
-        {
-          y: 900,
-          x: () => window.innerWidth * 0.6,
-          scale: 5
-        },
-        {
-          x: () => window.innerWidth * 0.5,
-          y: -100,
-          scale: 2,
-          transformOrigin: "0% 50%",
-          scrollTrigger: {
-            trigger: workSection.current,
-            scrub: 0.5
-            // markers: true
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-
-      gsap.fromTo(
-        "#go-float-5",
-        {
-          y: 1700,
-          x: () => window.innerWidth * 0.35,
-          scale: 6
-        },
-        {
-          x: () => window.innerWidth * 0.37,
-          y: -50,
-          scale: 1,
-          transformOrigin: "100% 50%",
-          scrollTrigger: {
-            trigger: workSection.current,
-            scrub: 0.5
-            // markers: true
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-      gsap.fromTo(
-        "#go-float-6",
-        {
-          y: 900,
-          x: () => window.innerWidth * 0.39,
-          scale: 4
-        },
-        {
-          x: () => window.innerWidth * 0.39,
-          y: -100,
-          scale: 1,
-          transformOrigin: "100% 50%",
-          scrollTrigger: {
-            trigger: "#go-float-6",
-            end: "+=1000",
-            scrub: 0.5
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-      gsap.fromTo(
-        "#go-float-7",
-        {
-          y: 900,
-          x: () => window.innerWidth * 0.6,
-          scale: 4
-        },
-        {
-          x: () => window.innerWidth * 0.55,
-          y: -100,
-          scale: 1,
-          transformOrigin: "0% 50%",
-          scrollTrigger: {
-            trigger: "#go-float-7",
-            end: "+=1000",
-            scrub: 0.5
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-
-      gsap.fromTo(
-        "#go-float-8",
-        {
-          y: 800,
-          x: () => window.innerWidth * 0.5,
-          scale: 3
-        },
-        {
-          x: () => window.innerWidth * 0.45,
-          y: -150,
-          scale: 1,
-          transformOrigin: "0% 50%",
-          scrollTrigger: {
-            trigger: "#go-float-8",
-            end: "+=1100",
-            scrub: 0.5
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-      gsap.fromTo(
-        "#go-float-9",
-        {
-          y: 1000,
-          x: () => window.innerWidth * 0.6,
-          scale: 4
-        },
-        {
-          x: () => window.innerWidth * 0.5,
-          y: -200,
-          scale: 1.5,
-          transformOrigin: "0% 50%",
-          scrollTrigger: {
-            trigger: "#go-float-9",
-            end: "+=1100",
-            scrub: 0.5
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-
-      gsap.fromTo(
-        "#go-float-10",
-        {
-          y: 1250,
-          x: () => window.innerWidth * 0.36,
-          scale: 4
-        },
-        {
-          x: () => window.innerWidth * 0.37,
-          y: -200,
-          scale: 1.5,
-          transformOrigin: "100% 50%",
-          scrollTrigger: {
-            trigger: "#go-float-10",
-            end: "+=1100",
-            scrub: 0.5
-          },
-          ease: "slow(0.5,0.7,false)"
-        }
-      )
-
-      gsap.fromTo(
-        "#go-float-11",
-        {
-          y: 1300,
-          x: () => window.innerWidth * 0.5,
-          scale: 3
-        },
-        {
-          x: () => window.innerWidth * 0.5,
-          y: -100,
-          scale: 1,
-          transformOrigin: "50% 50%",
-          scrollTrigger: {
-            trigger: "#go-float-11",
-            end: "+=1300",
-            scrub: 0.5
-          }
-        }
-      )
+          "<0.2"
+        )
+        .to(["#work-intro-section-title"], {
+          opacity: 0,
+          duration: 1
+        })
+        .to(["#work-intro-section-of-my"], {
+          opacity: 0,
+          duration: 1
+        })
 
       const tl = gsap.timeline({
-        id: "work-section",
         scrollTrigger: {
           trigger: workSection.current,
-          start: "top top",
-          end: "+=900",
+          // markers: true,
           scrub: true,
-          pin: true,
-          invalidateOnRefresh: true,
-          refreshPriority: 10
+          pin: true
         }
       })
 
-      tl.fromTo(
-        ".bottom-curtain",
-        { scaleY: 0 },
+      tl.from("#work-intro-section-work-word", {
+        yPercent: 50
+      })
+      tl.to("#work-intro-section-work-word", {
+        scale: 1.25,
+        duration: 1
+      })
+      tl.from(
+        "#work-lighlight-container",
         {
-          scaleY: gsap.utils.wrap([3.2, 5, 4, 8, 3]),
-          transformOrigin: "center bottom",
-          ease: "none"
+          yPercent: 100,
+          duration: 1
         },
-        2
+        "<0.3"
       )
+      tl.to(
+        "#project-description h3",
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+        },
+        "<0.8"
+      )
+      tl.from(
+        "#project-description h3 span",
+        {
+          yPercent: 100
+        },
+        "<"
+      )
+      tl.from(
+        projectDescriptionParagraphInnerSplit.lines,
+        {
+          yPercent: 100
+        },
+        "<"
+      )
+      tl.to(
+        projectDescriptionParagraphOuterSplit.lines,
+        {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+        },
+        "<"
+      )
+      tl.to("#work-lighlight-figure-2", {
+        clipPath: "polygon(0% 0%, 100% -10%, 100% 100%, 0% 100%)"
+      })
     },
     {
-      dependencies: [box],
-      revertOnUpdate: true
+      scope: workSection
     }
   )
 
   return (
-    <section ref={workSection} className="relative text-black">
-      <div className="absolute top-0 flex h-px w-full bg-pink-600">
-        <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0 dark:dark:bg-white" />
+    <section ref={workSection} className="relative text-foreground">
+      <div
+        ref={workIntroSectionRef}
+        className="flex h-screen w-full flex-col items-center justify-center gap-4 text-muted-foreground uppercase"
+      >
+        <div
+          id="work-intro-section-title"
+          className="absolute top-36 text-2xl font-light"
+        >
+          Highlight
         </div>
-        <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0 dark:bg-white" />
+        <div
+          id="work-intro-section-of-my"
+          className="absolute top-86 lowercase"
+        >
+          of my
         </div>
-        <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0 dark:bg-white" />
-        </div>
-        <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0 dark:bg-white" />
-        </div>
-        <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-black opacity-0 dark:bg-white" />
-        </div>
-      </div>
-
-      <div
-        id="go-float"
-        className="highlight absolute h-24 w-36 -translate-x-1/2 -translate-y-1/2 bg-green-800 object-cover"
-      >
-        <Image
-          src={"/small-house-3d-modeling.png"}
-          alt="small house"
-          fill
-          className="object-cover"
-          loading="lazy"
-        />
-      </div>
-
-      <div
-        id="go-float-2"
-        className="highlight absolute h-32 w-44 -translate-x-1/2 -translate-y-1/2 bg-blue-300"
-      >
-        <Image
-          src={"/modern-cabin-house-by-Quadusk.png"}
-          alt="Modern cabin"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-3"
-        className="highlight absolute h-32 w-44 -translate-x-1/2 -translate-y-1/2 bg-rose-300"
-      >
-        <Image
-          src={"/small-house-and-its-environment-outside-3d-modeling.png"}
-          alt="small house and its environment (3D modeling)"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-4"
-        className="highlight absolute aspect-379/219 w-32 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/rhac-org-home-page-on-desktop.png"}
-          alt="rhac website"
-          fill
-          loading="lazy"
-          quality={90}
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-5"
-        className="highlight absolute aspect-379/219 w-32 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/villa.png"}
-          alt="Villa in 360 tour"
-          fill
-          className="object-cover"
-
-          loading="lazy"
-        />
-      </div>
-
-      <div
-        id="go-float-6"
-        className="highlight absolute aspect-379/219 w-28 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/equirectangular-to-cubemap-open-source-app.png"}
-          alt="equirectangular-to-cubemap open source app"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-7"
-        className="highlight absolute aspect-106/83 w-24 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/TUX-Global-Institute-desktop-screen.png"}
-          alt="TUX Global Institute website on desktop screen"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-8"
-        className="highlight absolute aspect-91/162 w-10 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/rhac-org-home-page-mobile-screen.png"}
-          alt="rhac org home page mobile screen"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-9"
-        className="highlight absolute aspect-404/297 w-20 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/Tiptap-image-picker-for-rhac-org-dashboard.png"}
-          alt="Tiptap image picker for RHAC org dashboard"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-10"
-        className="highlight absolute aspect-205/363 w-14 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/TUX-Global-Institute-website-on-mobile-screen.png"}
-          alt="TUX Global Institute website on mobile screen size"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div
-        id="go-float-11"
-        className="highlight absolute aspect-video w-32 -translate-x-1/2 -translate-y-1/2 object-cover"
-      >
-        <Image
-          src={"/contour-map.png"}
-          alt="Contour map"
-          fill
-          loading="lazy"
-          className="object-cover"
-        />
-      </div>
-
-      <div>
-        <div className="h-screen">
-          <WorkHighlightScene onBoxReady={setBox} />
+        <div
+          id="work-intro-section-work-word"
+          className="text-9xl font-bold sm:text-[12rem] md:text-[16rem] lg:text-[24rem]"
+        >
+          Work
         </div>
       </div>
 
-      <div className="absolute bottom-0 flex h-px w-full">
-        <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
-        </div>
-        <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
-        </div>
-        <div className="relative h-px w-1/3 lg:w-1/5">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
-        </div>
-        <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
-        </div>
-        <div className="relative hidden h-px w-1/5 lg:block">
-          <div className="bottom-curtain absolute right-0 bottom-0 left-0 h-32 origin-bottom bg-background" />
+      <div className="absolute inset-0 h-full w-full">
+        <div className="relative h-full w-full">
+          <div
+            id="work-lighlight-container"
+            className="flex h-full w-full flex-col items-center justify-center gap-4"
+          >
+            <div
+              id="project-counting-info"
+              className="flex w-5/6 uppercase md:w-4/6"
+            >
+              <div className="text-2xl font-extralight text-muted-foreground">
+                1
+              </div>
+              <div className="ml-auto text-sm text-muted-foreground">/3</div>
+            </div>
+            <div className="relative aspect-video w-5/6 md:w-4/6">
+              <Image
+                src={
+                  "https://images.unsplash.com/photo-1483366774565-c783b9f70e2c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                }
+                alt="haha"
+                fill
+                className="overflow-clip rounded-lg"
+              />
+            </div>
+
+            <div
+              id="project-description"
+              className="flex w-5/6 flex-col uppercase md:w-4/6 md:flex-row"
+            >
+              <h3
+                id="project-description-title"
+                className="h-fit text-3xl font-light"
+              >
+                <span className="inline-block">360 virtual tour</span>
+              </h3>
+              <p
+                id="project-description-paragraph"
+                className="max-w-xs text-sm normal-case md:ml-auto"
+              >
+                Enabling visiting future home online with 360 degree technology
+                right at the comfort of your web browser
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="work-lighlight-container-2"
+            className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-4"
+          >
+            <div
+              id="project-counting-info-2"
+              className="flex w-5/6 uppercase opacity-0 md:w-4/6"
+            >
+              <div className="text-2xl font-extralight text-muted-foreground">
+                1
+              </div>
+              <div className="ml-auto text-sm text-muted-foreground">/3</div>
+            </div>
+            <div
+              id="work-lighlight-figure-2"
+              className="relative aspect-video w-5/6 md:w-4/6"
+            >
+              <Image
+                src={
+                  "https://images.unsplash.com/photo-1531591022136-eb8b0da1e6d0?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                }
+                alt="haha"
+                fill
+                className="overflow-clip rounded-lg"
+              />
+            </div>
+
+            <div
+              id="project-description-2"
+              className="flex w-5/6 flex-col uppercase opacity-0 md:w-4/6 md:flex-row"
+            >
+              <h3
+                id="project-description-title-2"
+                className="h-fit text-3xl font-light"
+              >
+                <span className="inline-block">360 virtual tour</span>
+              </h3>
+              <p
+                id="project-description-paragraph-2"
+                className="max-w-xs text-sm normal-case md:ml-auto"
+              >
+                Enabling visiting future home online with 360 degree technology
+                right at the comfort of your web browser
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

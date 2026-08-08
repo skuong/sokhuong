@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import Link from "next/link"
 import { useRef } from "react"
 
@@ -170,21 +169,29 @@ export function HeroSection() {
         <div ref={developerRef} className="opacity-0">
           DEVELOPER
         </div>
+        <div className="w-full text-end text-sm font-light text-muted-foreground">
+          Based in Phnom Penh
+        </div>
       </div>
 
       <div className="flex items-end justify-between">
         <div>
-          <div className="relative size-24 bg-muted md:size-32">
+          {/*<div className="relative size-24 bg-muted md:size-32">
             <Image
               src={"/sokhuong-profile-image-600.jpg"}
               alt="Sokhuong's profile image"
               fill
               className="object-cover"
             />
-          </div>
+          </div>*/}
         </div>
-        <Link href={"https://www.cal.eu/sokhuong/15min"} target="_blank">
-          <div className="font-mono text-xl font-light text-muted-foreground md:text-2xl">
+
+        <Link
+          href={"/book-a-call"}
+          data-transition-ignore
+          className="text-muted-foreground outline-none focus:ring-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+        >
+          <div className="bg-foreground p-2 font-mono font-light text-background">
             LET&apos;S TALK
           </div>
         </Link>

@@ -46,8 +46,10 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
+  contact,
   children
 }: Readonly<{
+  contact: React.ReactNode
   children: React.ReactNode
 }>) {
   return (
@@ -64,7 +66,10 @@ export default function RootLayout({
     >
       <body className="overflow-x-clip">
         <ThemeProvider>
-          <TransitionWrapper>{children}</TransitionWrapper>
+          <TransitionWrapper>
+            {contact}
+            {children}
+          </TransitionWrapper>
         </ThemeProvider>
         <UmamiAnalytics />
         <Toaster />

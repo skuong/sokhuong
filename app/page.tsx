@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { useEffect, useRef } from "react"
 
 import { View } from "@react-three/drei"
@@ -12,6 +11,7 @@ import { Footer } from "@/features/footer/components/footer"
 import { Header } from "@/features/header/components/header"
 import { HeroSection } from "@/features/hero/components/hero-section"
 import { ServiceSection } from "@/features/menu/components/service-section"
+import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
 import { WorkSection } from "@/features/work/components/work-section"
 import { gsap } from "@/lib/gsap"
 
@@ -40,21 +40,14 @@ export default function HomePage() {
         )}
       </div>
 
-      <Link
-        href={"#main"}
-        className="pointer-events-none absolute top-4 left-4 bg-background p-2 opacity-0 ring-0 outline-none focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-pink-600"
-      >
-        Skip to main content
-      </Link>
-
       <Header />
 
       <main id="main">
         <HeroSection />
-
         <WorkSection />
 
         <ServiceSection />
+        <TechStackSection />
       </main>
 
       <Footer />
