@@ -1,13 +1,13 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useRef } from "react"
 
-import { View } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
+// import { View } from "@react-three/drei"
+// import { Canvas } from "@react-three/fiber"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 
-import { BookACall } from "@/features/contact/components/book-a-call"
 import { ContactIntroSection } from "@/features/contact/components/contact-intro-section"
 import { Footer } from "@/features/footer/components/footer"
 import { Header } from "@/features/header/components/header"
@@ -52,14 +52,17 @@ export default function HomePage() {
         <TechStackSection />
         <div className="mb-24 hidden sm:block">
           <ContactIntroSection />
-          <div className="mt-32">
-            <BookACall eventSlug="15min" />
+          <div className="mt-8 flex items-center justify-center">
+            <Link
+              href={"/book-a-call"}
+              data-transition-ignore
+              className="text-muted-foreground outline-none focus:ring-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+            >
+              <div className="bg-foreground p-4 font-mono text-6xl font-light text-background">
+                Let's talk
+              </div>
+            </Link>
           </div>
-          {/*<div className="text-center">or</div>
-          <div className="text-center">
-            <div>sokhuong.usk@gmail.com</div>
-            <div>+855 61 812 917</div>
-          </div>*/}
         </div>
       </main>
 
