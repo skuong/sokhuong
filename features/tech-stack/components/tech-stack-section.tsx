@@ -60,11 +60,12 @@ export function TechStackSection() {
       const cards = [card1, card2, card3]
 
       let played = 0
+      let showedAllTech = false
 
       ScrollTrigger.create({
         trigger: techStackSection.current,
         start: "top top",
-        end: "+=300%",
+        end: "+=400%",
         markers: true,
         pin: true,
         onUpdate: (self) => {
@@ -74,12 +75,72 @@ export function TechStackSection() {
               animateCardIn(cards[nextStep])
               played++
             }
+
+            if (self.progress > 0.9 && !showedAllTech) {
+              gsap.fromTo(
+                "#tech-stack-marquee-top",
+                {
+                  opacity: 0,
+                  yPercent: -50
+                },
+                {
+                  opacity: 1,
+                  yPercent: 0,
+                  duration: 0.2,
+                  ease: "elastic.out(1,0.4)"
+                }
+              )
+              gsap.fromTo(
+                "#tech-stack-marquee-bottom",
+                {
+                  opacity: 0,
+                  yPercent: 50
+                },
+                {
+                  opacity: 1,
+                  yPercent: 0,
+                  duration: 0.2,
+                  ease: "elastic.out(1,0.4)"
+                }
+              )
+              showedAllTech = true
+            }
           } else {
             const nextStep = Math.ceil(self.progress * 3)
 
             if (played > nextStep) {
               animateCardOut(cards[nextStep])
               played--
+            }
+
+            if (self.progress < 0.9 && showedAllTech) {
+              gsap.fromTo(
+                "#tech-stack-marquee-top",
+                {
+                  opacity: 1,
+                  yPercent: 0
+                },
+                {
+                  opacity: 0,
+                  yPercent: -50,
+                  duration: 0.2,
+                  ease: "power2.out"
+                }
+              )
+              gsap.fromTo(
+                "#tech-stack-marquee-bottom",
+                {
+                  opacity: 1,
+                  yPercent: 0
+                },
+                {
+                  opacity: 0,
+                  yPercent: 50,
+                  duration: 0.2,
+                  ease: "power2.out"
+                }
+              )
+              showedAllTech = false
             }
           }
         },
@@ -108,11 +169,21 @@ export function TechStackSection() {
               id={`card-wrapper-${index + 1}`}
               className="absolute rounded-lg border opacity-0"
             >
-              <div className="flex h-72 w-56 items-center justify-center rounded-lg bg-background/50 backdrop-blur-lg">
+              <div className="flex h-80 w-64 items-center justify-center rounded-lg bg-background/50 backdrop-blur-lg">
                 <div className="text-4xl">{content}</div>
               </div>
             </div>
           ))}
+        </div>
+        <div className="absolute inset-0 flex flex-col">
+          <div
+            id="tech-stack-marquee-top"
+            className="h-32 -translate-y-4 -rotate-z-3 bg-pink-800 opacity-0"
+          ></div>
+          <div
+            id="tech-stack-marquee-bottom"
+            className="mt-auto h-32 translate-y-4 -rotate-z-3 bg-blue-800 opacity-0"
+          ></div>
         </div>
       </div>
     </section>
