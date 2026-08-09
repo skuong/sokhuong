@@ -14,6 +14,10 @@ import {
 import { animateTechStackTitle } from "@/features/tech-stack/utils/animate-tech-stack-title"
 import { gsap } from "@/lib/gsap"
 
+import { NextJsCard } from "./next-js-card"
+import { TailwindCssCard } from "./tailwind-css-card"
+import { ThreeJsCard } from "./three-js-card"
+
 gsap.registerPlugin(useGSAP, SplitText)
 
 export function TechStackSection() {
@@ -89,17 +93,9 @@ export function TechStackSection() {
       </div>
       <div className="absolute inset-0 flex h-full items-center justify-center">
         <div className="relative flex h-full w-full items-center justify-center">
-          {["A", "B", "C"].map((content, index) => (
-            <div
-              key={content}
-              id={`card-wrapper-${index + 1}`}
-              className="absolute rounded-lg border opacity-0"
-            >
-              <div className="flex h-96 w-72 items-center justify-center rounded-lg bg-background/50 backdrop-blur-lg">
-                <div className="text-4xl">{content}</div>
-              </div>
-            </div>
-          ))}
+          <TailwindCssCard id={`card-wrapper-1`} />
+          <NextJsCard id={`card-wrapper-2`} />
+          <ThreeJsCard id={`card-wrapper-3`} />
         </div>
         <div className="absolute inset-0 flex flex-col">
           <div
