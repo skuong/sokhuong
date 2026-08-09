@@ -104,11 +104,11 @@ export function TechStackSection() {
         <div className="absolute inset-0 flex flex-col">
           <div
             id="tech-stack-marquee-top"
-            className="h-32 -translate-y-4 -rotate-z-3 bg-pink-800 opacity-0"
+            className="h-32 -translate-y-4 -rotate-z-3 bg-neutral-900 opacity-0"
           ></div>
           <div
             id="tech-stack-marquee-bottom"
-            className="mt-auto h-32 translate-y-4 -rotate-z-3 bg-blue-800 opacity-0"
+            className="mt-auto h-32 translate-y-4 -rotate-z-3 bg-neutral-900 opacity-0"
           ></div>
         </div>
       </div>
