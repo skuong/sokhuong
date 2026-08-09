@@ -4,39 +4,15 @@ import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
 
+import { animateCardIn } from "@/features/tech-stack/utils/animate-card-in"
+import { animateCardOut } from "@/features/tech-stack/utils/animate-card-out"
+import {
+  animateTechStackMarqueeIn,
+  animateTechStackMarqueeOut
+} from "@/features/tech-stack/utils/animate-tech-stack-marquee"
 import { gsap } from "@/lib/gsap"
 
 gsap.registerPlugin(useGSAP, SplitText)
-
-const animateCardIn = (card: Element | HTMLElement | null) => {
-  return gsap.fromTo(
-    card,
-    {
-      y: 50,
-      x: 0
-    },
-    {
-      y: 0,
-      x: 0,
-      ease: "elastic.out(1,0.4)",
-      duration: 0.5,
-      onStart: () => {
-        gsap.set(card, {
-          opacity: 1
-        })
-      }
-    }
-  )
-}
-
-const animateCardOut = (card: Element | HTMLElement | null) => {
-  return gsap.timeline().to(card, {
-    x: 80,
-    opacity: 0,
-    ease: "power2.out",
-    duration: 0.2
-  })
-}
 
 export function TechStackSection() {
   const techStackSection = useRef<HTMLDivElement>(null)
@@ -77,32 +53,8 @@ export function TechStackSection() {
             }
 
             if (self.progress > 0.9 && !showedAllTech) {
-              gsap.fromTo(
-                "#tech-stack-marquee-top",
-                {
-                  opacity: 0,
-                  yPercent: -50
-                },
-                {
-                  opacity: 1,
-                  yPercent: 0,
-                  duration: 0.2,
-                  ease: "elastic.out(1,0.4)"
-                }
-              )
-              gsap.fromTo(
-                "#tech-stack-marquee-bottom",
-                {
-                  opacity: 0,
-                  yPercent: 50
-                },
-                {
-                  opacity: 1,
-                  yPercent: 0,
-                  duration: 0.2,
-                  ease: "elastic.out(1,0.4)"
-                }
-              )
+              animateTechStackMarqueeIn("#tech-stack-marquee-top", "top")
+              animateTechStackMarqueeIn("#tech-stack-marquee-bottom", "bottom")
               showedAllTech = true
             }
           } else {
@@ -114,32 +66,8 @@ export function TechStackSection() {
             }
 
             if (self.progress < 0.9 && showedAllTech) {
-              gsap.fromTo(
-                "#tech-stack-marquee-top",
-                {
-                  opacity: 1,
-                  yPercent: 0
-                },
-                {
-                  opacity: 0,
-                  yPercent: -50,
-                  duration: 0.2,
-                  ease: "power2.out"
-                }
-              )
-              gsap.fromTo(
-                "#tech-stack-marquee-bottom",
-                {
-                  opacity: 1,
-                  yPercent: 0
-                },
-                {
-                  opacity: 0,
-                  yPercent: 50,
-                  duration: 0.2,
-                  ease: "power2.out"
-                }
-              )
+              animateTechStackMarqueeOut("#tech-stack-marquee-top", "top")
+              animateTechStackMarqueeOut("#tech-stack-marquee-bottom", "bottom")
               showedAllTech = false
             }
           }
@@ -159,7 +87,7 @@ export function TechStackSection() {
   return (
     <section ref={techStackSection} className="relative mt-44 h-dvh">
       <div className="flex h-full items-center">
-        <h2 className="mx-auto text-9xl font-bold uppercase">Tech Stack</h2>
+        <h2 className="mx-auto text-[10rem] font-bold uppercase">Tech Stack</h2>
       </div>
       <div className="absolute inset-0 flex h-full items-center justify-center">
         <div className="relative flex h-full w-full items-center justify-center">
@@ -169,7 +97,7 @@ export function TechStackSection() {
               id={`card-wrapper-${index + 1}`}
               className="absolute rounded-lg border opacity-0"
             >
-              <div className="flex h-80 w-64 items-center justify-center rounded-lg bg-background/50 backdrop-blur-lg">
+              <div className="flex h-96 w-72 items-center justify-center rounded-lg bg-background/50 backdrop-blur-lg">
                 <div className="text-4xl">{content}</div>
               </div>
             </div>
