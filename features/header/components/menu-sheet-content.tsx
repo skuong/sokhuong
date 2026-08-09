@@ -44,11 +44,11 @@ export function MenuSheetContent() {
           </Link>
           <Link
             className="nav-link col-start-2 row-start-2 flex opacity-0"
-            href={"/work"}
+            href={"/sketches"}
           >
-            Work
+            Sketches
           </Link>
-          <Link className="nav-link col-start-6 flex" href={"/about"}>
+          {/*<Link className="nav-link col-start-6 flex" href={"/about"}>
             About
           </Link>
           <Link
@@ -56,8 +56,8 @@ export function MenuSheetContent() {
             href={"/contact"}
           >
             Contact
-          </Link>
-          <Link
+          </Link>*/}
+          {/*<Link
             className="nav-link col-start-2 row-start-3 inline whitespace-nowrap"
             href={"/case-studies"}
           >
@@ -74,15 +74,15 @@ export function MenuSheetContent() {
             href={"/philosophy"}
           >
             Philosophy
-          </Link>
+          </Link>*/}
         </nav>
       </div>
-      <div className="grid grid-cols-3 font-mono text-muted-foreground md:grid-cols-12">
+      <div className="grid grid-cols-3 gap-8 font-mono text-muted-foreground md:grid-cols-12">
         <div className="">sokhuong.usk@gmail.com</div>
         <div className="col-span-2 -col-start-1 whitespace-nowrap md:col-start-6">
           +855 61 812 917
         </div>
-        <div className="-col-start-1 hidden md:flex">Lets talk</div>
+        {/*<div className="-col-start-1 hidden md:flex">Lets talk</div>*/}
       </div>
     </div>
   )
