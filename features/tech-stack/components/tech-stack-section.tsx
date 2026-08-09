@@ -9,7 +9,7 @@ import { gsap } from "@/lib/gsap"
 gsap.registerPlugin(useGSAP, SplitText)
 
 const createCardTween = (card: Element | HTMLElement | null) => {
-  return gsap.fromTo(
+  return gsap.timeline().fromTo(
     card,
     {
       y: 50
@@ -18,7 +18,6 @@ const createCardTween = (card: Element | HTMLElement | null) => {
       y: 0,
       ease: "elastic.out(1,0.4)",
       duration: 0.5,
-      paused: true,
       onStart: () => {
         gsap.set(card, {
           opacity: 1
@@ -38,51 +37,45 @@ export function TechStackSection() {
   useGSAP(
     () => {
       if (!techStackSection.current) return
-      const splitTech = new SplitText("h2", { type: "chars" })
+      const masterTimeline = gsap.timeline({ id: "master", paused: true })
 
-      const techStackAnimation = gsap.to(splitTech.chars, {
+      const splitTech = new SplitText("h2", { type: "chars" })
+      const techStackAnimation = gsap.timeline().to(splitTech.chars, {
         x: () => Math.random() * 200 - 50,
         y: () => Math.random() * 200 - 50,
         rotationZ: () => Math.random() * 90 - 45,
         ease: "power3.out",
-        duration: 0.2,
-        paused: true
+        duration: 0.2
       })
+
+      masterTimeline.addLabel("before-0")
+      masterTimeline.add(techStackAnimation)
+
       const card1 = techStackSection.current.querySelector("#card-wrapper-1")
       const card2 = techStackSection.current.querySelector("#card-wrapper-2")
       const card3 = techStackSection.current.querySelector("#card-wrapper-3")
 
-      const cardsTweens = [
-        createCardTween(card1),
-        createCardTween(card2),
-        createCardTween(card3)
-      ]
+      masterTimeline.add(createCardTween(card1)).addLabel("0")
+      masterTimeline.addLabel("before-1")
+      masterTimeline.add(createCardTween(card2)).addLabel("1")
+      masterTimeline.addLabel("before-2")
+      masterTimeline.add(createCardTween(card3)).addLabel("2")
 
-      let played = 0
+      // GSDevTools.create({ animation: masterTimeline })
 
-      const st = ScrollTrigger.create({
+      ScrollTrigger.create({
         trigger: techStackSection.current,
         start: "top top",
         end: "+=300%",
-        // markers: true,
+        markers: true,
         pin: true,
         onUpdate: (self) => {
           if (self.direction === 1) {
             const nextStep = Math.floor(self.progress * 3)
-
-            if (nextStep >= 3) return
-
-            if (played < nextStep + 1) {
-              cardsTweens[nextStep].play()
-              played++
-            }
+            masterTimeline.tweenTo(`${nextStep}`)
           } else {
             const nextStep = Math.ceil(self.progress * 3)
-
-            if (nextStep >= played) return
-
-            cardsTweens[nextStep].reverse()
-            played--
+            masterTimeline.tweenTo(`before-${nextStep}`)
           }
         }
       })
