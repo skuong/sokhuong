@@ -21,7 +21,11 @@ export function BookACall({ eventSlug }: BookACallProps) {
     <Cal
       namespace={eventSlug}
       calLink={`sokhuong/${eventSlug}`}
-      style={{ width: "100%", height: "100%", overflow: "auto" }}
+      style={{
+        width: "100%",
+        height: "100%",
+        overflow: "hidden"
+      }}
       config={{
         layout: "month_view",
         useSlotsViewOnSmallScreen: "true"
