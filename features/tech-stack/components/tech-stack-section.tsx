@@ -1,10 +1,12 @@
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { GSDevTools } from "gsap/GSDevTools"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
 
+import { NextJsCard } from "@/features/tech-stack/components/next-js-card"
+import { TailwindCssCard } from "@/features/tech-stack/components/tailwind-css-card"
+import { ThreeJsCard } from "@/features/tech-stack/components/three-js-card"
 import { animateCardIn } from "@/features/tech-stack/utils/animate-card-in"
 import { animateCardOut } from "@/features/tech-stack/utils/animate-card-out"
 import {
@@ -14,9 +16,7 @@ import {
 import { animateTechStackTitle } from "@/features/tech-stack/utils/animate-tech-stack-title"
 import { gsap } from "@/lib/gsap"
 
-import { NextJsCard } from "./next-js-card"
-import { TailwindCssCard } from "./tailwind-css-card"
-import { ThreeJsCard } from "./three-js-card"
+import { TechStackMarquee } from "./tech-stack-marquee"
 
 gsap.registerPlugin(useGSAP, SplitText)
 
@@ -28,7 +28,6 @@ export function TechStackSection() {
 
       const splitTech = new SplitText("h2", { type: "chars" })
       const techStackAnimation = animateTechStackTitle(splitTech.chars)
-      // GSDevTools.create({ animation: techStackAnimation })
 
       const card1 = techStackSection.current.querySelector("#card-wrapper-1")
       const card2 = techStackSection.current.querySelector("#card-wrapper-2")
@@ -42,7 +41,7 @@ export function TechStackSection() {
         trigger: techStackSection.current,
         start: "top top",
         end: "+=400%",
-        markers: true,
+        // markers: true,
         pin: true,
         onUpdate: (self) => {
           if (self.direction === 1) {
@@ -85,7 +84,7 @@ export function TechStackSection() {
     }
   )
   return (
-    <section ref={techStackSection} className="relative mt-44 h-dvh">
+    <section ref={techStackSection} className="relative mb-24 h-dvh">
       <div className="flex h-full items-center">
         <h2 className="mx-auto text-6xl font-bold uppercase sm:text-7xl md:text-[7rem] lg:text-[9rem] xl:text-[10rem]">
           Tech Stack
@@ -98,14 +97,14 @@ export function TechStackSection() {
           <ThreeJsCard id={`card-wrapper-3`} />
         </div>
         <div className="absolute inset-0 flex flex-col">
-          <div
+          <TechStackMarquee
             id="tech-stack-marquee-top"
-            className="h-32 -translate-y-4 -rotate-z-3 bg-neutral-900 opacity-0"
-          ></div>
-          <div
+            className="-translate-y-4 -rotate-z-3"
+          />
+          <TechStackMarquee
             id="tech-stack-marquee-bottom"
-            className="mt-auto h-32 translate-y-4 -rotate-z-3 bg-neutral-900 opacity-0"
-          ></div>
+            className="mt-auto translate-y-4 -rotate-z-3"
+          />
         </div>
       </div>
     </section>
