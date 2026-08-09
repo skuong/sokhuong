@@ -7,6 +7,8 @@ import { Canvas } from "@react-three/fiber"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import Lenis from "lenis"
 
+import { BookACall } from "@/features/contact/components/book-a-call"
+import { ContactIntroSection } from "@/features/contact/components/contact-intro-section"
 import { Footer } from "@/features/footer/components/footer"
 import { Header } from "@/features/header/components/header"
 import { HeroSection } from "@/features/hero/components/hero-section"
@@ -48,6 +50,17 @@ export default function HomePage() {
 
         <ServiceSection />
         <TechStackSection />
+        <div className="mb-24 hidden sm:block">
+          <ContactIntroSection />
+          <div className="mt-32">
+            <BookACall eventSlug="15min" />
+          </div>
+          {/*<div className="text-center">or</div>
+          <div className="text-center">
+            <div>sokhuong.usk@gmail.com</div>
+            <div>+855 61 812 917</div>
+          </div>*/}
+        </div>
       </main>
 
       <Footer />
