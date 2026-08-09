@@ -44,7 +44,7 @@ export function TechStackSection() {
           if (self.direction === 1) {
             const nextStep = Math.floor(self.progress * 3)
             if (played <= nextStep) {
-              animateCardIn(cards[nextStep])
+              animateCardIn(cards, nextStep)
               played++
             }
 
@@ -57,7 +57,7 @@ export function TechStackSection() {
             const nextStep = Math.ceil(self.progress * 3)
 
             if (played > nextStep) {
-              animateCardOut(cards[nextStep])
+              animateCardOut(cards, nextStep)
               played--
             }
 
