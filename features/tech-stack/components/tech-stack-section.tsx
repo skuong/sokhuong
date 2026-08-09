@@ -1,6 +1,7 @@
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
+import { GSDevTools } from "gsap/GSDevTools"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
 
@@ -10,6 +11,7 @@ import {
   animateTechStackMarqueeIn,
   animateTechStackMarqueeOut
 } from "@/features/tech-stack/utils/animate-tech-stack-marquee"
+import { animateTechStackTitle } from "@/features/tech-stack/utils/animate-tech-stack-title"
 import { gsap } from "@/lib/gsap"
 
 gsap.registerPlugin(useGSAP, SplitText)
@@ -21,14 +23,8 @@ export function TechStackSection() {
       if (!techStackSection.current) return
 
       const splitTech = new SplitText("h2", { type: "chars" })
-      const techStackAnimation = gsap.to(splitTech.chars, {
-        x: () => Math.random() * 200 - 50,
-        y: () => Math.random() * 200 - 50,
-        rotationZ: () => Math.random() * 90 - 45,
-        ease: "power3.out",
-        duration: 0.2,
-        paused: true
-      })
+      const techStackAnimation = animateTechStackTitle(splitTech.chars)
+      GSDevTools.create({ animation: techStackAnimation })
 
       const card1 = techStackSection.current.querySelector("#card-wrapper-1")
       const card2 = techStackSection.current.querySelector("#card-wrapper-2")
