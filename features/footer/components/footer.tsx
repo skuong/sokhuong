@@ -20,16 +20,7 @@ export function Footer() {
             <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"/work"}>Work</Link>
-          </li>
-          <li>
             <Link href={"/sketches"}>Sketches</Link>
-          </li>
-          <li>
-            <Link href={"/case-studies"}>Case studies</Link>
-          </li>
-          <li>
-            <Link href={"/open-source"}>Open source</Link>
           </li>
         </ul>
 
