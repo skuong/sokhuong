@@ -39,8 +39,7 @@ export function WorkSection() {
           trigger: workSection.current,
           start: "top 80%",
           end: "bottom top",
-          scrub: true,
-          markers: true
+          scrub: true
         }
       })
 
