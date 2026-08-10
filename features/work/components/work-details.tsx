@@ -28,6 +28,9 @@ export function WorkDetails({
       gsap.set("[data-info=project-title]", {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%)"
       })
+      gsap.set("[data-info=project-title] > span", {
+        yPercent: 100
+      })
     },
     {
       scope: container
@@ -47,8 +50,12 @@ export function WorkDetails({
         data-info="project-counting"
         className="flex w-5/6 uppercase md:w-4/6"
       >
-        <div className="text-2xl font-extralight text-muted-foreground">1</div>
-        <div className="ml-auto text-sm text-muted-foreground">/3</div>
+        <div className="text-2xl font-extralight text-muted-foreground opacity-0">
+          1
+        </div>
+        <div className="ml-auto text-sm text-muted-foreground opacity-0">
+          /3
+        </div>
       </div>
 
       <div data-info="figure" className="relative aspect-video w-5/6 md:w-4/6">
@@ -74,7 +81,7 @@ export function WorkDetails({
         <p
           data-info="project-description"
           id="project-description-paragraph"
-          className="max-w-xs text-sm normal-case md:ml-auto"
+          className="max-w-xs text-sm normal-case opacity-0 md:ml-auto"
         >
           {description}
         </p>
