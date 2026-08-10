@@ -12,6 +12,7 @@ import {
   titleInAnimation,
   titleOutAnimation
 } from "@/features/work/utils/title-animations"
+import { useMediaQuery } from "@/hooks/use-media-query"
 import { gsap } from "@/lib/gsap"
 
 import { WorkDetails } from "./work-details"
@@ -45,6 +46,7 @@ const works = [
 
 export function WorkSection() {
   const workSection = useRef<HTMLDivElement | null>(null)
+  const isDesktop = useMediaQuery("(min-width: 768px)")
 
   useGSAP(
     () => {
@@ -58,7 +60,7 @@ export function WorkSection() {
       const mainTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: workSection.current,
-          end: "+=600%",
+          end: isDesktop ? "+=400%" : "+=200%",
           // markers: true,
           scrub: true,
           pin: true
