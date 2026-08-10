@@ -93,13 +93,13 @@ export function WorkSection() {
         .to(
           {},
           {
-            duration: 2
+            duration: 1
           }
         )
         .to(
           {},
           {
-            duration: 3,
+            duration: 1,
             onStart: () => {
               figureInAnimation(1).play()
               titleOutAnimation(0).play()
@@ -115,7 +115,7 @@ export function WorkSection() {
         .to(
           {},
           {
-            duration: 3,
+            duration: 1,
             onStart: () => {
               figureInAnimation(2).play()
 
@@ -133,7 +133,7 @@ export function WorkSection() {
         .to(
           {},
           {
-            duration: 0.5
+            duration: 0.2
           }
         )
     },
