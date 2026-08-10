@@ -58,7 +58,7 @@ export default function HomePage() {
               data-transition-ignore
               className="text-muted-foreground outline-none focus:ring-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
             >
-              <div className="bg-foreground p-4 font-mono text-6xl font-light text-background">
+              <div className="bg-foreground p-4 text-6xl font-bold text-background">
                 Let's talk
               </div>
             </Link>
