@@ -2,6 +2,16 @@ import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
 
+import {
+  figureInAnimation,
+  figureOutAnimation
+} from "@/features/work/utils/figure-animations"
+import {
+  titleBackInAnimation,
+  titleBackOutAnimation,
+  titleInAnimation,
+  titleOutAnimation
+} from "@/features/work/utils/title-animations"
 import { gsap } from "@/lib/gsap"
 
 import { WorkDetails } from "./work-details"
@@ -70,14 +80,20 @@ export function WorkSection() {
           "[data-info=work-container]:first-child",
           {
             yPercent: 100,
-            duration: 1
+            duration: 1,
+            onComplete: () => {
+              titleInAnimation(0).play()
+            },
+            onReverseComplete: () => {
+              titleBackOutAnimation(0).play()
+            }
           },
           "<0.3"
         )
         .to(
           {},
           {
-            duration: 4
+            duration: 3
           }
         )
         .to(
@@ -85,14 +101,14 @@ export function WorkSection() {
           {
             duration: 4,
             onStart: () => {
-              gsap.to("[data-work-id=id-1] > [data-info=figure]", {
-                clipPath: "polygon(0% 0%, 100% -10%, 100% 100%, 0% 100%)"
-              })
+              figureInAnimation(1).play()
+              titleOutAnimation(0).play()
+              titleInAnimation(1).play()
             },
             onReverseComplete: () => {
-              gsap.to("[data-work-id=id-1] > [data-info=figure]", {
-                clipPath: "polygon(0% 110%, 100% 100%, 100% 100%, 0% 110%)"
-              })
+              figureOutAnimation(1).play()
+              titleBackOutAnimation(1).play()
+              titleBackInAnimation(0).play()
             }
           }
         )
@@ -101,14 +117,16 @@ export function WorkSection() {
           {
             duration: 4,
             onStart: () => {
-              gsap.to("[data-work-id=id-2] > [data-info=figure]", {
-                clipPath: "polygon(0% 0%, 100% -10%, 100% 100%, 0% 100%)"
-              })
+              figureInAnimation(2).play()
+
+              titleOutAnimation(1).play()
+              titleInAnimation(2).play()
             },
             onReverseComplete: () => {
-              gsap.to("[data-work-id=id-2] > [data-info=figure]", {
-                clipPath: "polygon(0% 110%, 100% 100%, 100% 100%, 0% 110%)"
-              })
+              figureOutAnimation(2).play()
+
+              titleBackOutAnimation(2).play()
+              titleBackInAnimation(1).play()
             }
           }
         )
