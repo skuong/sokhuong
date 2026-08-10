@@ -81,7 +81,7 @@ export function WorkDetails({
         <p
           data-info="project-description"
           id="project-description-paragraph"
-          className="max-w-xs text-sm normal-case opacity-0 md:ml-auto"
+          className="max-w-xs text-sm normal-case md:ml-auto"
         >
           {description}
         </p>
