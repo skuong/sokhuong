@@ -14,6 +14,7 @@ import { Header } from "@/features/header/components/header"
 import { HeroSection } from "@/features/hero/components/hero-section"
 import { ServiceSection } from "@/features/menu/components/service-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
+import { MobileWorkSection } from "@/features/work/components/mobile-work-section"
 import { WorkSection } from "@/features/work/components/work-section"
 import { gsap } from "@/lib/gsap"
 
@@ -46,7 +47,8 @@ export default function HomePage() {
 
       <main id="main">
         <HeroSection />
-        <WorkSection />
+        <MobileWorkSection className="p-4 sm:hidden" />
+        <WorkSection className="hidden sm:block" />
 
         <ServiceSection />
         <TechStackSection />
