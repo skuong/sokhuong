@@ -66,7 +66,7 @@ export function WorkSection() {
       const mainTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: workSection.current,
-          end: isDesktop ? "+=400%" : "+=200%",
+          end: isDesktop ? "+=500%" : "+=200%",
           // markers: true,
           scrub: true,
           pin: true
