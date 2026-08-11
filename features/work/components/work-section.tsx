@@ -32,22 +32,19 @@ export const works = [
     title: "360 virtual tour",
     description:
       "Build 3D/360 virtual tour using Three.js and WebGL. Enable immersive experience of visiting a place virtually.",
-    image:
-      "https://images.unsplash.com/photo-1483366774565-c783b9f70e2c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "/work-360-tour.png"
   },
   {
     title: "Landing page",
     description:
       "Build performant and accessible landing page that benefitial for User Experience and SEO which enhance business digital presense.",
-    image:
-      "https://images.unsplash.com/photo-1531591022136-eb8b0da1e6d0?q=80&w=1412&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "/work-rhac.png"
   },
   {
     title: "Admin application",
     description:
       "Build web/desktop application for administrative tasks such as composting blog posts and managing invoices and receipts.",
-    image:
-      "https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    image: "/invoice-receipt-app.png"
   }
 ]
 
@@ -74,14 +71,14 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
         }
       })
 
-      const introTimeline = workIntroAnimation({ trigger: workSection.current })
-      mainTimeline.add(introTimeline)
+      // const introTimeline = workIntroAnimation({ trigger: workSection.current })
+      // mainTimeline.add(introTimeline)
 
-      mainTimeline.from("[data-work-intro=third-word]", {
-        yPercent: 50
-      })
+      // mainTimeline.from("[data-work-intro=third-word]", {
+      //   yPercent: 50
+      // })
       mainTimeline.to("[data-work-intro=third-word]", {
-        scale: 1.25,
+        scale: 3,
         duration: 1
       })
       mainTimeline
@@ -100,7 +97,7 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
               descriptionBackOutAnimation(0).play()
             }
           },
-          "<0.3"
+          "<0.2"
         )
         .to(
           {},

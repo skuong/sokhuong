@@ -87,7 +87,7 @@ export function WorkDetails({
           src={image}
           alt="haha"
           fill
-          className="overflow-clip rounded-lg"
+          className="overflow-clip rounded-lg object-cover"
         />
       </div>
 
