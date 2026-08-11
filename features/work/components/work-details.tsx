@@ -2,11 +2,12 @@ import Image from "next/image"
 import { ComponentProps, useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
+import { SplitText } from "gsap/SplitText"
 
 import { gsap } from "@/lib/gsap"
 import { cn } from "@/lib/utils"
 
-gsap.registerPlugin(useGSAP)
+gsap.registerPlugin(useGSAP, SplitText)
 
 export function WorkDetails({
   title,
@@ -29,6 +30,29 @@ export function WorkDetails({
         clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%)"
       })
       gsap.set("[data-info=project-title] > span", {
+        yPercent: 100
+      })
+
+      const projectDescriptionSplitOuter = new SplitText(
+        "[data-info=project-description]",
+        {
+          type: "lines",
+          linesClass: "line-wrapper"
+        }
+      )
+
+      const projectDescriptionSplitInner = new SplitText(
+        projectDescriptionSplitOuter.lines,
+        {
+          type: "lines",
+          linesClass: "line"
+        }
+      )
+
+      gsap.set(projectDescriptionSplitOuter.lines, {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%)"
+      })
+      gsap.set(projectDescriptionSplitInner.lines, {
         yPercent: 100
       })
     },
@@ -68,19 +92,14 @@ export function WorkDetails({
       </div>
 
       <div
-        id="project-description"
+        data-info="project-description-section"
         className="flex w-5/6 flex-col uppercase md:w-4/6 md:flex-row"
       >
-        <h3
-          data-info="project-title"
-          id="project-description-title"
-          className="h-fit text-3xl font-light"
-        >
+        <h3 data-info="project-title" className="h-fit text-3xl font-light">
           <span className="inline-block">{title}</span>
         </h3>
         <p
           data-info="project-description"
-          id="project-description-paragraph"
           className="max-w-xs text-sm normal-case md:ml-auto"
         >
           {description}

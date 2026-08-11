@@ -22,6 +22,7 @@ gsap.registerPlugin(useGSAP, SplitText)
 
 export function TechStackSection() {
   const techStackSection = useRef<HTMLDivElement>(null)
+
   useGSAP(
     () => {
       if (!techStackSection.current) return
@@ -83,6 +84,7 @@ export function TechStackSection() {
       scope: techStackSection
     }
   )
+
   return (
     <section ref={techStackSection} className="relative mb-24 h-dvh">
       <div className="flex h-full items-center">

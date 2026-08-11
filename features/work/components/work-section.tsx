@@ -15,6 +15,12 @@ import {
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { gsap } from "@/lib/gsap"
 
+import {
+  descriptionBackInAnimation,
+  descriptionBackOutAnimation,
+  descriptionInAnimation,
+  descriptionOutAnimation
+} from "../utils/description-animations"
 import { WorkDetails } from "./work-details"
 import { WorkIntroSection, workIntroAnimation } from "./work-intro-section"
 
@@ -85,9 +91,12 @@ export function WorkSection() {
             duration: 1,
             onComplete: () => {
               titleInAnimation(0).play()
+              descriptionInAnimation(0).play()
             },
             onReverseComplete: () => {
               titleBackOutAnimation(0).play()
+
+              descriptionBackOutAnimation(0).play()
             }
           },
           "<0.3"
@@ -106,11 +115,17 @@ export function WorkSection() {
               figureInAnimation(1).play()
               titleOutAnimation(0).play()
               titleInAnimation(1).play()
+
+              descriptionInAnimation(1).play()
+              descriptionOutAnimation(0).play()
             },
             onReverseComplete: () => {
               figureOutAnimation(1).play()
               titleBackOutAnimation(1).play()
               titleBackInAnimation(0).play()
+
+              descriptionBackOutAnimation(1).play()
+              descriptionBackInAnimation(0).play()
             }
           }
         )
@@ -123,12 +138,18 @@ export function WorkSection() {
 
               titleOutAnimation(1).play()
               titleInAnimation(2).play()
+
+              descriptionInAnimation(2).play()
+              descriptionOutAnimation(1).play()
             },
             onReverseComplete: () => {
               figureOutAnimation(2).play()
 
               titleBackOutAnimation(2).play()
               titleBackInAnimation(1).play()
+
+              descriptionBackOutAnimation(2).play()
+              descriptionBackInAnimation(1).play()
             }
           }
         )
