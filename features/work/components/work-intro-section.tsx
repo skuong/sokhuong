@@ -15,7 +15,7 @@ export function WorkIntroSection({
       )}
       {...props}
     >
-      <div
+      {/*<div
         data-work-intro="first-word"
         className="absolute top-36 text-2xl font-light"
       >
@@ -23,10 +23,10 @@ export function WorkIntroSection({
       </div>
       <div className="absolute top-86 lowercase" data-work-intro="second-word">
         of my
-      </div>
+      </div>*/}
       <div
         data-work-intro="third-word"
-        className="text-9xl font-bold sm:text-[12rem] md:text-[16rem] lg:text-[24rem]"
+        className="text-6xl font-bold text-muted-foreground sm:text-[6rem] md:text-[7rem] lg:text-[9rem] xl:text-[10rem]"
       >
         Work
       </div>
