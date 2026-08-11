@@ -8,10 +8,13 @@ export function TailwindCssCard({
 }: ComponentProps<"div">) {
   return (
     <div
-      className={cn("absolute rounded-lg border opacity-0", className)}
+      className={cn(
+        "absolute h-104 w-80 rounded-lg border opacity-0",
+        className
+      )}
       {...props}
     >
-      <div className="flex h-96 w-72 items-center justify-center rounded-lg bg-background/50 backdrop-blur-lg">
+      <div className="flex h-full w-full items-center justify-center rounded-lg bg-background/50 backdrop-blur-lg">
         <div className="w-full p-8 text-4xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
