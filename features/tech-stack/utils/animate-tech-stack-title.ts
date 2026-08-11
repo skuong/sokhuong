@@ -47,7 +47,7 @@ export const animateTechStackTitle = (chars: Element[]) => {
         return 70
       }
       if (index === 4) {
-        return -90
+        return -110
       }
       if (index === 5) {
         return 65
