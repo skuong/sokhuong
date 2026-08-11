@@ -23,7 +23,7 @@ export function MobileWorkSection({
                 loading="lazy"
                 src={work.image}
                 fill
-                className="h-full w-full overflow-clip rounded-md"
+                className="h-full w-full overflow-clip rounded-md object-cover"
                 alt="empty for now"
               />
             </div>
