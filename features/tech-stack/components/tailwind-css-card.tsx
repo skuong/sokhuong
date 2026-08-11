@@ -2,6 +2,8 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
+import { Css } from "./logos/css"
+
 export function TailwindCssCard({
   className,
   ...props
@@ -37,6 +39,7 @@ export function TailwindCssCard({
             </defs>
           </svg>
         </div>
+        <Css className="absolute bottom-0 w-18 translate-y-1/2" />
       </div>
     </div>
   )

@@ -2,6 +2,8 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
+import { React } from "./logos/react"
+
 export function NextJsCard({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
@@ -53,6 +55,7 @@ export function NextJsCard({ className, ...props }: ComponentProps<"div">) {
             </g>
           </svg>
         </div>
+        <React className="absolute bottom-0 w-18 translate-y-1/2" />
       </div>
     </div>
   )

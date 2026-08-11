@@ -2,6 +2,8 @@ import { ComponentProps } from "react"
 
 import { cn } from "@/lib/utils"
 
+import { WebGl } from "./logos/web-gl"
+
 export function ThreeJsCard({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
@@ -20,6 +22,7 @@ export function ThreeJsCard({ className, ...props }: ComponentProps<"div">) {
             />
           </svg>
         </div>
+        <WebGl className="absolute bottom-0 w-30 translate-y-1/2" />
       </div>
     </div>
   )
