@@ -39,7 +39,7 @@ export function TailwindCssCard({
             </defs>
           </svg>
         </div>
-        <Css className="absolute bottom-0 w-18 translate-y-1/2" />
+        <Css className="absolute bottom-0 w-16 translate-y-1/2" />
       </div>
     </div>
   )
