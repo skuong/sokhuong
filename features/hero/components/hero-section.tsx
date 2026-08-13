@@ -187,9 +187,20 @@ export function HeroSection() {
         </div>
 
         <Link
+          href={"https://cal.eu/sokhuong/15min"}
+          target="_blank"
+          data-transition-ignore
+          className="text-muted-foreground outline-none focus:ring-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-accent md:hidden"
+        >
+          <div className="bg-foreground p-2 font-mono font-light text-background">
+            LET&apos;S TALK
+          </div>
+        </Link>
+
+        <Link
           href={"/book-a-call"}
           data-transition-ignore
-          className="text-muted-foreground outline-none focus:ring-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-accent"
+          className="hidden text-muted-foreground outline-none focus:ring-2 focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 focus-visible:ring-offset-accent md:inline-block"
         >
           <div className="bg-foreground p-2 font-mono font-light text-background">
             LET&apos;S TALK
