@@ -1,7 +1,6 @@
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
 
 import { NextJsCard } from "@/features/tech-stack/components/next-js-card"
@@ -35,50 +34,79 @@ export function TechStackSection() {
       const card3 = techStackSection.current.querySelector("#card-wrapper-3")
       const cards = [card1, card2, card3]
 
-      let played = 0
-      let showedAllTech = false
-
-      ScrollTrigger.create({
-        trigger: techStackSection.current,
-        start: "top top",
-        end: "+=400%",
-        // markers: true,
-        pin: true,
-        onUpdate: (self) => {
-          if (self.direction === 1) {
-            const nextStep = Math.floor(self.progress * 3)
-            if (played <= nextStep) {
-              animateCardIn(cards, nextStep)
-              played++
-            }
-
-            if (self.progress > 0.9 && !showedAllTech) {
-              animateTechStackMarqueeIn("#tech-stack-marquee-top", "top")
-              animateTechStackMarqueeIn("#tech-stack-marquee-bottom", "bottom")
-              showedAllTech = true
-            }
-          } else {
-            const nextStep = Math.ceil(self.progress * 3)
-
-            if (played > nextStep) {
-              animateCardOut(cards, nextStep)
-              played--
-            }
-
-            if (self.progress < 0.9 && showedAllTech) {
-              animateTechStackMarqueeOut("#tech-stack-marquee-top", "top")
-              animateTechStackMarqueeOut("#tech-stack-marquee-bottom", "bottom")
-              showedAllTech = false
-            }
-          }
-        },
-        onEnter: () => {
-          techStackAnimation.play()
-        },
-        onLeaveBack: () => {
-          techStackAnimation.reverse()
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: techStackSection.current,
+          start: "top top",
+          end: "+=400%",
+          scrub: true,
+          pin: true,
+          markers: true
         }
       })
+
+      tl.to(
+        {},
+        {
+          onStart: () => {
+            techStackAnimation.play()
+          },
+          onReverseComplete: () => {
+            techStackAnimation.pause(0)
+          }
+        }
+      )
+        .to(
+          {},
+          {
+            duration: 1,
+            onStart: () => {
+              animateCardIn(cards, 0)
+            },
+            onReverseComplete: () => {
+              animateCardOut(cards, 0)
+            }
+          },
+          "<"
+        )
+        .to(
+          {},
+          {
+            duration: 1,
+            onStart: () => {
+              animateCardIn(cards, 1)
+            },
+            onReverseComplete: () => {
+              animateCardOut(cards, 1)
+            }
+          }
+        )
+        .to(
+          {},
+          {
+            duration: 1,
+            onStart: () => {
+              animateCardIn(cards, 2)
+            },
+            onReverseComplete: () => {
+              animateCardOut(cards, 2)
+            }
+          }
+        )
+        .to(
+          {},
+          {
+            duration: 0.5,
+            onStart: () => {
+              animateTechStackMarqueeIn("#tech-stack-marquee-top", "top")
+              animateTechStackMarqueeIn("#tech-stack-marquee-bottom", "bottom")
+            },
+            onReverseComplete: () => {
+              animateTechStackMarqueeOut("#tech-stack-marquee-top", "top")
+              animateTechStackMarqueeOut("#tech-stack-marquee-bottom", "bottom")
+            }
+          }
+        )
     },
     {
       scope: techStackSection
