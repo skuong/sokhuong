@@ -40,8 +40,8 @@ export function TechStackSection() {
           start: "top top",
           end: "+=400%",
           scrub: true,
-          pin: true,
-          markers: true
+          pin: true
+          // markers: true
         }
       })
 
