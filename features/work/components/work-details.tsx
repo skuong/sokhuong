@@ -100,7 +100,7 @@ export function WorkDetails({
         </h3>
         <p
           data-info="project-description"
-          className="max-w-xs text-sm normal-case md:ml-auto"
+          className="max-w-xs text-right text-sm normal-case md:ml-auto"
         >
           {description}
         </p>

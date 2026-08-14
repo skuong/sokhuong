@@ -64,19 +64,13 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
       const mainTimeline = gsap.timeline({
         scrollTrigger: {
           trigger: workSection.current,
-          end: isDesktop ? "+=500%" : "+=200%",
+          end: isDesktop ? "+=600%" : "+=200%",
           // markers: true,
           scrub: true,
           pin: true
         }
       })
 
-      // const introTimeline = workIntroAnimation({ trigger: workSection.current })
-      // mainTimeline.add(introTimeline)
-
-      // mainTimeline.from("[data-work-intro=third-word]", {
-      //   yPercent: 50
-      // })
       mainTimeline.to("[data-work-intro=third-word]", {
         scale: 3,
         duration: 1
@@ -102,13 +96,13 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
         .to(
           {},
           {
-            duration: 1
+            duration: 2
           }
         )
         .to(
           {},
           {
-            duration: 1,
+            duration: 2,
             onStart: () => {
               figureInAnimation(1).play()
               titleOutAnimation(0).play()
@@ -130,7 +124,7 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
         .to(
           {},
           {
-            duration: 1,
+            duration: 2,
             onStart: () => {
               figureInAnimation(2).play()
 
@@ -154,7 +148,7 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
         .to(
           {},
           {
-            duration: 0.2
+            duration: 0.3
           }
         )
     },
