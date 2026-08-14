@@ -1,6 +1,6 @@
 import { gsap } from "@/lib/gsap"
 
-export const animateTechStackTitle = (chars: Element[]) => {
+export const techStackTitleFadeOutAnimation = (chars: Element[]) => {
   return gsap.to(chars, {
     xPercent: (index) => {
       if (index === 0) {
@@ -32,7 +32,6 @@ export const animateTechStackTitle = (chars: Element[]) => {
       }
       return 50
     },
-
     yPercent: (index) => {
       if (index === 0) {
         return 70
@@ -93,9 +92,9 @@ export const animateTechStackTitle = (chars: Element[]) => {
       }
       return 10
     },
-    ease: "power3.out",
-    duration: 0.2,
     opacity: 0,
-    paused: true
+    ease: "power3.out",
+    duration: 0.2
+    // paused: true
   })
 }
