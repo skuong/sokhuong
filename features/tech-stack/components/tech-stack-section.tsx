@@ -15,7 +15,6 @@ import {
 import { animateTechStackTitle } from "@/features/tech-stack/utils/animate-tech-stack-title"
 import { gsap } from "@/lib/gsap"
 
-import { techStackTitleFadeOutAnimation } from "../utils/tech-stack-title-fade-out-animation"
 import { TechStackMarquee } from "./tech-stack-marquee"
 
 gsap.registerPlugin(useGSAP, SplitText)

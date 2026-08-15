@@ -24,12 +24,12 @@ export function WorkIntroSection({
       <div className="absolute top-86 lowercase" data-work-intro="second-word">
         of my
       </div>*/}
-      <div
+      <h2
         data-work-intro="third-word"
         className="text-6xl font-bold text-muted-foreground sm:text-[6rem] md:text-[7rem] lg:text-[9rem] xl:text-[10rem]"
       >
         Work
-      </div>
+      </h2>
     </div>
   )
 }

@@ -149,11 +149,15 @@ export function HeroSection() {
   return (
     <div className="mb-24 flex h-[93dvh] flex-col justify-between p-4">
       <div></div>
-      <div className="mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-start justify-start text-6xl leading-none font-bold md:w-auto md:max-w-none md:text-9xl lg:text-[9rem]">
-        <div ref={creativeRef} className="opacity-0">
+      <h1
+        aria-label="Creative developer based in Phnom Penh, Cambodia"
+        className="mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-start justify-start text-6xl leading-none font-bold md:w-auto md:max-w-none md:text-9xl lg:text-[9rem]"
+      >
+        <div aria-hidden ref={creativeRef} className="opacity-0">
           CREATIVE
         </div>
         <div
+          aria-hidden
           ref={videoSlotRef}
           className="h-0 w-full overflow-hidden md:hidden"
         >
@@ -166,13 +170,16 @@ export function HeroSection() {
             className="h-full w-full bg-white object-cover opacity-0"
           />
         </div>
-        <div ref={developerRef} className="opacity-0">
+        <div aria-hidden ref={developerRef} className="opacity-0">
           DEVELOPER
         </div>
-        <div className="w-full text-end text-sm font-light text-muted-foreground">
+        <div
+          aria-hidden
+          className="w-full text-end text-sm font-light text-muted-foreground"
+        >
           Based in Phnom Penh
         </div>
-      </div>
+      </h1>
 
       <div className="flex items-end justify-between">
         <div>
