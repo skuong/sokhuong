@@ -27,7 +27,7 @@ export function MobileWorkSection({
                 alt="empty for now"
               />
             </div>
-            <h3 className="text-3xl font-light">{work.title}</h3>
+            <h3 className="text-xl font-light uppercase">{work.title}</h3>
             <p className="text-muted-foreground">{work.description}</p>
           </li>
         ))}
