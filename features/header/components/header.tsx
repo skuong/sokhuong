@@ -6,7 +6,7 @@ export function Header() {
   return (
     <header className="flex justify-between p-4">
       <div className="font-mono font-light text-muted-foreground">KHUONG</div>
-      <div className="font-mono font-light text-muted-foreground">
+      {/*<div className="font-mono font-light text-muted-foreground">
         <Sheet>
           <SheetTrigger
             className={
@@ -44,7 +44,7 @@ export function Header() {
             <MenuSheetContent />
           </SheetContent>
         </Sheet>
-      </div>
+      </div>*/}
     </header>
   )
 }

@@ -13,6 +13,7 @@ import { Footer } from "@/features/footer/components/footer"
 import { Header } from "@/features/header/components/header"
 import { HeroSection } from "@/features/hero/components/hero-section"
 import { ServiceSection } from "@/features/menu/components/service-section"
+import { MobileServicesSection } from "@/features/services/components/mobile-services-section"
 import { TechStackSection } from "@/features/tech-stack/components/tech-stack-section"
 import { MobileWorkSection } from "@/features/work/components/mobile-work-section"
 import { WorkSection } from "@/features/work/components/work-section"
@@ -50,7 +51,8 @@ export default function HomePage() {
         <MobileWorkSection className="p-4 sm:hidden" />
         <WorkSection className="hidden sm:block" />
 
-        <ServiceSection />
+        <MobileServicesSection className="mt-24 p-4 sm:hidden" />
+        <ServiceSection className="hidden sm:block" />
         <TechStackSection />
         <div className="mb-24 hidden sm:block">
           <ContactIntroSection />

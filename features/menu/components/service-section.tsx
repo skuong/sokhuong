@@ -1,23 +1,22 @@
 "use client"
 
-import { useRef } from "react"
+import { ComponentProps, useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
 import { gsap } from "@/lib/gsap"
+import { cn } from "@/lib/utils"
 
 const services = [
   "Web App",
   "Accessibility",
   "Desktop App",
   "UI/UX",
-  "Animation",
-  "SEO",
-  "3D Modeling"
+  "Animation"
 ]
 
-export function ServiceSection() {
+export function ServiceSection({ className, ...props }: ComponentProps<"div">) {
   const sectionContainerRef = useRef<HTMLDivElement | null>(null)
   const titlePanelRef = useRef<HTMLDivElement | null>(null)
   const serviceListRef = useRef<HTMLUListElement | null>(null)
@@ -64,7 +63,7 @@ export function ServiceSection() {
   )
 
   return (
-    <section className="mt-24 md:mt-56">
+    <section className={cn("mt-24 md:mt-56", className)} {...props}>
       <h2 className="mx-auto text-center text-4xl font-bold text-muted-foreground uppercase sm:text-5xl md:text-[5rem] lg:text-[7rem] xl:text-[7rem]">
         Services
       </h2>
