@@ -19,6 +19,7 @@ const fontMono = Geist_Mono({
 const notoSans = Noto_Sans({ subsets: ["latin"], variable: "--font-noto-sans" })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://sokhuong.com"),
   title: {
     default: "Sokhuong | Creative developer",
     template: "%s | Sokhuong"
