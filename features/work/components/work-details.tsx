@@ -13,12 +13,14 @@ export function WorkDetails({
   title,
   description,
   image,
+  imageAlt,
   className,
   ...props
 }: ComponentProps<"div"> & {
   title: string
   description: string
   image: string
+  imageAlt: string
 }) {
   const container = useRef<HTMLDivElement>(null)
 
@@ -85,7 +87,7 @@ export function WorkDetails({
       <div data-info="figure" className="relative aspect-video w-5/6 md:w-4/6">
         <Image
           src={image}
-          alt="haha"
+          alt={imageAlt}
           fill
           className="overflow-clip rounded-lg object-cover"
         />

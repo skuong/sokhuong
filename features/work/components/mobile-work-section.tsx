@@ -83,7 +83,7 @@ export function MobileWorkSection({
                 src={work.image}
                 fill
                 className="h-full w-full overflow-clip rounded-md object-cover"
-                alt="empty for now"
+                alt={work.imageAlt}
               />
             </div>
             <div data-info="text-wrapper" className="space-y-2">

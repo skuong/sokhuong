@@ -23,7 +23,7 @@ import {
   descriptionOutAnimation
 } from "../utils/description-animations"
 import { WorkDetails } from "./work-details"
-import { WorkIntroSection, workIntroAnimation } from "./work-intro-section"
+import { WorkIntroSection } from "./work-intro-section"
 
 gsap.registerPlugin(useGSAP)
 
@@ -32,19 +32,25 @@ export const works = [
     title: "360 virtual tour",
     description:
       "Build 3D/360 virtual tour using Three.js and WebGL. Enable immersive experience of visiting a place virtually.",
-    image: "/work-360-tour.png"
+    image: "/work-360-tour.png",
+    imageAlt:
+      "360 degree virtual web application showing a house called Modern Cabin. I made this web app while I was working at Quadusk."
   },
   {
     title: "Landing page",
     description:
       "Build performant and accessible landing page that benefitial for User Experience and SEO which enhance business digital presense.",
-    image: "/work-rhac.png"
+    image: "/work-rhac.png",
+    imageAlt:
+      "Show RHAC.org website with nativation menu on the top followed by an image carousel on the left and the word welcome and call to action buttons on the right."
   },
   {
     title: "Admin application",
     description:
       "Build web/desktop application for administrative tasks such as composting blog posts and managing invoices and receipts.",
-    image: "/invoice-receipt-app.png"
+    image: "/invoice-receipt-app.png",
+    imageAlt:
+      "Showing the UI of a desktop app for managing invoices and receipt I built for TUX Global Institute."
   }
 ]
 
@@ -55,7 +61,7 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
   useGSAP(
     () => {
       gsap.set(
-        "[data-info=work-container]:not(:first-child) > [data-info=figure]",
+        "[data-info=work-container]:not(:first-child) [data-info=figure]",
         {
           clipPath: "polygon(0% 110%, 100% 100%, 100% 100%, 0% 110%)"
         }
@@ -166,21 +172,27 @@ export function WorkSection({ className, ...props }: ComponentProps<"div">) {
       <WorkIntroSection />
 
       <div className="absolute inset-0 h-full w-full">
-        <div className="relative h-full w-full">
+        <ul className="relative h-full w-full">
           {works.map((work, index) => (
-            <WorkDetails
+            <li
               key={work.title}
+              className={cn(
+                index > 0 ? "absolute top-0" : "",
+                "flex h-full w-full flex-col items-center justify-center"
+              )}
               data-info="work-container"
               data-work-id={`id-${index}`}
-              title={work.title}
-              description={work.description}
-              image={work.image}
-              className={index > 0 ? "absolute top-0" : ""}
-            />
+            >
+              <WorkDetails
+                title={work.title}
+                description={work.description}
+                image={work.image}
+                imageAlt={work.imageAlt}
+              />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      <div id="random" className="absolute"></div>
     </section>
   )
 }
