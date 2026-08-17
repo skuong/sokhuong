@@ -1,6 +1,8 @@
 import { useRef } from "react"
 
 import { useGSAP } from "@gsap/react"
+import { GSDevTools } from "gsap/GSDevTools"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SplitText } from "gsap/SplitText"
 
 import { NextJsCard } from "@/features/tech-stack/components/next-js-card"
@@ -17,7 +19,7 @@ import { gsap } from "@/lib/gsap"
 
 import { TechStackMarquee } from "./tech-stack-marquee"
 
-gsap.registerPlugin(useGSAP, SplitText)
+gsap.registerPlugin(useGSAP, SplitText, GSDevTools, ScrollTrigger)
 
 export function TechStackSection() {
   const techStackSection = useRef<HTMLDivElement>(null)
@@ -26,8 +28,24 @@ export function TechStackSection() {
     () => {
       if (!techStackSection.current) return
 
-      const splitTech = new SplitText("h2", { type: "chars" })
-      const techStackAnimation = animateTechStackTitle(splitTech.chars)
+      const techStackAnimation = animateTechStackTitle(
+        gsap.utils.toArray("h2 div")
+      )
+
+      const titleDescambleTimeline = gsap.to("h2 div:not([data-char='.'])", {
+        yPercent: -100,
+        stagger: 0.1,
+        duration: 1,
+        ease: "expo.inOut"
+      })
+
+      ScrollTrigger.create({
+        trigger: "[data-info=heading]",
+        start: "top 90%",
+        animation: titleDescambleTimeline,
+        once: true,
+        fastScrollEnd: true
+      })
 
       const card1 = techStackSection.current.querySelector("#card-wrapper-1")
       const card2 = techStackSection.current.querySelector("#card-wrapper-2")
@@ -108,19 +126,6 @@ export function TechStackSection() {
             }
           }
         )
-      // .to(
-      //   {},
-      //   {
-      //     duration: 0.5,
-      //     onStart: () => {
-      //       techStackTitleFadeOutAnimation(splitTech.chars)
-      //     },
-      //     onReverseComplete: () => {
-      //       techStackTitleFadeOutAnimation(splitTech.chars).reverse()
-      //     }
-      //   },
-      //   "<"
-      // )
     },
     {
       scope: techStackSection
@@ -130,8 +135,74 @@ export function TechStackSection() {
   return (
     <section ref={techStackSection} className="relative mb-24 h-dvh">
       <div className="flex h-full items-center">
-        <h2 className="mx-auto text-6xl font-bold uppercase sm:text-7xl md:text-[7rem] lg:text-[9rem] xl:text-[10rem]">
-          Tech Stack
+        <h2
+          data-info="heading"
+          aria-label="Tech Stack"
+          className="mx-auto flex overflow-hidden text-5xl leading-[0.75] font-bold uppercase sm:text-7xl md:text-[7rem] lg:text-[9rem] xl:text-[10rem]"
+        >
+          <div
+            aria-hidden
+            data-char="T"
+            className="before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)]"
+          >
+            R
+          </div>
+          <div
+            aria-hidden
+            data-char="."
+            className="-ml-1 before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)] md:-ml-3"
+          >
+            E
+          </div>
+          <div
+            aria-hidden
+            data-char="."
+            className="before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)]"
+          >
+            C
+          </div>
+          <div
+            aria-hidden
+            data-char="."
+            className="before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)]"
+          >
+            H
+          </div>
+          <div
+            aria-hidden
+            data-char="."
+            className="ml-4 before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)] md:ml-6"
+          >
+            S
+          </div>
+          <div
+            aria-hidden
+            data-char="."
+            className="before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)]"
+          >
+            T
+          </div>
+          <div
+            aria-hidden
+            data-char="A"
+            className="before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)]"
+          >
+            E
+          </div>
+          <div
+            aria-hidden
+            data-char="C"
+            className="before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)]"
+          >
+            A
+          </div>
+          <div
+            aria-hidden
+            data-char="."
+            className="before:absolute before:inset-0 before:bottom-0 before:left-0 before:translate-y-full before:content-[attr(data-char)]"
+          >
+            K
+          </div>
         </h2>
       </div>
       <div className="absolute inset-0 flex h-full items-center justify-center">
